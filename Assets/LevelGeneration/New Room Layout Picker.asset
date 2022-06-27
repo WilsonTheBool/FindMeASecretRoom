@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea04029d0c9724a8482eb5a34fe5d1, type: 3}
+  m_Name: New Room Layout Picker
+  m_EditorClassIdentifier: 
+  LayoutHolders:
+  - Room_Figure: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
+    Room: {fileID: 4734495459355458228, guid: 6b0900847467a66438f048a967f0f8f3, type: 3}
+    weight: 4
+  - Room_Figure: {fileID: 11400000, guid: 76911ea41700ca34094f76684102b77b, type: 2}
+    Room: {fileID: 5195933266585087744, guid: 9b38e37ebce21bc46be6a8aeb3125f4f, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 791362afb4f9be844b713acba80a3997, type: 2}
+    Room: {fileID: 8448083893969599516, guid: 42dd34acedd4d7b4b8fa4b787c511c6e, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 725be12ea857d524bb9a26cd21e4fc23, type: 2}
+    Room: {fileID: 9016573754196812069, guid: d87163ad369c1c84da6032fa5fdccd91, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: fce6719e9d00cd1448a5cb1facfac22e, type: 2}
+    Room: {fileID: 561342135207339382, guid: 9680dadbb6498634a9b6740185427382, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 2732802f7c2f9a340a4ecaa84cc4ba61, type: 2}
+    Room: {fileID: 7151346221705736530, guid: 7b0bc7d3e6c01c141a6fd1148a564ac9, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: ab9d59472e1b46b41acc791a69adde88, type: 2}
+    Room: {fileID: 5435381866337039345, guid: 32a24c6ee61a4704b8704fb243924e08, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 0a89a66c035901e4ba05995d31cc0d48, type: 2}
+    Room: {fileID: 796447743686246261, guid: 52a2d4ebe256b0449b6691ba6d764f2a, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 8156f5351f4247843b5ef10bdf7ec260, type: 2}
+    Room: {fileID: 4443651665295314422, guid: 8721cf44558f95a42bb186c9bdea0b13, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 5be24d615bf52db49b114042614e2fb8, type: 2}
+    Room: {fileID: 5424678241713962146, guid: 0d1fb31da0b3bf54f8e6a74b55579cb1, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: d5df4b0305e35344f810c79a990cb12e, type: 2}
+    Room: {fileID: 2513859172988259870, guid: aaae8f462d9776b4faffd406367fa2e2, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 16918cd006f10864bb87ddd361655855, type: 2}
+    Room: {fileID: 6073590407584706959, guid: 72cb710673b0fa94b9a59e762f6a9baf, type: 3}
+    weight: 2
+  - Room_Figure: {fileID: 11400000, guid: 5429421190d703e419f089f9b5a925a3, type: 2}
+    Room: {fileID: 6309602623552495754, guid: 2b04695f604e131459407aaa922d20ba, type: 3}
+    weight: 2
+  TreasureRoomLayouts:
+  - Room_Figure: {fileID: 11400000, guid: 2732802f7c2f9a340a4ecaa84cc4ba61, type: 2}
+    Room: {fileID: 7151346221705736530, guid: 7b0bc7d3e6c01c141a6fd1148a564ac9, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: ab9d59472e1b46b41acc791a69adde88, type: 2}
+    Room: {fileID: 5435381866337039345, guid: 32a24c6ee61a4704b8704fb243924e08, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
+    Room: {fileID: 4734495459355458228, guid: 6b0900847467a66438f048a967f0f8f3, type: 3}
+    weight: 8
+  BossRoomLayouts:
+  - Room_Figure: {fileID: 11400000, guid: 0a89a66c035901e4ba05995d31cc0d48, type: 2}
+    Room: {fileID: 796447743686246261, guid: 52a2d4ebe256b0449b6691ba6d764f2a, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 8156f5351f4247843b5ef10bdf7ec260, type: 2}
+    Room: {fileID: 4443651665295314422, guid: 8721cf44558f95a42bb186c9bdea0b13, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: 5be24d615bf52db49b114042614e2fb8, type: 2}
+    Room: {fileID: 5424678241713962146, guid: 0d1fb31da0b3bf54f8e6a74b55579cb1, type: 3}
+    weight: 1
+  - Room_Figure: {fileID: 11400000, guid: d5df4b0305e35344f810c79a990cb12e, type: 2}
+    Room: {fileID: 2513859172988259870, guid: aaae8f462d9776b4faffd406367fa2e2, type: 3}
+    weight: 1
+  emptyLayout:
+    Room_Figure: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
+    Room: {fileID: 4734495459355458228, guid: 6b0900847467a66438f048a967f0f8f3, type: 3}
+    weight: 0
