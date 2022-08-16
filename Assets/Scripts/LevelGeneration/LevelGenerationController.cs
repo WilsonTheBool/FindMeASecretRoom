@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.LevelGeneration
 {
@@ -11,24 +13,40 @@ namespace Assets.Scripts.LevelGeneration
 
         public LevelGeneratorParams LevelGeneratorParams;
 
+        public bool hideSecretRooms;
+
         public int curentRoomCount;
 
         public int roomQueueCount;
 
-        public Grid grid;
+        //public Grid grid;
+        public GridMap grid;
+
+        public GameObject selectTile;
+
+        public Camera cam;
+
+        public float waitTimeTileGeneration;
         //public Room_GM roomPrefab;
 
         private void Start()
         {
             rooms = new List<Room_GM>();
+            cam = Camera.main;
             Generate();
+
+            
         }
 
         private List<Room_GM> rooms;
 
+        LevelMap levelMap;
+
+        private SecretRoomGenerationRule.RuleCostMap costMap;
+
         public void Generate()
         {
-            LevelMap levelMap;
+            
 
             foreach (Room_GM room in rooms)
             {
@@ -54,18 +72,9 @@ namespace Assets.Scripts.LevelGeneration
             while ((!levelGenerator.GenerateLevel(levelMap, LevelGeneratorParams)));
 
 
+            RoomType SecretRooms = LevelGeneratorParams.GetSecretRoomTypes(10, out int secretCount);
+            costMap = (SecretRooms.rule as SecretRoomRules.NormalSecretRoom_Rule).costMap;
 
-            foreach (Room room in levelMap.rooms)
-            {
-                Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
-
-                Vector3Int pos = new Vector3Int(room.position.x, room.position.y, 0);
-                Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenterWorld(pos), Quaternion.Euler(0, 0, 0));
-                rooms.Add(gm);
-                if (room.type != null)
-                    gm.SetIcon(room.type.icon);
-
-            }
 
             Vector2Int max = new Vector2Int(-1, -1);
             Vector2Int min = new Vector2Int(100, 100);
@@ -78,9 +87,46 @@ namespace Assets.Scripts.LevelGeneration
 
             Vector2Int middle = (min + (max - min) / 2);
 
-            Vector3Int vector3Int = new Vector3Int(middle.x, middle.y, 0);
+           
 
-            Camera.main.transform.position = grid.CellToWorld(vector3Int) + new Vector3(0,0, -10f);
+            cam.transform.position = grid.CellToWorld(middle) + new Vector3(0,0, -10f);
+
+            StartCoroutine(GenCorutine());
+        }
+
+        IEnumerator GenCorutine()
+        {
+
+            foreach (Room room in levelMap.rooms)
+            {
+                if (room.type != null && (hideSecretRooms && room.type.isSecretRoom))
+                {
+                    continue;
+                }
+
+                Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+
+                Vector2Int pos = new Vector2Int(room.position.x, room.position.y);
+                Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenter(pos), Quaternion.Euler(0, 0, 0));
+                rooms.Add(gm);
+                if (room.type != null)
+                {
+                    gm.SetIcon(room.type.icon);
+
+                    if (room.type.overridesColor)
+                    {
+                        gm.SetColor_Base(room.type.colorOfBase);
+                    }
+                }
+                    
+
+                
+
+                yield return new WaitForSeconds(waitTimeTileGeneration);
+            }
+
+
+
         }
 
         private void FixedUpdate()
@@ -89,12 +135,58 @@ namespace Assets.Scripts.LevelGeneration
             roomQueueCount = levelGenerator.roomQueue.Count;
         }
 
+        public TMPro.TMP_Text tileDataDebugText;
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Generate();
             }
+
+            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            mousePos += new Vector3(0,0, -10);
+
+            Vector2Int tilePos = grid.WorldToCell(mousePos);
+
+            if (costMap != null)
+            {
+                tileDataDebugText.text = costMap.GetTileText(new Vector2Int(tilePos.x, tilePos.y));
+
+                if(levelMap.GetRoom(new Vector2Int(tilePos.x, tilePos.y)) != null)
+                tileDataDebugText.text += "\n"+levelMap.GetRoom(new Vector2Int(tilePos.x, tilePos.y )).Figure.name;
+            }
+            
+
+            if (levelMap != null)
+            {
+                selectTile.transform.position = grid.GetCellCenter(tilePos);
+            }
+            else
+            {
+                selectTile.transform.position = new Vector3(-1000, -1000, -1000);
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Room room = levelMap.GetRoom(new Vector2Int(tilePos.x, tilePos.y));
+
+                if(room != null && room.type != null && room.type.isSecretRoom)
+                {
+                    Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+
+                    Vector2Int pos = new Vector2Int(room.position.x, room.position.y);
+                    Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenter(pos), Quaternion.Euler(0, 0, 0));
+                    rooms.Add(gm);
+                    if (room.type != null)
+                        gm.SetIcon(room.type.icon);
+                }
+            }
+        }
+
+        public void SetHideSecretRooms(bool value)
+        {
+            hideSecretRooms = value;
         }
     }
 }

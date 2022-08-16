@@ -13,5 +13,11 @@ namespace Assets.Scripts.LevelGeneration
         public bool HasSpecialFigure;
 
         public bool isSecretRoom;
+
+        public SecretRoomGenerationRule rule;
+
+        public bool overridesColor;
+
+        public Color colorOfBase;
     }
 }

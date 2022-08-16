@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starRoom: {fileID: 11400000, guid: f7fe53a4f5aa7494d88b52aa6482de10, type: 2}
   curentRoomCount: 25
-  CancelGenerationIfNotEnoughSpecialRoomSpace: 1
+  CancelGenerationIfNotEnoughSpecialRoomSpace: 0

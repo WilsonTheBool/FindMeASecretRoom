@@ -16,6 +16,10 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}
     count: 1
   - RoomType: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
+    count: 2
+  - RoomType: {fileID: 11400000, guid: 7873017ca8cc9b8489d1718ef82ce416, type: 2}
+    count: 1
+  - RoomType: {fileID: 11400000, guid: e165f2deb7e1d2948a3f8a9b26385857, type: 2}
     count: 1
   bossRooms:
   - RoomType: {fileID: 11400000, guid: 7962f0ad40348df42a4f722fe77a6098, type: 2}
@@ -24,8 +28,12 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
     count: 1
   - RoomType: {fileID: 11400000, guid: 47188dca2b7862c4490183d8a5fe6d4a, type: 2}
+    count: 2
+  - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
+    count: 1
+  - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
-  maxRoomsCount: 25
-  minDeadEndsCount: 6
+  maxRoomsCount: 35
+  minDeadEndsCount: 10
   giveUpRandomlyChance: 0.5

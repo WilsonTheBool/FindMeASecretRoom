@@ -25,11 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4093172847364648807, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_Name
-      value: room_prefab
+      value: room_prefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4093172847364648807, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149671231551943142, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.497
       objectReference: {fileID: 0}
     - target: {fileID: 7088322253989900948, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_RootOrder

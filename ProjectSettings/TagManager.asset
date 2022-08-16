@@ -47,3 +47,6 @@ TagManager:
   - name: Upper
     uniqueID: 3543858371
     locked: 0
+  - name: Effects
+    uniqueID: 2933622329
+    locked: 0

@@ -77,24 +77,21 @@ namespace Assets.Scripts.LevelGeneration
             return roomTypes.ToArray();
         }
 
-        public RoomType[] GetSecretRoomTypes(int id)
+        public RoomType GetSecretRoomTypes(int id, out int count)
         {
-            List<RoomType> roomTypes = new List<RoomType>();
+            count = 0;
 
             foreach (RoomTypeContainer roomType in secretRooms)
             {
-                if (roomType.RoomType.id != id)
+                if (roomType.RoomType.id == id)
                 {
-                    continue;
-                }
+                    count = roomType.count;
 
-                for (int i = 0; i < roomType.count; i++)
-                {
-                    roomTypes.Add(roomType.RoomType);
+                    return roomType.RoomType;
                 }
             }
+            return null;
 
-            return roomTypes.ToArray();
         }
 
         [System.Serializable]

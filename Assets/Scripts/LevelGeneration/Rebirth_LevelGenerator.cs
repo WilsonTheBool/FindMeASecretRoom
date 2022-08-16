@@ -240,10 +240,10 @@ namespace Assets.Scripts.LevelGeneration
             RoomType[] bossRooms = data.GetBossRoomTypes();
 
             //super secret room id = 11;
-            RoomType[] superSecret = data.GetSecretRoomTypes(11);
+            RoomType superSecret = data.GetSecretRoomTypes(11, out int superSecretCount);
             RoomType[] specialRooms = data.GetAllTypes();
 
-            int specialCount = bossRooms.Length + specialRooms.Length + superSecret.Length;
+            int specialCount = bossRooms.Length + specialRooms.Length + superSecretCount;
 
             if (CancelGenerationIfNotEnoughSpecialRoomSpace)
             {
@@ -282,13 +282,13 @@ namespace Assets.Scripts.LevelGeneration
             }
 
 
-            foreach (RoomType roomType in superSecret)
+            for(int i = 0; i < superSecretCount; i++)
             {
                 if (deadEndRooms.Count > 0)
                 {
                     int Index = deadEndRooms.Count - 1;
 
-                    deadEndRooms[Index].type = roomType;
+                    deadEndRooms[Index].type = superSecret;
 
                     deadEndRooms.RemoveAt(Index);
                 }
@@ -308,6 +308,7 @@ namespace Assets.Scripts.LevelGeneration
                     int randomIndex = Random.Range(0, deadEndRooms.Count);
 
                     deadEndRooms[randomIndex].type = roomType;
+                    deadEndRooms[randomIndex].Figure = data.RoomLayoutPicker.emptyLayout.Room_Figure;
 
                     if (roomType.HasSpecialFigure)
                     {
@@ -330,7 +331,7 @@ namespace Assets.Scripts.LevelGeneration
 
             if (!AddSecretRooms(map))
             {
-                return true;
+                return false;
             }
 
             return true;
@@ -338,82 +339,23 @@ namespace Assets.Scripts.LevelGeneration
 
         private bool AddSecretRooms(LevelMap map)
         {
-            secretRoomMap.Clear();
+            RoomType SecretRooms = data.GetSecretRoomTypes(10, out int secretCount);
 
-            RoomType[] SecretRooms = data.GetSecretRoomTypes(10);
+            SecretRooms.rule.GenerateRooms(map, data, secretCount);
 
-            foreach (Room room in map.rooms)
-            {
-                float cost = 1;
+            if (SecretRooms.rule.CanTryGenerate(map, data, secretCount))
+                SecretRooms = data.GetSecretRoomTypes(12, out secretCount);
 
-                if (room.type != null)
-                {
-                    if (room.type.isSecretRoom)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        cost = 1.2f;
-                    }
-                    
-                }
+            if(SecretRooms.rule.CanTryGenerate(map,data, secretCount))
+                SecretRooms.rule.GenerateRooms(map, data, secretCount);
 
-                
+            if (SecretRooms.rule.CanTryGenerate(map, data, secretCount))
+                SecretRooms = data.GetSecretRoomTypes(13, out secretCount);
 
-                foreach(Vector2Int exit in room.Figure.RoomExits)
-                {
-                    Vector2Int key = exit + room.position;
+            if (SecretRooms.rule.CanTryGenerate(map, data, secretCount))
+                return SecretRooms.rule.GenerateRooms(map, data, secretCount);
 
-                    if (map.IsInRange(key) && map.GetRoom(key) == null)
-                        if (secretRoomMap.ContainsKey(key))
-                            secretRoomMap[key] += cost;
-                        else
-                            secretRoomMap.Add(key, cost);
-                }
-
-                foreach (Vector2Int exit in room.Figure.BlockedExits)
-                {
-                    Vector2Int key = exit + room.position;
-
-                    if(map.IsInRange(key) && map.GetRoom(key) == null)
-                        if (secretRoomMap.ContainsKey(key))
-                            secretRoomMap[key] = float.MinValue;
-                        else
-                            secretRoomMap.Add(key, float.MinValue);
-                }
-            }
-
-            List<KeyValuePair<Vector2Int, float>> list = new List<KeyValuePair<Vector2Int, float>>();
-           
-
-            foreach(var pair in secretRoomMap)
-            {
-                list.Add(pair);
-            }
-
-            list.Sort((x, y) => -x.Value.CompareTo(y.Value));
-
-            foreach(RoomType room in SecretRooms)
-            {
-                if(list.Count == 0 || list[0].Value < 0)
-                {
-                    return false;
-                }
-
-                Room secret = new Room(starRoom, 0)
-                {
-                    type = room
-                };
-
-                if (map.IsInRange(list[0].Key))
-                {
-                    map.PlaceRoom(secret, list[0].Key, list[0].Key);
-                    list.RemoveAt(0);
-                }
-            }
-
-            return true;
+            return false;
         }
 
         class RoomComparer_ByDistanceFromStart : IComparer<Room>

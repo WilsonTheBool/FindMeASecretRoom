@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3fe0965fab294bb300bd9010aaef5, type: 3}
+  m_Name: 13_Angel_Room
+  m_EditorClassIdentifier: 
+  id: 13
+  typeName: Angel_Room
+  icon: {fileID: -8505006750107047164, guid: 388e8cca6b736124c95b888e0a734173, type: 3}
+  HasSpecialFigure: 0
+  isSecretRoom: 1
+  rule: {fileID: 11400000, guid: 767384f02e754ec4e91e9554b87f0b0b, type: 2}
+  overridesColor: 1
+  colorOfBase: {r: 0.29411766, g: 0.7490196, b: 0.77254903, a: 1}

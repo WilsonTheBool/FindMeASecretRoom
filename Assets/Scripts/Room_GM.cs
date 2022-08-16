@@ -10,10 +10,9 @@ namespace Assets.Scripts
 
         public SpriteRenderer iconRenderer;
 
-       public void SetColor(Color color)
+       public void SetColor_Base(Color color)
         {
             baseRenderer.color = color;
-            iconRenderer.color = color;
         }
 
         public void SetIcon(Sprite icon)
