@@ -14,6 +14,8 @@ namespace Assets.Scripts.Game.PlayerController
 
         public List<HpObject> hpObjects;
 
+        public HpObject redHelath;
+
         [SerializeField]
         HpControllerRule rule;
 
@@ -52,12 +54,14 @@ namespace Assets.Scripts.Game.PlayerController
 
             afterTakeDamage.Invoke(args);
 
+            onAnyHpChanged.Invoke(args);
+
             if (rule.IsDead(hpObjects))
             {
                 RequestDeath(new DeathEventArgs(true));
             }
 
-            onAnyHpChanged.Invoke(args);
+            
         }
 
         public bool CanPickUpHeart(HpObject heart)
@@ -66,8 +70,16 @@ namespace Assets.Scripts.Game.PlayerController
             {
                 return false;
             }
-
+            
             return rule.CanPickUpHeart(hpObjects, heart, maxHpSlotsCount);
+        }
+
+        public void HealToFullRedHP()
+        {
+            while(CanPickUpHeart(redHelath ))
+            {
+                PickUpHeart(new HpEventArgs(1, redHelath, null));
+            }
         }
 
         public void RequestPickUpHeart(HpEventArgs args)

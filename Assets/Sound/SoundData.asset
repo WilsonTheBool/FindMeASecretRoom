@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6222543117252ad4fb4b70efcc6b48dd, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: 
+  bombExplosion:
+    clips:
+    - {fileID: 8300000, guid: ce03a25640b7aa54c81e8212434b4892, type: 3}
+    - {fileID: 8300000, guid: 73587a22cb076ba4f96c7a44ef120375, type: 3}
+    - {fileID: 8300000, guid: a8fb508f8650d244d9d4ace14fcae972, type: 3}
+    volumeScale: 0.15
+  playerHit:
+    clips:
+    - {fileID: 8300000, guid: ce5c231c649b193479a0338629879c4e, type: 3}
+    volumeScale: 1
+  coinsPickUp:
+    clips:
+    - {fileID: 8300000, guid: 83cf56ce9701db1408bfeac214791c8f, type: 3}
+    volumeScale: 1
+  unlockSecretRoom:
+    clips:
+    - {fileID: 8300000, guid: 4624ea00a783eeb42b798f22de038975, type: 3}
+    volumeScale: 1
+  breakWall:
+    clips:
+    - {fileID: 8300000, guid: 119cf31dacc29694bad5d5e5380dbfa0, type: 3}
+    volumeScale: 0.5
+  player_SwitchItem:
+    clips:
+    - {fileID: 8300000, guid: cf9fad972d9871a44ae70505ad3ee45b, type: 3}
+    volumeScale: 1

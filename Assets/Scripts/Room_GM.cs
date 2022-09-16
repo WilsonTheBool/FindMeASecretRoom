@@ -5,6 +5,7 @@ namespace Assets.Scripts
 {
     public class Room_GM : MonoBehaviour
     {
+        public Vector2Int position;
 
         public SpriteRenderer baseRenderer;
 

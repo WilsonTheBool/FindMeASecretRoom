@@ -10,12 +10,12 @@ namespace Assets.Scripts
 
         public Vector3 GetCellCenter(Vector2Int cell)
         {
-            return transform.position + new Vector3(cell.x * cellSize.x, cell.y * cellSize.y, 0) ;
+            return transform.position + new Vector3(cell.x * cellSize.x, cell.y * cellSize.y, 0) + cellSize / 2;
         }
 
         public Vector3 CellToWorld(Vector2Int cell)
         {
-            return transform.position + new Vector3(cell.x * cellSize.x, cell.y * cellSize.y, 0) - cellSize / 2; 
+            return transform.position + new Vector3(cell.x * cellSize.x, cell.y * cellSize.y, 0) ; 
         }
 
 

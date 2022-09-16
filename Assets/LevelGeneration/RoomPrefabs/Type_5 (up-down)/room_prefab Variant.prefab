@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4093172847364648807, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_Name
-      value: room_prefab
+      value: room_prefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4093172847364648807, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_IsActive

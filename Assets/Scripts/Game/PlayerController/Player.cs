@@ -9,6 +9,8 @@ namespace Assets.Scripts.Game.PlayerController
 
         public PlayerHPController playerHPController;
 
+        public PlayerItemsController itemsController;
+
         private void Awake()
         {
             if(instance == null)
@@ -23,6 +25,11 @@ namespace Assets.Scripts.Game.PlayerController
             if(playerHPController == null)
             {
                 playerHPController = GetComponentInChildren<PlayerHPController>();
+            }
+
+            if (itemsController == null)
+            {
+                itemsController = GetComponentInChildren<PlayerItemsController>();
             }
         }
 
