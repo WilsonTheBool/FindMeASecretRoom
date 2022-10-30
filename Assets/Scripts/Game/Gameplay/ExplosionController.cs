@@ -16,10 +16,13 @@ namespace Assets.Scripts.Game.Gameplay
 
         public LevelMapRenderer LevelMapRenderer;
 
+        public GameTilemapController GameTilemapController;
+
         public float delaySec = 0.2f;
 
         public ExplosionEvent onBeforeExplosion;
         public ExplosionEvent onAfterExplosion;
+        public ExplosionEvent onAfterExplosion_fake;
 
         public ExplosionEvent gameObjectExplosionCreated;
 
@@ -28,6 +31,25 @@ namespace Assets.Scripts.Game.Gameplay
         public LevelMap level;
 
         private ExplosionQueue queue = new ExplosionQueue();
+
+        private void Start()
+        {
+            if(LevelMapRenderer == null)
+            {
+                LevelMapRenderer = MainGameLevelMapController.Instance.LevelMapRenderer;
+            }
+
+            if (GameTilemapController == null)
+            {
+                GameTilemapController = MainGameLevelMapController.Instance.GameTilemapController;
+            }
+
+            if (GameMapRoomUnlockController == null)
+            {
+                GameMapRoomUnlockController = MainGameLevelMapController.Instance.GameMapRoomUnlockController;
+            }
+
+        }
 
         private void Update()
         {
@@ -78,7 +100,14 @@ namespace Assets.Scripts.Game.Gameplay
                         LevelMapRenderer.RenderRoom(room);
                     }
                 }
+                else
+                {
+                    GameTilemapController.SetMarker(pos);
+                }
             }
+
+            onAfterExplosion_fake.Invoke(explosion, explosionResult);
+
             return explosionResult;
         }
 
@@ -109,7 +138,12 @@ namespace Assets.Scripts.Game.Gameplay
                         explosionResult.secretRoomsUnlocked++;
                     }
                 }
+                else
+                {
+                    GameTilemapController.SetMarker(pos);
+                }
             }
+
 
             queue.Add(explosion, explosionResult);
 

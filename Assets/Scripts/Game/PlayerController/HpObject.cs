@@ -9,9 +9,13 @@ namespace Assets.Scripts.Game.PlayerController
     [CreateAssetMenu(menuName = "Game/HpController/Hp object data")]
     public class HpObject : ScriptableObject
     {
+        public string Name;
+
         public HpType type;
 
         public Sprite sprite;
+
+        public int shopPrice;
     }
 
     public enum HpType

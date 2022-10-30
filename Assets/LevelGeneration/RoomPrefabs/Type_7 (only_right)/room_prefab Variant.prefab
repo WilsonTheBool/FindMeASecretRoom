@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1282302115773617044, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b219fad2911f6469b9ae8e2e5b65a3, type: 3}
     - target: {fileID: 4093172847364648807, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_Name
       value: room_prefab Variant
@@ -33,7 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149671231551943142, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.058
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149671231551943142, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: 7088322253989900948, guid: 6a143c523cd595e4eb2382cd63ad4f78, type: 3}
       propertyPath: m_RootOrder

@@ -4,18 +4,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.LevelGeneration
 {
-    [CreateAssetMenu(menuName = "LevelGeneration/Rebirth_Generator")]
+    //[CreateAssetMenu(menuName = "LevelGeneration/Rebirth_Generator")]
     public class Rebirth_LevelGenerator : LevelGenerator
     {
         public Room_Figure starRoom;
 
         //public Room_Figure[] allRooms;
 
-        public int curentRoomCount;
-        private int maxRoomCount;
+        //private int maxRoomCount;
 
         public Queue<Room> roomQueue;
         List<Room> deadEndRooms;
+
+        int curentRoomCount;
+        int maxRoomCount;
 
         LevelGeneratorParams data;
 
@@ -23,19 +25,19 @@ namespace Assets.Scripts.LevelGeneration
 
         public bool CancelGenerationIfNotEnoughSpecialRoomSpace;
 
-        public const int StartRoomX = 7;
-        public const int StartRoomY = 7;
-
-        Dictionary<Vector2Int, float> secretRoomMap = new Dictionary<Vector2Int, float>();
-
         public override bool GenerateLevel(LevelMap levelMap, LevelGeneratorParams data)
         {
             roomQueue = new Queue<Room>();
             deadEndRooms = new List<Room>();
+
             this.data = data;
-            curentRoomCount = 1;
-            maxRoomCount = data.maxRoomsCount;
+
             Room start = new Room(starRoom, 0);
+
+            //0 - because -1 for superSecretRoom
+            curentRoomCount = 0;
+            maxRoomCount = data.maxRoomsCount;
+            
             giveUpRandomlyChance = data.giveUpRandomlyChance;
 
             levelMap.PlaceRoom(start, new Vector2Int(StartRoomX, StartRoomY), new Vector2Int(-1,-1));
@@ -53,6 +55,7 @@ namespace Assets.Scripts.LevelGeneration
                 //{
                 //    roomQueue.Enqueue(start);
                 //}
+                //print(roomQueue.Count);
 
                 if (roomQueue.Count == 0)
                 {
@@ -84,25 +87,30 @@ namespace Assets.Scripts.LevelGeneration
             if(deadEndRooms.Count < data.minDeadEndsCount)
             {
                 //Debug.Log("deadEndRooms.Count < data.minDeadEndsCount ->" + deadEndRooms.Count.ToString());
-
+                print("Error");
                 return false;
             }
 
             if (curentRoomCount < maxRoomCount)
             {
+                print("Error");
                 return false;
             }
 
             if (!AddSpecialRooms(levelMap))
             {
+                print("Error");
                 return false;
             }
+
+            levelMap.GetRoom(new Vector2Int(StartRoomX, StartRoomY)).Figure = starRoom;
 
             return true;
         }
 
         private void CheckAddRoom(Room room, LevelMap levelMap)
         {
+
             Vector2Int[] neighbours = room.Figure.GetRoomExitsOfTileRandomized(new Vector2Int(0, 0));
 
             //bool AddedNeighbour = false;
@@ -160,6 +168,7 @@ namespace Assets.Scripts.LevelGeneration
 
                 //Add Neighbour to map
                 Room newRoom = AddRandomRoom(room.position + neighbour, levelMap, room, neighbour);
+
 
                 if(newRoom != null)
                 {
@@ -240,10 +249,9 @@ namespace Assets.Scripts.LevelGeneration
             RoomType[] bossRooms = data.GetBossRoomTypes();
 
             //super secret room id = 11;
-            RoomType superSecret = data.GetSecretRoomTypes(11, out int superSecretCount);
             RoomType[] specialRooms = data.GetAllTypes();
 
-            int specialCount = bossRooms.Length + specialRooms.Length + superSecretCount;
+            int specialCount = bossRooms.Length + specialRooms.Length;
 
             if (CancelGenerationIfNotEnoughSpecialRoomSpace)
             {
@@ -261,6 +269,7 @@ namespace Assets.Scripts.LevelGeneration
                     int Index = deadEndRooms.Count - 1;
 
                     deadEndRooms[Index].type = roomType;
+                    deadEndRooms[Index].Figure = starRoom;
 
                     if (roomType.HasSpecialFigure)
                     {
@@ -281,24 +290,24 @@ namespace Assets.Scripts.LevelGeneration
 
             }
 
+            //Add super secrets
+            //for(int i = 0; i < superSecretCount; i++)
+            //{
+            //    if (deadEndRooms.Count > 0)
+            //    {
+            //        int Index = deadEndRooms.Count - 1;
 
-            for(int i = 0; i < superSecretCount; i++)
-            {
-                if (deadEndRooms.Count > 0)
-                {
-                    int Index = deadEndRooms.Count - 1;
-
-                    deadEndRooms[Index].type = superSecret;
-
-                    deadEndRooms.RemoveAt(Index);
-                }
-                else
-                {
-                    break;
-                }
+            //        deadEndRooms[Index].type = superSecret;
+            //        deadEndRooms[Index].Figure = starRoom;
+            //        deadEndRooms.RemoveAt(Index);
+            //    }
+            //    else
+            //    {
+            //        break;
+            //    }
 
 
-            }
+            //}
 
 
             foreach (RoomType roomType in specialRooms)
@@ -339,23 +348,54 @@ namespace Assets.Scripts.LevelGeneration
 
         private bool AddSecretRooms(LevelMap map)
         {
-            RoomType SecretRooms = data.GetSecretRoomTypes(10, out int secretCount);
+            int count = 0;
 
-            SecretRooms.rule.GenerateRooms(map, data, secretCount);
+            int maxCount = data.secretRoomsCount;
 
-            if (SecretRooms.rule.CanTryGenerate(map, data, secretCount))
-                SecretRooms = data.GetSecretRoomTypes(12, out secretCount);
+            List<LevelGeneratorParams.RoomTypeContainer> containers = new List<LevelGeneratorParams.RoomTypeContainer>();
 
-            if(SecretRooms.rule.CanTryGenerate(map,data, secretCount))
-                SecretRooms.rule.GenerateRooms(map, data, secretCount);
+            while(count < maxCount)
+            {
+                foreach (var room in data.secretRooms)
+                {
+                    for (int i = 0; i < room.count; i++)
+                    {
+                        if (Random.Range(0f, 1f) <= room.chanceToGen)
+                        {
 
-            if (SecretRooms.rule.CanTryGenerate(map, data, secretCount))
-                SecretRooms = data.GetSecretRoomTypes(13, out secretCount);
+                            containers.Add(room);
+                            count++;
 
-            if (SecretRooms.rule.CanTryGenerate(map, data, secretCount))
-                return SecretRooms.rule.GenerateRooms(map, data, secretCount);
+                            if (count >= maxCount)
+                            {
+                                break;
+                            }
 
-            return false;
+                        }
+                    }
+
+                    if (count >= maxCount)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            containers.Sort();
+
+            foreach (var room in containers)
+            {
+                if (room.RoomType.rule != null && room.RoomType.rule.CanTryGenerate(map, data, 1))
+                {
+                    if (!room.RoomType.rule.GenerateRooms(map, data, 1) && room.cancelGenerationIfNotGenerated)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+
+            return true;
         }
 
         class RoomComparer_ByDistanceFromStart : IComparer<Room>

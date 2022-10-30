@@ -11,5 +11,7 @@ namespace Assets.Scripts.Game.Items
 
         public abstract void OnEffectRemove(Item.ItemInternalEventArgs args);
 
+
+        public UnityEngine.Events.UnityEvent OnEffectActivated;
     }
 }

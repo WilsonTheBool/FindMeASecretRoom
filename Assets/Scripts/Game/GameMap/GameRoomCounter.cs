@@ -23,14 +23,14 @@ namespace Assets.Scripts.Game.GameMap
             {
                 GameMapRoomUnlockController = GetComponent<GameMapRoomUnlockController>();
             }
+
+            GameMapRoomUnlockController.roomUnlocked.AddListener(OnRoomUnlocked);
+            GameMapRoomUnlockController.roomLocked.AddListener(OnRoomLocked);
         }
 
         public void SetUp(LevelMap levelMap)
         {
             roomCounters.Clear();
-
-            GameMapRoomUnlockController.roomUnlocked.AddListener(OnRoomUnlocked);
-            GameMapRoomUnlockController.roomLocked.AddListener(OnRoomLocked);
 
             foreach(Room room in levelMap.rooms)
             {

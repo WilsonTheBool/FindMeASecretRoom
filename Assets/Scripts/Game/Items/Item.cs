@@ -3,6 +3,7 @@ using UnityEngine;
 using Assets.Scripts.Game.PlayerController;
 using Assets.Scripts.Game.GameMap;
 using System;
+using Assets.Scripts.Game.Items.ItemPools;
 
 namespace Assets.Scripts.Game.Items
 {
@@ -19,24 +20,47 @@ namespace Assets.Scripts.Game.Items
 
         public ItemEffect[] onAddItemEffect;
 
-        public ItemEffect[] onUseItemEffect;
-
         public int maxCharge;
 
         [HideInInspector]
         public int curentCharge;
 
+        public ItemPoolController.PoolType[] pools;
+
         public virtual void OnItemAdd(ItemExternalEventArgs args)
         {
-            foreach (ItemEffect itemEffect in onUseItemEffect)
+            foreach (ItemEffect itemEffect in onAddItemEffect)
             {
-                itemEffect.OnEffectRemove(CreateEventArgs(args));
+                itemEffect.OnEffectAdd(CreateEventArgs(args));
             }
         }
 
         private ItemInternalEventArgs CreateEventArgs(ItemExternalEventArgs args)
         {
             return new ItemInternalEventArgs() { item = this, external = args };
+        }
+
+        public bool CanUseItem_AtAll()
+        {
+            if (!isUseItem)
+            {
+                return false;
+            }
+            else
+            {
+                if(isChargeItem)
+                {
+                    if(curentCharge > 0)
+                    return true;
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+
+                return true;
+            }
         }
 
         public bool TryUseItem(ItemExternalEventArgs args)
@@ -46,14 +70,16 @@ namespace Assets.Scripts.Game.Items
                 return false;
             }
 
-            if(isChargeItem && curentCharge <= 0)
+            ItemInternalEventArgs iArgs = CreateEventArgs(args);
+
+            if (isChargeItem && curentCharge <= 0)
             {
                 return false;
             }
 
             foreach (ItemUseBehaviour behaviour in useBehaviours)
             {
-                if(behaviour == null || !behaviour.CanUse(CreateEventArgs(args)))
+                if(behaviour == null || !behaviour.CanUse(iArgs))
                 {
                     return false;
                 }
@@ -61,9 +87,9 @@ namespace Assets.Scripts.Game.Items
 
 
 
-            foreach (ItemEffect itemEffect in onUseItemEffect)
+            foreach (ItemUseBehaviour behaviour in useBehaviours)
             {
-                itemEffect.OnEffectAdd(CreateEventArgs(args));
+                behaviour.OnUse(iArgs);
             }
 
             if (isChargeItem)
@@ -82,9 +108,41 @@ namespace Assets.Scripts.Game.Items
 
         public virtual void OnItemRemove(ItemExternalEventArgs args) 
         {
+            ItemInternalEventArgs iArgs = CreateEventArgs(args);
+
             foreach (ItemEffect itemEffect in onAddItemEffect)
             {
-                itemEffect.OnEffectRemove(CreateEventArgs(args));
+                itemEffect.OnEffectRemove(iArgs);
+            }
+        }
+
+        public void OnTilePosChanged(ItemExternalEventArgs args)
+        {
+            ItemInternalEventArgs iArgs = CreateEventArgs(args);
+
+            foreach (ItemUseBehaviour use in useBehaviours)
+            {
+                use.OnTilePosChnaged(iArgs);
+            }
+        }
+
+        public void OnSelect(ItemExternalEventArgs args)
+        {
+            ItemInternalEventArgs iArgs = CreateEventArgs(args);
+
+            foreach (ItemUseBehaviour use in useBehaviours)
+            {
+                use.OnSelected(iArgs);
+            }
+        }
+
+        public void OnDeSelect(ItemExternalEventArgs args)
+        {
+            ItemInternalEventArgs iArgs = CreateEventArgs(args);
+
+            foreach (ItemUseBehaviour use in useBehaviours)
+            {
+                use.OnDeselected(iArgs);
             }
         }
 

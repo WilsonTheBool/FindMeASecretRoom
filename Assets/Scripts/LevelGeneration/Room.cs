@@ -23,5 +23,10 @@ namespace Assets.Scripts.LevelGeneration
             this.Figure = room_Figure;
             this.distance = distance;
         }
+
+        public Room()
+        {
+            position = Vector2Int.zero;
+        }
     }
 }

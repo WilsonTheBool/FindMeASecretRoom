@@ -6,17 +6,23 @@ namespace Assets.Scripts.LevelGeneration
     [CreateAssetMenu(menuName = "LevelGeneration/Generation_Params")]
     public class LevelGeneratorParams : ScriptableObject
     {
+       
 
         public RoomTypeContainer[] specailRoomTypes;
 
         public RoomTypeContainer[] bossRooms;
 
         public RoomTypeContainer[] secretRooms;
+        
 
         public RoomLayoutPicker RoomLayoutPicker;
 
         public int maxRoomsCount;
         public int minDeadEndsCount;
+
+        public int secretRoomsCount;
+
+        public int SecretRooms;
 
         [Range(0f,1f)]
         public float giveUpRandomlyChance = 0.5f;
@@ -57,6 +63,8 @@ namespace Assets.Scripts.LevelGeneration
             return roomTypes.ToArray();
         }
 
+       
+
         public RoomType[] GetSecretRoomTypes(string name)
         {
             List<RoomType> roomTypes = new List<RoomType>();
@@ -95,10 +103,19 @@ namespace Assets.Scripts.LevelGeneration
         }
 
         [System.Serializable]
-        public class RoomTypeContainer
+        public class RoomTypeContainer: System.IComparable<RoomTypeContainer>
         {
             public RoomType RoomType;
             public int count;
+            public bool cancelGenerationIfNotGenerated;
+
+            [Range(0f, 1f)]
+            public float chanceToGen = 1;
+
+            public int CompareTo(RoomTypeContainer obj)
+            {
+                return RoomType.id.CompareTo(obj.RoomType.id);
+            }
         }
     }
 }

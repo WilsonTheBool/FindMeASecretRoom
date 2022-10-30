@@ -13,11 +13,13 @@ namespace Assets.Scripts.Game.GameMap
 
         public Sprite normalSprite;
         public Sprite cantCheckSprite;
+        public Sprite EmptySprite;
 
         public GameLevelInputManager InputListener;
 
         public GameMapRoomUnlockController GameMapRoomUnlockController;
 
+        private Sprite curentSprite;
 
         private void Awake()
         {
@@ -26,18 +28,71 @@ namespace Assets.Scripts.Game.GameMap
             InputListener.TilePositionChanged.AddListener(UpdateSelectTile);
         }
 
-        private void Start()
+        //private void Start()
+        //{
+        //    UpdateSelectTile();
+        //}
+
+       
+        public void SetTileSprite(Sprite sprite)
         {
-            UpdateSelectTile();
+            if(spriteRenderer.sprite != cantCheckSprite)
+            {
+                curentSprite = sprite;
+                spriteRenderer.sprite = curentSprite;
+            }
+            else
+            {
+                curentSprite = sprite;
+            }
+
+           
+
+            
+        }
+
+        public void ReturnToDefaultSprite()
+        {
+           
+
+            if (spriteRenderer.sprite != cantCheckSprite)
+            {
+                curentSprite = normalSprite;
+                spriteRenderer.sprite = curentSprite;
+            }
+            else
+            {
+                curentSprite = normalSprite;
+            }
+        }
+
+        public void SetEmptySprite()
+        {
+            
+
+            if (spriteRenderer.sprite != cantCheckSprite)
+            {
+                curentSprite = EmptySprite;
+                spriteRenderer.sprite = curentSprite;
+            }
+            else
+            {
+                curentSprite = EmptySprite;
+            }
         }
 
         private void UpdateSelectTile()
         {
             selectTile.transform.position = InputListener.curentCellCeneter;
 
+            if(GameMapRoomUnlockController == null)
+            {
+                return;
+            }
+
             if (GameMapRoomUnlockController.CanCheckToUnlock(InputListener.CurentTileMousePosition))
             {
-                spriteRenderer.sprite = normalSprite;
+                spriteRenderer.sprite = curentSprite;
             }
             else
             {

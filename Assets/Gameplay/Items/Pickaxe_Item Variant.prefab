@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d6e1a907928f9e94a80505a31871e024, type: 3}
+      objectReference: {fileID: 21300000, guid: 4721414c3f4abeb43a3a5264d87a7251, type: 3}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: Description
       value: Opens a room, at a cost.
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: onUseItemEffect.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: useBehaviours.Array.data[0]
@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: onUseItemEffect.Array.data[0]
       value: 
-      objectReference: {fileID: 2594333936790470522}
+      objectReference: {fileID: 0}
     - target: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: m_Icon
       value: 
@@ -94,19 +94,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
   m_PrefabInstance: {fileID: 8587856081350232648}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2594333936790470522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035566709553166876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1acacd72dbeb894390363f115a411f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageOnItemMiss: 1
 --- !u!114 &8100660063617987534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeec942f585c7a8458b46c7ca395722f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageOnItemMiss: 1
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  PickAxesSlectTileSprite: {fileID: -2204390187195788853, guid: e2c83623db95a604b9d4065f98ffff03, type: 3}

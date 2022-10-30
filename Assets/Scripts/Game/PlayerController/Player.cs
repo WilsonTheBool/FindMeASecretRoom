@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Game.UI;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Game.PlayerController
@@ -11,18 +12,25 @@ namespace Assets.Scripts.Game.PlayerController
 
         public PlayerItemsController itemsController;
 
+        public PlayerGoldController goldController;
+
+        [HideInInspector]
+        public GameUIController gameUIController;
+
+        public PlayerRoomRewardController roomRewardController;
         private void Awake()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = this;
             }
             else
             {
-                Destroy(this);
+                Destroy(instance);
+                instance = this;
             }
 
-            if(playerHPController == null)
+            if (playerHPController == null)
             {
                 playerHPController = GetComponentInChildren<PlayerHPController>();
             }
@@ -30,6 +38,19 @@ namespace Assets.Scripts.Game.PlayerController
             if (itemsController == null)
             {
                 itemsController = GetComponentInChildren<PlayerItemsController>();
+            }
+
+            if (roomRewardController == null)
+            {
+                roomRewardController = GetComponentInChildren<PlayerRoomRewardController>();
+            }
+        }
+
+        private void Start()
+        {
+            if(gameUIController == null)
+            {
+                gameUIController = GameUIController.Instance;
             }
         }
 

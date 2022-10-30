@@ -139,6 +139,21 @@ namespace Assets.Scripts.LevelGeneration
             return true;
         }
 
+        //public bool IsTileFreeToPlaceRoom(Room_Figure figure, Vector2Int pos)
+        //{
+        //    if(figure == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    foreach (Vector2Int exit in figure.RoomExits)
+        //    {
+        //        Vector2Int p = pos + exit;
+
+
+        //    }
+        //}
+
         public int GetNeighbourCount(Room room, Vector2Int globalPos)
         {
             int count = 0;

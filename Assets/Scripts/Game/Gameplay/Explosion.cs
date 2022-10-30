@@ -19,6 +19,13 @@ namespace Assets.Scripts.Game.Gameplay
         public event Action<Explosion> onBeforeExplosion;
         public event Action<Explosion, ExplosionResult> onAfterExplosion;
 
+        public RangeType type;
+
+        public enum RangeType
+        {
+            square, circle, cross, circle_filled,
+        }
+
         public void Explode()
         {
             onBeforeExplosion?.Invoke(this);
@@ -39,7 +46,37 @@ namespace Assets.Scripts.Game.Gameplay
 
         public Vector2Int[] GetCircleGlobal()
         {
-            return ExplosionController.data.GetExplosionRange(range, position);
+            if(type == RangeType.circle)
+            {
+                return TileFigures.GetCircle(range, position);
+            }
+            else
+            {
+                if (type == RangeType.square)
+                {
+                    return TileFigures.GetSquare_Filled(range, position);
+                }
+                else
+                {
+                    if (type == RangeType.cross)
+                    {
+                        return TileFigures.GetCross_Poked(range, position);
+                    }
+                    else
+                    {
+                        if (type == RangeType.circle_filled)
+                        {
+                            return TileFigures.GetCircle_Filled(range, position);
+                        }
+                        else
+                        {
+                            return new Vector2Int[0];
+                        }
+                    }
+                }
+            }
+
+            
         }
     }
 

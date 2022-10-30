@@ -18,6 +18,8 @@ namespace Assets.Scripts.Game.UI
         public Sprite fullCharge;
         public Sprite doubleCharge;
 
+        public Material active;
+
         private void Start()
         {
             PlayerItemsController = Player.instance.itemsController;
@@ -45,11 +47,11 @@ namespace Assets.Scripts.Game.UI
             {
                 if(i < PlayerItemsController.CurentActiveItems)
                 {
-                    items[i].gameObject.SetActive(true);
+                    items[i].transform.parent.gameObject.SetActive(true);
                 }
                 else
                 {
-                    items[i].gameObject.SetActive(false);
+                    items[i].transform.parent.gameObject.SetActive(false);
                 }
             }
 
@@ -95,6 +97,15 @@ namespace Assets.Scripts.Game.UI
             else
             {
                 itemCharge.gameObject.SetActive(false);
+            }
+
+            if (PlayerItemsController.CurentActiveItems > 0 && selected.CanUseItem_AtAll())
+            {
+                items[0].material = active;
+            }
+            else
+            {
+                items[0].material = null;
             }
         }
     }

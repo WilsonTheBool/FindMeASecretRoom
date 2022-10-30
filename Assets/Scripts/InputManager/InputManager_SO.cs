@@ -21,6 +21,7 @@ namespace Assets.Scripts.InputManager
         {
             if (InputGroups.ContainsKey(inputListener.InputGroup))
             {
+                if(!InputGroups[inputListener.InputGroup].Contains(inputListener))
                 InputGroups[inputListener.InputGroup].Add(inputListener);
             }
             else
@@ -37,6 +38,11 @@ namespace Assets.Scripts.InputManager
             if (InputGroups.ContainsKey(inputListener.InputGroup))
             {
                 InputGroups[inputListener.InputGroup].Remove(inputListener);
+
+                if(InputGroups[inputListener.InputGroup].Count == 0)
+                {
+                    InputGroups.Remove(inputListener.InputGroup);
+                }
 
                 InputGroupChanged.Invoke();
             }
@@ -62,7 +68,7 @@ namespace Assets.Scripts.InputManager
                     break;
                 }
 
-                keys[keys.Count - 1] = curentMaxKey;
+                curentMaxKey = keys[keys.Count - 1];
 
                 result.AddRange(InputGroups[curentMaxKey]);
 

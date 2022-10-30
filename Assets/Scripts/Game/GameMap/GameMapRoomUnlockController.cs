@@ -81,6 +81,11 @@ namespace Assets.Scripts.Game.GameMap
             }
         }
 
+        public bool IsInMapRange(Vector2Int position)
+        {
+            return LevelMath.IsInRange(position, isUnlockedMap);
+        }
+
         public bool IsUnlocked(Vector2Int position)
         {
             return LevelMath.IsInRange(position, isUnlockedMap) && isUnlockedMap[position.x, position.y];
@@ -97,7 +102,7 @@ namespace Assets.Scripts.Game.GameMap
 
             foreach(Vector2Int pos in allPos)
             {
-                if (!IsUnlocked(pos))
+                if (IsInMapRange(pos) && !IsUnlocked(pos))
                 {
                     result.Add(pos);
                 }
@@ -108,6 +113,10 @@ namespace Assets.Scripts.Game.GameMap
 
         public bool CanCheckToUnlock(Vector2Int position)
         {
+            if (!IsInMapRange(position))
+            {
+                return false;
+            }
 
             Vector2Int neighbour = position + new Vector2Int(1, 0);
             if (IsUnlocked(neighbour))

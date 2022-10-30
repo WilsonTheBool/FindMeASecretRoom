@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e275380d548f67f4b8cef85733c790a0, type: 3}
   m_Name: EmptyHp
   m_EditorClassIdentifier: 
+  Name: Empty
   type: 1
   sprite: {fileID: 7972863831239310931, guid: 5dc3ad36b2f11434aa898b6523171457, type: 3}
+  shopPrice: 0

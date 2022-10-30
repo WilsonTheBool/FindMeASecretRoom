@@ -8,7 +8,7 @@ namespace Assets.Scripts.LevelGeneration
         public Room_Figure startRoom;
         public virtual bool CanTryGenerate(LevelMap map, LevelGeneratorParams data, int countToGenerate)
         {
-            return false;
+            return true;
         }
 
         public virtual bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate)

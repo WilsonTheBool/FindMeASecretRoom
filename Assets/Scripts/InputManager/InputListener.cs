@@ -20,16 +20,31 @@ namespace Assets.Scripts.InputManager
 
         public UnityEvent OnAccept;
 
+        public UnityEvent OnAlternativeAction;
+
+        public UnityEvent OnMoveStart;
+        public UnityEvent OnMove;
+
         public Vector3 mousePosition;
         public Vector3 worldMousePosition;
 
-       
+
         private void Awake()
         {
             InputManager_SO.AddInputListener(this);
         }
 
         private void OnDestroy()
+        {
+            InputManager_SO.RemoveInputListener(this);
+        }
+
+        private void OnEnable()
+        {
+            InputManager_SO.AddInputListener(this);
+        }
+
+        private void OnDisable()
         {
             InputManager_SO.RemoveInputListener(this);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.InputManager
@@ -13,6 +14,8 @@ namespace Assets.Scripts.InputManager
         public InputListener[] curentListeners;
 
         public Camera cam;
+
+        EventSystem EventSystem;
 
         private void Awake()
         {
@@ -33,6 +36,11 @@ namespace Assets.Scripts.InputManager
                 {
                     cam = FindObjectOfType<Camera>();
                 }
+            }
+
+            if(EventSystem == null)
+            {
+                EventSystem = EventSystem.current;
             }
         }
 
@@ -58,11 +66,17 @@ namespace Assets.Scripts.InputManager
         Vector3 mousePos;
         private void Update()
         {
+            if (EventSystem.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             mousePos = Input.mousePosition;
 
             if(cam != null)
             {
                 worldMousePos = cam.ScreenToWorldPoint(mousePos);
+                worldMousePos.z = 0;
             }
             else
             {
@@ -83,6 +97,20 @@ namespace Assets.Scripts.InputManager
                     listener.OnInputUpdate(args);
                 }
             }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                foreach (var listener in curentListeners)
+                {
+                    listener.OnMoveStart.Invoke();
+                }
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                OnMove_InputAction(new InputAction.CallbackContext());
+            }
+            
         }
 
         private void OnInputGroupChanged()
@@ -92,6 +120,7 @@ namespace Assets.Scripts.InputManager
 
         public void OnActivate_InputAction(InputAction.CallbackContext callbackContext)
         {
+
             if (!callbackContext.performed)
             {
                 return;
@@ -100,6 +129,30 @@ namespace Assets.Scripts.InputManager
             foreach (var listener in curentListeners)
             {
                 listener.OnActivate.Invoke();
+            }
+        }
+
+        public void OnMove_InputAction(InputAction.CallbackContext callbackContext)
+        {
+
+            foreach (var listener in curentListeners)
+            {
+                listener.OnMove.Invoke();
+            }
+
+
+        }
+
+        public void OnAleternativeAction(InputAction.CallbackContext callbackContext)
+        {
+            if (!callbackContext.performed)
+            {
+                return;
+            }
+
+            foreach (var listener in curentListeners)
+            {
+                listener.OnAlternativeAction.Invoke();
             }
         }
 

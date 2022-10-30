@@ -42,6 +42,11 @@ namespace Assets.Scripts.LevelGeneration
             return LevelMath.ShuffleArrayCreateNew(in RoomExits);
         }
 
+        public Vector2Int GetRandomRoomTile()
+        {
+            return RoomTiles[Random.Range(0,RoomTiles.Length)];
+        }
+
         public bool CanConnect(Room_Figure owner, Vector2Int curentExit)
         {
             foreach (Vector2Int exit in RoomExits)

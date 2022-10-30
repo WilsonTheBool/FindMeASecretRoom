@@ -9,7 +9,7 @@ namespace Assets.Scripts.LevelGeneration
     public class LevelGenerationController : MonoBehaviour
     {
 
-        public Rebirth_LevelGenerator levelGenerator;
+        public LevelGenerator levelGenerator;
 
         public LevelGeneratorParams LevelGeneratorParams;
 
@@ -20,8 +20,7 @@ namespace Assets.Scripts.LevelGeneration
 
         private void Awake()
         {
-
-    
+            
         }
 
         LevelMap levelMap;

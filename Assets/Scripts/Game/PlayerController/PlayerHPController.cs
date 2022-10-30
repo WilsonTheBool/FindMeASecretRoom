@@ -50,6 +50,11 @@ namespace Assets.Scripts.Game.PlayerController
 
         private void TakeDamage(HpEventArgs args)
         {
+            if(args.change <= 0)
+            {
+                return;
+            }
+
             rule.OnTakeDamage(hpObjects, args.change);
 
             afterTakeDamage.Invoke(args);
@@ -72,6 +77,21 @@ namespace Assets.Scripts.Game.PlayerController
             }
             
             return rule.CanPickUpHeart(hpObjects, heart, maxHpSlotsCount);
+        }
+
+        public void HealRedHP(int count)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                if (CanPickUpHeart(redHelath))
+                {
+                    RequestPickUpHeart(new HpEventArgs(1, redHelath, null));
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
 
         public void HealToFullRedHP()

@@ -1,0 +1,345 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &188064111261107088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188064111261107089}
+  - component: {fileID: 188064111261107102}
+  m_Layer: 0
+  m_Name: Treasure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188064111261107089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064111261107088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 188064112313286544}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188064111261107102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064111261107088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32f337e2f621624b9d3cb0beda3851b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeItemOnGet: 1
+  poolType: 0
+  items:
+  - {fileID: 4123329167077379408, guid: f80e065349896b14e885bc916c715bec, type: 3}
+  - {fileID: 6319040756373062428, guid: 147657879bc5f1e4d89a4a00e28fda2b, type: 3}
+  itemPooled:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &188064112252936224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188064112252936225}
+  - component: {fileID: 188064112252936238}
+  m_Layer: 0
+  m_Name: Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188064112252936225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112252936224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 188064112313286544}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188064112252936238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112252936224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32f337e2f621624b9d3cb0beda3851b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeItemOnGet: 1
+  poolType: 1
+  items:
+  - {fileID: 3117791943534749252, guid: 0b51a1fe9d1a1304685694b99a136b26, type: 3}
+  - {fileID: 7280795452000820668, guid: ecb9fcbd0e373de44bc708c721f18f85, type: 3}
+  itemPooled:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &188064112313286547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188064112313286544}
+  - component: {fileID: 188064112313286545}
+  m_Layer: 0
+  m_Name: ItemPools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188064112313286544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112313286547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 188064112422094331}
+  - {fileID: 188064111261107089}
+  - {fileID: 188064112252936225}
+  m_Father: {fileID: 188064112479620722}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188064112313286545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112313286547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64907dc7ad870a418473b7e4700ee10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPools:
+  - {fileID: 188064111261107102}
+  - {fileID: 188064112252936238}
+  breakfastPool: {fileID: 188064112422094328}
+  itemHolder: {fileID: 0}
+--- !u!1 &188064112422094330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188064112422094331}
+  - component: {fileID: 188064112422094328}
+  m_Layer: 0
+  m_Name: Brekfast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188064112422094331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112422094330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 188064112313286544}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188064112422094328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112422094330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32f337e2f621624b9d3cb0beda3851b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeItemOnGet: 0
+  poolType: 0
+  items:
+  - {fileID: 8906992647273251727, guid: f46b7fab13d7ecb499c025ad744a0c40, type: 3}
+  itemPooled:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &188064112479620724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188064112479620722}
+  - component: {fileID: 188064112479620725}
+  - component: {fileID: 188064112479620720}
+  - component: {fileID: 188064112479620723}
+  m_Layer: 0
+  m_Name: Progression
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188064112479620722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112479620724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 188064112313286544}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188064112479620725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112479620724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564a501248f5759439654d9b73c85f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionScreenInput: {fileID: 0}
+  MainGameLevelMapController: {fileID: 0}
+  ItemPoolController: {fileID: 188064112313286545}
+  TreasureRoomController: {fileID: 188064112479620720}
+  ShopRoomController: {fileID: 0}
+  transitionEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  transitionFadeInEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  actions:
+  - {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+  - {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+  - {fileID: 11400000, guid: 421ba0e5e6872be4a8e0f17f556fb391, type: 2}
+  - {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+  - {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+  - {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+  - {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+  - {fileID: 11400000, guid: 421ba0e5e6872be4a8e0f17f556fb391, type: 2}
+  - {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+  - {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+  levels:
+  - {fileID: 11400000, guid: 07fc4e31329fdf04394ea5b622dde005, type: 2}
+  - {fileID: 11400000, guid: 7d56dbe2c1cf0494fb7a8b1e576b4c6c, type: 2}
+  - {fileID: 11400000, guid: 98d2f4203553d8640a266f0e84d0bba2, type: 2}
+  - {fileID: 11400000, guid: 7e0f759ef5ae63c48bb3299dd1c014e6, type: 2}
+  - {fileID: 11400000, guid: d7b2a71def199cb4cae38aec1792722e, type: 2}
+  - {fileID: 11400000, guid: 20689fa685f1e09428219e94899fe036, type: 2}
+  actionCount: 0
+  leveldataCount: 0
+--- !u!114 &188064112479620720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112479620724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba0700e44c53c842adbcc10b34f1ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToGenerate: 2
+  goldOnSkip: 10
+  waitTimeOnEnd: 1
+  items: []
+  OnTresureOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  ItemSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTresureClosed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &188064112479620723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188064112479620724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86491a00d44114b40ae3c410fcd150b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerGoldController: {fileID: 0}
+  PlayerHPController: {fileID: 0}
+  PlayerItemsController: {fileID: 0}
+  ShopUIController: {fileID: 0}
+  ItemPoolController: {fileID: 0}
+  redHp: {fileID: 11400000, guid: 1fbad68add471d9438af895686cdcb6e, type: 2}
+  redHpPrice: 3
+  blueHp: {fileID: 11400000, guid: ac3ea6cab31fbae458d31b4d50caaa44, type: 2}
+  blueHpPrice: 5
+  itemDefaultPrice: 15
+  OnItemBuy:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCantBuy:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClose:
+    m_PersistentCalls:
+      m_Calls: []
+  saleChance: 0.2
+  maxSaleItems: 1
+  shopItemsCount: 3
+  items: []

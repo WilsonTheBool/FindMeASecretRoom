@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &684583173211178696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684583173211178702}
+  - component: {fileID: 684583173211178703}
+  m_Layer: 0
+  m_Name: BookController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &684583173211178702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684583173211178696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 389.00534, y: 316.9992, z: -3465.887}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684583173211178703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684583173211178696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd0c693fb3301e4697024c567a5b0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Book: {fileID: 0}
+  chapters:
+  - id: 0
+    type: 0
+    pages:
+    - {fileID: 9030671595705933801, guid: 804a302e0433a93458d819bd77499b95, type: 3}
+    - {fileID: 8978391649720465591, guid: 817632078d062fd48be3f096ae7f2b7d, type: 3}
+    - {fileID: 5851481648856189606, guid: dd4d2c5dc28b0b04286b066a6175fc93, type: 3}
+    - {fileID: 1827328282911145392, guid: c5752fde879ae364ebe163d58b61eb70, type: 3}
+    - {fileID: 2833541874902627165, guid: 7d69ac6457d7a684aa3cf06bf1b594b5, type: 3}
+    - {fileID: 2645908178128457832, guid: 58ab097ad8a7b174d838aff52b399405, type: 3}
+  - id: 1
+    type: 1
+    pages:
+    - {fileID: 2123117176056766150, guid: 045852fccdb847c44b656788fe0d7c9f, type: 3}
