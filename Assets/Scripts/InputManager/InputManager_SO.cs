@@ -8,6 +8,8 @@ namespace Assets.Scripts.InputManager
     [CreateAssetMenu(menuName = "Input/InputManager_SO")]
     public class InputManager_SO : ScriptableObject
     {
+        private List<InputListener> savedListeners = new List<InputListener>();
+
         [HideInInspector]
         public InputReader InputReader;
 
@@ -47,6 +49,11 @@ namespace Assets.Scripts.InputManager
                 InputGroupChanged.Invoke();
             }
 
+        }
+
+        public InputListener FindListenerByName(string name)
+        {
+            return savedListeners.Find((l) => l.ListenerName == name);
         }
 
         public InputListener[] GetCurentGroup()

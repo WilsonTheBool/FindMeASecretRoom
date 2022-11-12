@@ -23,6 +23,11 @@ namespace Assets.Scripts.Tutorial
                 main = FindObjectOfType<MainGameLevelMapController>();
             }
 
+            
+        }
+
+        private void Start()
+        {
             main.onVictory.AddListener(() => curentLevelID++);
             main.LevelMapRenderer.onRenderEnded.AddListener(SetUp);
             main.onDefeat.AddListener(Restart);

@@ -43,7 +43,7 @@ namespace Assets.Scripts.Game.GameMap
 
         private void Awake()
         {
-            InputListener.enabled = false;
+            
 
             if (roomUnlockController == null)
             {
@@ -56,6 +56,7 @@ namespace Assets.Scripts.Game.GameMap
         private void Start()
         {
             MainGameLevelMapController.Instance.onLevelOver.AddListener(ClearAll);
+            InputListener.enabled = false;
         }
 
         public void StartRenderMap(LevelMap map)

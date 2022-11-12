@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
-  baseRenderer: {fileID: 1636941271666660789}
+  baseRenderer: {fileID: 8789420970423463690}
   iconRenderer: {fileID: 7836913208912352205}
   RoomType: {fileID: 0}
   Room_Figure: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}

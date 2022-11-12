@@ -11,9 +11,13 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
         public int searchRange;
 
+        private List<Room> specialRooms;
+
         public override bool CanTryGenerate(LevelMap map, LevelGeneratorParams data, int countToGenerate)
         {
-            return true;
+            specialRooms = map.rooms.FindAll((room) => room.type != null && room.type.isSecretRoom);
+
+            return specialRooms.Count > 0;
         }
 
 
@@ -21,16 +25,25 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
         {
             RuleCostMap costMap = new RuleCostMap();
 
-            List<Room> specialRooms = map.rooms.FindAll((room) => room.type != null && room.type.isSecretRoom);
 
+            int cost;
             foreach (Room room in map.rooms)
             {
+                if (room.type != null && room.type.isSecretRoom)
+                {
+                    cost = -10000;
+                }
+                else
+                {
+                    cost = 0;
+                }
+
                 foreach (Vector2Int exit in room.Figure.BlockedExits)
                 {
                     Vector2Int key = exit + room.position;
 
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
-                        costMap.AddValue(key, -100);
+                        costMap.AddValue(key, -100000);
                 }
 
                 foreach (Vector2Int exit in room.Figure.RoomExits)
@@ -40,7 +53,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
                         if (!costMap.HasKey(key))
-                            costMap.AddValue(key, IsPosIntercetcsSpecial(key, specialRooms, TileFigures.GetSquare_Filled(2, key)));
+                            costMap.AddValue(key, cost + IsPosIntercetcsSpecial(key, specialRooms, TileFigures.GetSquare_Filled(2, key)));
 
 
                 }
@@ -75,17 +88,23 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
         private int IsPosIntercetcsSpecial(Vector2Int p, List<Room> sp, Vector2Int[] square)
         {
-            int reward = 0;
+            int reward = 1000;
 
-            List<Vector2Int> sq = new List<Vector2Int>(square);
+            //List<Vector2Int> sq = new List<Vector2Int>(square);
+
+            //foreach (Room room in sp)
+            //{
+            //    if (sq.Contains(room.position))
+            //    {
+            //        reward++;
+            //    }
+
+            //}
 
             foreach (Room room in sp)
             {
-                if (sq.Contains(room.position))
-                {
-                    reward++;
-                }
-            
+                Vector2Int offSet = room.position - p;
+                reward -= offSet.sqrMagnitude;
             }
 
             return reward;

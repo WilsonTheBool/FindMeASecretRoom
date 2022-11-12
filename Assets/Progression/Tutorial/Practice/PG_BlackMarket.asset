@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67449dfc64688044c9c3c9debc0f2058, type: 3}
+  m_Name: PG_BlackMarket
+  m_EditorClassIdentifier: 
+  specailRoomTypes:
+  - RoomType: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
+    count: 2
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 0
+  - RoomType: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 0
+  bossRooms: []
+  secretRooms:
+  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+    count: 2
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
+  maxRoomsCount: 23
+  minDeadEndsCount: 5
+  secretRoomsCount: 2
+  giveUpRandomlyChance: 0.5

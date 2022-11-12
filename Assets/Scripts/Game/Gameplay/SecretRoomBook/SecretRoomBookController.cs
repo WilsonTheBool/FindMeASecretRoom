@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.InputManager;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
@@ -6,6 +7,11 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
     public class SecretRoomBookController : MonoBehaviour
     {
         public static SecretRoomBookController Instance;
+
+        public InputManager_SO InputManager_SO;
+        public InputListener gameInput;
+
+        private InputListener bookInput;
 
         public SecretRoomBookUI Book;
 
@@ -36,6 +42,9 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
             Book.OnPreviousPage.AddListener(OnPreviousPage);
             Book.OnChapterSelect.AddListener(OpenBook);
             Book.OnBookClose.AddListener(CloseBook);
+
+            
+            
         }
 
         public virtual bool HasNextPage()
@@ -66,6 +75,13 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
 
         private void Start()
         {
+
+            if (gameInput != null)
+            {
+                gameInput.OnOpenBook.AddListener(OpenBook);
+                gameInput.OnEscape.AddListener(Request_OpenOprions);
+            }
+
             CloseBook();
         }
 

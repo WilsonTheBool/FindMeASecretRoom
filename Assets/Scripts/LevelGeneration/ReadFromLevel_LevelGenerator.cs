@@ -12,6 +12,7 @@ namespace Assets.Scripts.LevelGeneration
 
         public override bool GenerateLevel(LevelMap levelMap, LevelGeneratorParams data)
         {
+
             if(MainGameLevelMapController == null)
             {
                 MainGameLevelMapController = FindObjectOfType<MainGameLevelMapController>();

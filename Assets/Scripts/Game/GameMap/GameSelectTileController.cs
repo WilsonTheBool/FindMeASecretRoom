@@ -83,6 +83,11 @@ namespace Assets.Scripts.Game.GameMap
 
         private void UpdateSelectTile()
         {
+            if(selectTile == null)
+            {
+                return;
+            }
+
             selectTile.transform.position = InputListener.curentCellCeneter;
 
             if(GameMapRoomUnlockController == null)

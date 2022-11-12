@@ -25,6 +25,7 @@ namespace Assets.Scripts.Game.PlayerController
         public ItemUseEvent OnItemUsed;
 
         public ItemEvent ActiveItemSwitched;
+        public ItemEvent ActiveItemUpdated;
 
         public ItemEvent ItemAdded;
 
@@ -89,11 +90,17 @@ namespace Assets.Scripts.Game.PlayerController
                 }
             }
 
-            ActiveItemSwitched.Invoke(null);
+            ActiveItemUpdated.Invoke(null);
         }
 
         public void SwitchActiveItem(Item.ItemExternalEventArgs args)
         {
+            if(ActiveItems.Count <= 1)
+            {
+                return;
+            }
+
+
             ActiveItems[selectedActiveItem].OnDeSelect(args);
 
             selectedActiveItem++;

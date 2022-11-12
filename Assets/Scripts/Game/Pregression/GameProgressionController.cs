@@ -40,10 +40,6 @@ namespace Assets.Scripts.Game.Pregression
             {
                 Instance = this;
             }
-            else
-            {
-                Destroy(Instance);
-            }
 
             if(ItemPoolController == null)
             {
@@ -58,6 +54,19 @@ namespace Assets.Scripts.Game.Pregression
                 ShopRoomController = GetComponentInChildren<ShopRoomController>();
             }
 
+            if(TransitionScreenInput == null)
+            {
+                var inputs = FindObjectsOfType<InputListener>(true);
+
+                foreach(InputListener listener in inputs)
+                {
+                    if(listener.ListenerName == "Transition")
+                    {
+                        TransitionScreenInput = listener;
+                        break;
+                    }
+                }
+            }
 
             TransitionScreenInput.enabled = false;
             TransitionScreenInput.OnActivate.AddListener(OnActivate);
@@ -83,8 +92,12 @@ namespace Assets.Scripts.Game.Pregression
 
         public void LoadNextStep()
         {
+           if(actionCount < 0 || actionCount >= actions.Length)
+           {
+                return;
+           }
             
-            StartTransitionAnimation(GetCurent().GetTransitionName(this));
+           StartTransitionAnimation(GetCurent().GetTransitionName(this));
 
            ActivateNextAction();
 
@@ -105,6 +118,11 @@ namespace Assets.Scripts.Game.Pregression
 
         private ProgresionAction GetCurent()
         {
+            if (actionCount < 0 || actionCount >= actions.Length)
+            {
+                return null;
+            }
+
             return actions[actionCount];
         }
 

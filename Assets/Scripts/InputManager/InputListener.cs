@@ -8,6 +8,8 @@ namespace Assets.Scripts.InputManager
 {
     public class InputListener : MonoBehaviour
     {
+        public string ListenerName;
+
         public InputManager_SO InputManager_SO;
 
         public bool passInputDown;
@@ -25,8 +27,13 @@ namespace Assets.Scripts.InputManager
         public UnityEvent OnMoveStart;
         public UnityEvent OnMove;
 
+        public UnityEvent OnEscape;
+
+        public UnityEvent OnOpenBook;
+
         public Vector3 mousePosition;
         public Vector3 worldMousePosition;
+        public Vector3 viewportMousePos;
 
 
         private void Awake()
@@ -53,6 +60,7 @@ namespace Assets.Scripts.InputManager
         {
             this.mousePosition = args.mousePosition;
             this.worldMousePosition = args.worldMousePosition;
+            this.viewportMousePos = Camera.main.ScreenToViewportPoint(mousePosition);
         }
 
         public class InputUpdateEventArgs: EventArgs

@@ -27,6 +27,7 @@ namespace Assets.Scripts.Game.GameMap
 
         public ExplosionController ExplosionController;
 
+        [HideInInspector]
         public Player Player;
 
         public GameLevelInputManager GameLevelInputManager;
@@ -34,6 +35,9 @@ namespace Assets.Scripts.Game.GameMap
         public GameSelectTileController GameSelectTileController;
 
         public GameTilemapController GameTilemapController;
+
+        [HideInInspector]
+        public StatisticsController StatisticsController;
 
         public UnityEvent SetUpComplete;
         public UnityEvent levelStarted;
@@ -105,6 +109,8 @@ namespace Assets.Scripts.Game.GameMap
                 GameTilemapController = GetComponentInChildren<GameTilemapController>();
             }
 
+            
+
             cam = Camera.main;
 
             GameLevelInputManager.Listener.OnAccept.AddListener(SwitchActiveItem);
@@ -155,6 +161,8 @@ namespace Assets.Scripts.Game.GameMap
 
         private void Start()
         {
+            StatisticsController = StatisticsController.Instance;
+
             Player = Player.instance;
 
             progression = GameProgressionController.Instance;
@@ -168,6 +176,8 @@ namespace Assets.Scripts.Game.GameMap
         {
             onLevelOver.Invoke();
             onDefeat.Invoke();
+
+            
         }
 
         public void RestartLevel()
@@ -192,19 +202,25 @@ namespace Assets.Scripts.Game.GameMap
         IEnumerator VictoryCo()
         {
             
+            if(victoryText != null)
+                victoryText.gameObject.SetActive(true);
 
-            victoryText.gameObject.SetActive(true);
+            if(victoryText != null)
+                yield return new WaitForSeconds(2);
+            else
+                yield return new WaitForSeconds(1);
 
-            yield return new WaitForSeconds(2);
+            if (victoryText != null)
+                victoryText.gameObject.SetActive(false);
 
-            victoryText.gameObject.SetActive(false);
+            GameTilemapController.beckgroundTilemap.gameObject.SetActive(false);
+            GameSelectTileController.selectTile.SetActive(false);
 
             onLevelOver.Invoke();
 
             onVictory.Invoke();
 
-            GameTilemapController.beckgroundTilemap.gameObject.SetActive(false);
-            GameSelectTileController.selectTile.SetActive(false);
+
         }
     }
 }

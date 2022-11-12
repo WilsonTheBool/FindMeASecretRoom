@@ -98,18 +98,19 @@ namespace Assets.Scripts.InputManager
                 }
             }
 
-            if (Input.GetMouseButtonDown(1))
-            {
-                foreach (var listener in curentListeners)
-                {
-                    listener.OnMoveStart.Invoke();
-                }
-            }
+            //if (Input.GetMouseButtonDown(1))
+            //{
+            //    print("MouseDown");
+            //    foreach (var listener in curentListeners)
+            //    {
+            //        listener.OnMoveStart.Invoke();
+            //    }
+            //}
 
-            if (Input.GetMouseButton(1))
-            {
-                OnMove_InputAction(new InputAction.CallbackContext());
-            }
+            //if (Input.GetMouseButton(1))
+            //{
+            //    OnMove_InputAction(new InputAction.CallbackContext());
+            //}
             
         }
 
@@ -182,6 +183,34 @@ namespace Assets.Scripts.InputManager
             foreach (var listener in curentListeners)
             {
                 listener.OnAccept.Invoke();
+            }
+        }
+        
+        public void OnEscape_InputAction(InputAction.CallbackContext callbackContext)
+        {
+
+            if (!callbackContext.performed)
+            {
+                return;
+            }
+
+            foreach (var listener in curentListeners)
+            {
+                listener.OnEscape.Invoke();
+            }
+        }
+
+        public void OnOpenBook_InputAction(InputAction.CallbackContext callbackContext)
+        {
+
+            if (!callbackContext.performed)
+            {
+                return;
+            }
+
+            foreach (var listener in curentListeners)
+            {
+                listener.OnOpenBook.Invoke();
             }
         }
     }

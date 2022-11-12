@@ -27,8 +27,6 @@ namespace Assets.Scripts.LevelGeneration
 
         public LevelMap Generate()
         {
-
-
             int loopCount = 0;
 
             do

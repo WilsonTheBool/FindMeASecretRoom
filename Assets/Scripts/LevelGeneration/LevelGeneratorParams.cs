@@ -22,8 +22,6 @@ namespace Assets.Scripts.LevelGeneration
 
         public int secretRoomsCount;
 
-        public int SecretRooms;
-
         [Range(0f,1f)]
         public float giveUpRandomlyChance = 0.5f;
 

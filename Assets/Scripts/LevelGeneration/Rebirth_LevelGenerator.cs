@@ -27,6 +27,13 @@ namespace Assets.Scripts.LevelGeneration
 
         public override bool GenerateLevel(LevelMap levelMap, LevelGeneratorParams data)
         {
+
+            if (data == null)
+            {
+                return true;
+            }
+
+
             roomQueue = new Queue<Room>();
             deadEndRooms = new List<Room>();
 

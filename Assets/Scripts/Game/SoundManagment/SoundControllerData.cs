@@ -21,6 +21,8 @@ namespace Assets.Scripts.Game.SoundManagment
         [System.Serializable]
         public class GameAudioData
         {
+            public string dataName;
+
             public AudioClip[] clips;
 
             [Range(0f, 1f)]

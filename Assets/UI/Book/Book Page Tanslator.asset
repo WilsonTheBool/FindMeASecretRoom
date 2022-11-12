@@ -21,9 +21,11 @@ MonoBehaviour:
     pageId: 2
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     pageId: 3
-  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
-    pageId: 4
-  - RoomType: {fileID: 11400000, guid: 39f1859357c67a244a43dc76ce4e20e5, type: 2}
-    pageId: 5
   - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
+    pageId: 4
+  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+    pageId: 5
+  - RoomType: {fileID: 11400000, guid: 39f1859357c67a244a43dc76ce4e20e5, type: 2}
     pageId: 6
+  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    pageId: 7

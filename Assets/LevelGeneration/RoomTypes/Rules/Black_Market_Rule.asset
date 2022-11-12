@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoom: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
   SecretRoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
-  bossRoom: {fileID: 11400000, guid: 7962f0ad40348df42a4f722fe77a6098, type: 2}
+  treasureRoom: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
+  Shop: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}

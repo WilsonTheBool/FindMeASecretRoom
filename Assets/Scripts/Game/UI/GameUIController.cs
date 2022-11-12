@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Game.UI.GameOverScreen;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace Assets.Scripts.Game.UI
         public ShopUIController ShopUIController;
 
         public PlayerPassiveItemsUIController PlayerPassiveItemsUIController;
+
+        public GameOverScreenController GameOverScreenController;
 
         public static GameUIController Instance { get; private set; }
 
@@ -54,48 +57,53 @@ namespace Assets.Scripts.Game.UI
 
             if (playerHpUIController == null)
             {
-                playerHpUIController = GetComponentInChildren<PlayerHpUIController>();
+                playerHpUIController = GetComponentInChildren<PlayerHpUIController>(true);
             }
 
             if (playerActiveItemsUIController == null)
             {
-                playerActiveItemsUIController = GetComponentInChildren<PlayerActiveItemsUIController>();
+                playerActiveItemsUIController = GetComponentInChildren<PlayerActiveItemsUIController>(true);
             }
 
             if (unlockedRoomsCounterUIController == null)
             {
-                unlockedRoomsCounterUIController = GetComponentInChildren<UnlockedRoomsCounterUIController>();
+                unlockedRoomsCounterUIController = GetComponentInChildren<UnlockedRoomsCounterUIController>(true);
             }
 
             if (playerGoldUIController == null)
             {
-                playerGoldUIController = GetComponentInChildren<PlayerGoldUIController>();
+                playerGoldUIController = GetComponentInChildren<PlayerGoldUIController>(true);
             }
 
             if (ComboCounterUI == null)
             {
-                ComboCounterUI = GetComponentInChildren<ComboCounterUI>();
+                ComboCounterUI = GetComponentInChildren<ComboCounterUI>(true);
             }
 
             if (ScreenTransitionController == null)
             {
-                ScreenTransitionController = GetComponentInChildren<ScreenTransitionController>();
+                ScreenTransitionController = GetComponentInChildren<ScreenTransitionController>(true);
             }
 
             if (TresureRoomUIController == null)
             {
-                TresureRoomUIController = GetComponentInChildren<TresureRoomUIController>();
+                TresureRoomUIController = GetComponentInChildren<TresureRoomUIController>(true);
             }
 
 
             if (PlayerPassiveItemsUIController == null)
             {
-                PlayerPassiveItemsUIController = GetComponentInChildren<PlayerPassiveItemsUIController>();
+                PlayerPassiveItemsUIController = GetComponentInChildren<PlayerPassiveItemsUIController>(true);
             }
 
             if (ShopUIController == null)
             {
-                ShopUIController = GetComponentInChildren<ShopUIController>();
+                ShopUIController = GetComponentInChildren<ShopUIController>(true);
+            }
+
+            if (GameOverScreenController == null)
+            {
+                GameOverScreenController = GetComponentInChildren<GameOverScreenController>(true);
             }
 
             list = new List<Queue<TransferAnimData>>();

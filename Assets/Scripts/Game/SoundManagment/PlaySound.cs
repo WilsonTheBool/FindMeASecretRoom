@@ -22,7 +22,7 @@ namespace Assets.Scripts.Game.SoundManagment
 
         public void Play()
         {
-            GameSoundController.Instance?.PlayClip(clip, volumeScale);
+            GameSoundController.Instance?.PlayClip(clip, volumeScale, clip.name);
         }
     }
 }

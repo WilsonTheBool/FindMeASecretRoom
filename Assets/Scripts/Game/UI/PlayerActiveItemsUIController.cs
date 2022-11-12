@@ -25,6 +25,7 @@ namespace Assets.Scripts.Game.UI
             PlayerItemsController = Player.instance.itemsController;
 
             PlayerItemsController.ActiveItemSwitched.AddListener(UpdateUI);
+            PlayerItemsController.ActiveItemUpdated.AddListener(UpdateUI);
             PlayerItemsController.ItemAdded.AddListener(UpdateUI);
             PlayerItemsController.ItemRemoved.AddListener(UpdateUI);
 

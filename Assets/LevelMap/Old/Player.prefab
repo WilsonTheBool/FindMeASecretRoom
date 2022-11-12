@@ -236,6 +236,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 78b41c57-b2cb-4df1-a6c1-4bff4a022f81
     m_ActionName: Player/Move[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7574521842161539041}
+        m_TargetAssemblyTypeName: Assets.Scripts.InputManager.InputReader, Assembly-CSharp
+        m_MethodName: OnEscape_InputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aeb847a3-8428-4fa5-a9c6-43e637ff7ade
+    m_ActionName: Player/Escape[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7574521842161539041}
+        m_TargetAssemblyTypeName: Assets.Scripts.InputManager.InputReader, Assembly-CSharp
+        m_MethodName: OnOpenBook_InputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 93c45479-e6e9-438b-8ee0-a7d2bef5b312
+    m_ActionName: Player/Tab[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

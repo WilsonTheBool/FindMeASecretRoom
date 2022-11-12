@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508b66d0b029f584183c0e2fed26e839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListenerName: BookInput
   InputManager_SO: {fileID: 11400000, guid: b527b3f252b9794429b63f10275d0b63, type: 2}
   passInputDown: 0
   InputGroup: 70
@@ -677,8 +678,41 @@ MonoBehaviour:
   OnMove:
     m_PersistentCalls:
       m_Calls: []
+  OnEscape:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4141342137705721358}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.Gameplay.SecretRoomBook.SecretRoomBookUI,
+          Assembly-CSharp
+        m_MethodName: Request_CloseBook
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnOpenBook:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4141342137705721358}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.Gameplay.SecretRoomBook.SecretRoomBookUI,
+          Assembly-CSharp
+        m_MethodName: Request_CloseBook
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   mousePosition: {x: 0, y: 0, z: 0}
   worldMousePosition: {x: 0, y: 0, z: 0}
+  viewportMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &4815333333303590760
 GameObject:
   m_ObjectHideFlags: 0

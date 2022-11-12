@@ -27,7 +27,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                 if (room.type != null)
                 {
 
-                    cost = -10;
+                    cost = -100;
 
                 }
 
@@ -52,7 +52,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
 
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
-                            costMap.AddValue(key, -10);
+                            costMap.AddValue(key, -1000);
                 }
             }
 
