@@ -30,7 +30,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                 {
                     if (room.type.isSecretRoom)
                     {
-                        cost = -10;
+                        continue;
                     }
                    
                 }
@@ -46,9 +46,9 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
                         if (IsPosIntercetcsSpecial(key, BossPositions, SacrificePos))
                             if(!costMap.HasKey(key))
-                                costMap.AddValue(key, cost + 4);
+                                costMap.AddValue(key, -1);
                             else
-                                costMap.AddValue(key, -100);
+                                costMap.AddValue(key, cost);
 
 
 

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Game.Items
     {
         public bool isUseItem;
         public bool isChargeItem;
+        public bool hasAltMode;
 
         public string Name;
         public string Description;
@@ -106,6 +107,16 @@ namespace Assets.Scripts.Game.Items
             curentCharge = maxCharge;
         }
 
+        public void Charge(int ammount)
+        {
+            if (isChargeItem)
+                curentCharge += ammount;
+            if(curentCharge > maxCharge)
+            {
+                curentCharge = maxCharge;
+            }
+        }
+
         public virtual void OnItemRemove(ItemExternalEventArgs args) 
         {
             ItemInternalEventArgs iArgs = CreateEventArgs(args);
@@ -143,6 +154,16 @@ namespace Assets.Scripts.Game.Items
             foreach (ItemUseBehaviour use in useBehaviours)
             {
                 use.OnDeselected(iArgs);
+            }
+        }
+        
+        public void OnAltUse(ItemExternalEventArgs args)
+        {
+            ItemInternalEventArgs iArgs = CreateEventArgs(args);
+
+            foreach (ItemUseBehaviour use in useBehaviours)
+            {
+                use.OnAlternativeUse(iArgs);
             }
         }
 

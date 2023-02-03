@@ -19,4 +19,4 @@ MonoBehaviour:
   isSecretRoom: 1
   rule: {fileID: 11400000, guid: 6c6202b6244da5b4fa8e7a87169c5c0a, type: 2}
   overridesColor: 1
-  colorOfBase: {r: 0.29716408, g: 0.14711641, b: 0.5471698, a: 1}
+  colorOfBase: {r: 0.20784315, g: 0.08235294, b: 0.20784315, a: 1}

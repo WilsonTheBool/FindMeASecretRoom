@@ -8,7 +8,6 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
     public  class StarterSecretRoom: SecretRoomGenerationRule
     {
 
-
         public RoomType SecretRoomType;
 
 
@@ -19,7 +18,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
             foreach (Room room in map.rooms)
             {
-                float cost = 10 - room.distance;
+                float cost = 20 - room.distance;
 
                 if (room.type != null && room.type.isSecretRoom)
                 {
@@ -36,6 +35,13 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
                         if (!costMap.HasKey(key))
                             costMap.AddValue(key, cost);
+                        else
+                        {
+                            if(costMap.GetValue(key) < cost && costMap.GetValue(key) >= 0)
+                            {
+                                costMap.SetValue(key, cost);
+                            }
+                        }
 
                 }
 
@@ -45,7 +51,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
 
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
-                        costMap.AddValue(key, -10);
+                        costMap.SetValue(key, -100);
                 }
             }
 

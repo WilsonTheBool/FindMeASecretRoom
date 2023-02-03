@@ -52,7 +52,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
                         if (!costMap.HasKey(key))
-                            costMap.AddValue(key, cost + IsPosIntercetcsSpecial(key, specialRooms, TileFigures.GetSquare_Filled(2, key)));
+                            costMap.AddValue(key, cost + GetRaward(key, specialRooms));
 
 
                 }
@@ -85,7 +85,25 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
             return true;
         }
 
-        private int IsPosIntercetcsSpecial(Vector2Int p, List<Room> sp, Vector2Int[] square)
+        private float GetRaward(Vector2Int p, List<Room> sp)
+        {
+
+            float dis = 1000;
+
+            foreach (Room room in sp)
+            {
+                float t = Vector2Int.Distance(room.position, p);
+
+                if (t < dis)
+                {
+                    dis = t;
+                }
+            }
+
+            return dis;
+        }
+
+        private int IsPosIntercetcsSpecial(Vector2Int p, List<Room> sp)
         {
             int reward = 0;
 

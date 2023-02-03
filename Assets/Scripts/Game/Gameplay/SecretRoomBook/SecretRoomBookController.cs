@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.InputManager;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
 {
@@ -19,6 +20,11 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
 
         protected int curentChapterID;
         protected int curentPageID;
+
+        public UnityEvent BookOpen;
+        public UnityEvent BookClose;
+        public UnityEvent NextPage;
+        public UnityEvent PrevPage;
 
         public bool isMainController = true;
 
@@ -53,6 +59,7 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
             {
                 if(curentPageID >= 0 && curentPageID < chapterHolder.pages.Length - 1)
                 {
+                    
                     return true;
                 }
             }
@@ -87,11 +94,17 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
 
         public void OnNextPage()
         {
-            TryOpenPage(curentPageID + 1);
+            if(TryOpenPage(curentPageID + 1))
+            {
+                NextPage.Invoke();
+            }
         }
         public void OnPreviousPage()
         {
-            TryOpenPage(curentPageID - 1);
+            if(TryOpenPage(curentPageID - 1))
+            {
+                PrevPage.Invoke();
+            }
         }
 
         public bool TryOpenPage(int id)
@@ -113,6 +126,7 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
         public void CloseBook()
         {
             Book.gameObject.SetActive(false);
+            BookClose.Invoke();
         }
 
         public void OpenBook()
@@ -120,6 +134,8 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
             Book.gameObject.SetActive(true);
             curentChapterID = 0;
             OpenBook(curentPageID);
+
+            BookOpen.Invoke();
         }
 
         public void OpenBook(int chapterId)
@@ -130,6 +146,8 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
                 curentChapterID = chapterId;
                 curentPageID = 0;
                 Book.LoadPage(holder.pages[0], HasNextPage(), HasPrevPage());
+
+                BookOpen.Invoke();
             }
             else
             {
@@ -145,6 +163,8 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
                 curentChapterID = holder.id;
                 curentPageID = 0;
                 Book.LoadPage(holder.pages[0], HasNextPage(), HasPrevPage());
+
+                BookOpen.Invoke();
             }
             else
             {

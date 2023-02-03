@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 4815333333297743102}
   - component: {fileID: 4141342137705721358}
   - component: {fileID: 4815333333297743100}
+  - component: {fileID: 1739247480242516306}
   m_Layer: 5
   m_Name: BookUiController
   m_TagString: Untagged
@@ -596,6 +597,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnBookClose:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBookOpen:
     m_PersistentCalls:
       m_Calls: []
   OnChapterSelect:
@@ -713,6 +717,21 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   worldMousePosition: {x: 0, y: 0, z: 0}
   viewportMousePos: {x: 0, y: 0, z: 0}
+--- !u!114 &1739247480242516306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815333333297743103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dd1da092437794dbbbdaba19f3cce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 0170dc6cd4f34d44f942b419734b27c0, type: 3}
+  volumeScale: 0
+  playOnStart: 0
 --- !u!1 &4815333333303590760
 GameObject:
   m_ObjectHideFlags: 0

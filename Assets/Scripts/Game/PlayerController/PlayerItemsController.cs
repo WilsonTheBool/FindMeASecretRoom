@@ -93,6 +93,20 @@ namespace Assets.Scripts.Game.PlayerController
             ActiveItemUpdated.Invoke(null);
         }
 
+        public bool TryChargeItem(Item item, int ammount)
+        {
+            if (item != null && item.isChargeItem)
+            {
+                item.Charge(ammount);
+                ActiveItemUpdated.Invoke(null);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void SwitchActiveItem(Item.ItemExternalEventArgs args)
         {
             if(ActiveItems.Count <= 1)
@@ -188,8 +202,12 @@ namespace Assets.Scripts.Game.PlayerController
             {
                 OnItemUsed.Invoke(item, args);
             }
-
-            
+        }        
+        
+        public void UseItem_Alt(Item.ItemExternalEventArgs args)
+        {
+            Item item = ActiveItems[selectedActiveItem];
+            item.OnAltUse(args);
         }
 
         [System.Serializable]

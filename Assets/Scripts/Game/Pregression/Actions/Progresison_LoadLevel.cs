@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.Scripts.Game.Pregression.Actions
 {
     [CreateAssetMenu(menuName = "Progression/Action_loadLevel")]
-    public class Progresison_LoadLevel: ProgresionAction
+    public class Progresison_LoadLevel: ProgressionAction
     {
         public override string GetTransitionName(GameProgressionController progression)
         {

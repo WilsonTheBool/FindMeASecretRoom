@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.Scripts.Game.Pregression.Actions
 {
     [CreateAssetMenu(menuName = "Progression/Load Treasure Room")]
-    public class Progression_LoadTreasureRoom : ProgresionAction
+    public class Progression_LoadTreasureRoom : ProgressionAction
     {
         GameProgressionController controller;
 

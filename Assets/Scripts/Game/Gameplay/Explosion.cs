@@ -23,7 +23,7 @@ namespace Assets.Scripts.Game.Gameplay
 
         public enum RangeType
         {
-            square, circle, cross, circle_filled,
+            square, circle, cross, circle_filled, line_h, line_v,
         }
 
         public void Explode()
@@ -70,7 +70,22 @@ namespace Assets.Scripts.Game.Gameplay
                         }
                         else
                         {
-                            return new Vector2Int[0];
+                            if (type == RangeType.line_h)
+                            {
+                                return TileFigures.GetLine_Horizontal(range, position);
+                            }
+                            else
+                            {
+                                if (type == RangeType.line_v)
+                                {
+                                    return TileFigures.GetLine_Vertical(range, position);
+                                }
+                                else
+                                {
+                                    return new Vector2Int[0];
+                                }
+                            }
+                            
                         }
                     }
                 }

@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 2
   levelName: Basement III
   generatorParams: {fileID: 11400000, guid: a2b03fa2ba3e06b4fbb26b2e33b97c98, type: 2}
-  baseColor: {r: 1, g: 1, b: 1, a: 0}
+  baseColor: {r: 0.7019608, g: 0.5529412, b: 0.3764706, a: 1}

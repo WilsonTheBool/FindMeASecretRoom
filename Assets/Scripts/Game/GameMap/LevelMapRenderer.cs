@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using Assets.Scripts.InputManager;
 using UnityEngine.Events;
+using Assets.Scripts.Game.Pregression;
 
 namespace Assets.Scripts.Game.GameMap
 {
@@ -40,6 +41,7 @@ namespace Assets.Scripts.Game.GameMap
         /// Rooms (Game Objects) rendered in game
         /// </summary>
         private List<Room_GM> rooms = new List<Room_GM>();
+        Room_GM startRoom;
 
         private void Awake()
         {
@@ -88,6 +90,12 @@ namespace Assets.Scripts.Game.GameMap
             gm.position = room.position;
             rooms.Add(gm);
 
+            if (startRoom == null)
+            {
+                if (room.type == null)
+                    startRoom = gm;
+            }
+
             if (room.type != null)
             {
                 gm.SetIcon(room.type.icon);
@@ -134,6 +142,12 @@ namespace Assets.Scripts.Game.GameMap
                 gm.position = room.position;
                 rooms.Add(gm);
 
+                if (startRoom == null)
+                {
+                    if (room.type == null)
+                        startRoom = gm;
+                }
+
                 if (room.type != null)
                 {
                     gm.SetIcon(room.type.icon);
@@ -168,16 +182,16 @@ namespace Assets.Scripts.Game.GameMap
 
         }
 
-        public void RenderRoom(Vector2Int globalPos)
-        {
+        //public void RenderRoom(Vector2Int globalPos)
+        //{
 
-            Room room = levelMap.GetRoom(globalPos);
+        //    Room room = levelMap.GetRoom(globalPos);
 
-            if (room != null)
-                RenderRoom(room);
+        //    if (room != null)
+        //        RenderRoom(room);
 
 
-        }
+        //}
 
         public void ClearAll()
         {
@@ -185,7 +199,7 @@ namespace Assets.Scripts.Game.GameMap
             {
                 Destroy(room.gameObject);
             }
-
+            startRoom = null;
             rooms.Clear();
         }
 
@@ -195,6 +209,14 @@ namespace Assets.Scripts.Game.GameMap
 
             onRenderStarted.Invoke();
 
+            LevelData level = GameProgressionController.Instance.GetCurentLevel();
+
+            if(level != null)
+            {
+                baseRenderColor = level.baseColor;
+            }
+           
+
             foreach (Room room in levelMap.rooms)
             {
                 RenderRoom(room);
@@ -202,12 +224,30 @@ namespace Assets.Scripts.Game.GameMap
                 yield return new WaitForSeconds(waitTimeTileGeneration);
             }
 
-            if (rooms.Count > 0)
-                rooms[0].SetColor_Base(StartRoomBaseColor);
+            if (startRoom != null)
+            {
+                startRoom.SetColor_Base(StartRoomBaseColor);
+
+            }
+                
 
             onRenderEnded.Invoke();
 
             InputListener.enabled = false;
+        }
+
+        public bool TryGetRoom_GM(Vector2Int position, out Room_GM room)
+        {   
+            foreach(Room_GM room_GM in rooms)
+            {
+                if(room_GM.position == position)
+                {
+                    room = room_GM;
+                    return true;
+                }
+            }
+            room = null;
+            return false;
         }
     }
 }

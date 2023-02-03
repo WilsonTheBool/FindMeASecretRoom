@@ -7,6 +7,11 @@ namespace Assets.Scripts.MainMenu
     {
         public Room_GM_TypeHolder[] rooms;
 
+        private void Awake()
+        {
+            rooms = GetComponentsInChildren<Room_GM_TypeHolder>();
+        }
+
         public void ChangeColor(Color dif)
         {
             foreach (Room_GM_TypeHolder room in rooms)

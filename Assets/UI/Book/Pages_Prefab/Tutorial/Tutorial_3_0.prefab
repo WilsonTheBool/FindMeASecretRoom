@@ -688,10 +688,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'New type of secret room appeared: "Hermit Room" <sprite=6>
 
+    
 
     Hermit
     room always has the <u>longest path to the start room</u> and <u>connected to
-    fewest</u> number of rooms.
+    the fewest</u> number of rooms.
+
 
 
 

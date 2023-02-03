@@ -2,6 +2,7 @@
 using Assets.Scripts.Game.Gameplay;
 using Assets.Scripts.Game.Items;
 using Assets.Scripts.Game.PlayerController;
+using Assets.Scripts.SaveLoad;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,11 @@ namespace Assets.Scripts.Game.SoundManagment
         public SoundControllerData data;
         public static GameSoundController Instance { get; private set; }
 
+        [HideInInspector]
         public GameSoundPlayer curentSoundPlayer;
+
+        [HideInInspector]
+        public GameMusicController curentMusicPlayer;
 
         [HideInInspector]
         public MainGameLevelMapController MainGameLevelMapController;
@@ -24,6 +29,8 @@ namespace Assets.Scripts.Game.SoundManagment
         private List<CooldownPair> cooldownList;
         [SerializeField]
         private float cooldown = 0.1f;
+
+        SaveLoadController saveLoadController;
 
         private void Awake()
         {
@@ -50,6 +57,7 @@ namespace Assets.Scripts.Game.SoundManagment
                 player.itemsController.ActiveItemSwitched.AddListener(OnItemSwitched);
             }
 
+            saveLoadController = SaveLoadController.Instance;
         }
 
         private void OnItemSwitched(Item item)
@@ -79,7 +87,15 @@ namespace Assets.Scripts.Game.SoundManagment
             PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
         }
 
-        
+        public void SetSoundVolume(float value)
+        {
+            curentSoundPlayer?.SetVolume(value);
+        }
+
+        public void SetMusicVolume(float value)
+        {
+            curentMusicPlayer?.SetVolume(value);
+        }
 
         public void PlayClip(AudioClip clip, float volumeScale, string id)
         {

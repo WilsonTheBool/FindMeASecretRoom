@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Game.Pregression
 {
-    public class ProgresionAction : ScriptableObject
+    public class ProgressionAction : ScriptableObject
     {
         public virtual void DoAction(GameProgressionController progression, MainGameLevelMapController main)
         {

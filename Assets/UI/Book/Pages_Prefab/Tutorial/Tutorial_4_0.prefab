@@ -367,10 +367,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gold Coins <sprite=0> are used for buying items in the shop.\n\nYou get
-    <sprite=0> for unlocking secret rooms. The ammount of <sprite=0> you get depends
-    on your curent combo.\n\n\n\n\n\nGet one more coin for each combo you have \n(staring
-    at 1 <sprite=0> for x0 combo)\n\n\n\n\n"
+  m_text: "Gold Coins <sprite=0> are used for buying items in the shop.\r\n\r\nYou
+    get <sprite=0> for unlocking secret rooms. The amount of <sprite=0> you get depends
+    on your current combo.\r\n\r\n\r\n\r\n\r\n\r\nGet one more coin for each combo
+    you have \r\n(staring at 1 <sprite=0> for x1 combo)\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a211b63d77485234cb24092b66bf9b55, type: 2}
   m_sharedMaterial: {fileID: 6502141226634604396, guid: a211b63d77485234cb24092b66bf9b55, type: 2}
@@ -504,27 +504,30 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When you unlock a secret room with out taking damage, combo is increased
+  m_text: 'When you unlock a secret room without taking damage, combo is increased
     by 1 to the max of 5
 
+    
 
-    Combo resets to 0 when you take damage and at the
-    start of each level.
+    Combo resets to 0 when you take damage and
+    at the start of each level.
 
+    
 
-    Room unlock revards:
+    Room unlock rewards:
 
-    1 <sprite=0> at x0 combo
+    1 <sprite=0>
+    at x1 combo
 
-    2
-    <sprite=0> at x1 combo
+    2 <sprite=0> at x2 combo
 
-    3 <sprite=0> at x2 combo
+    3 <sprite=0> at x3 combo
 
-    4 <sprite=0> at x3
-    combo
+    4
+    <sprite=0> at x4 combo
 
-    5 <sprite=0> at x4 and more combo
+    5 <sprite=0> at x5 and more combo
+
 
 
 

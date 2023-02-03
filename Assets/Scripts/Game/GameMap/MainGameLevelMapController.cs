@@ -36,6 +36,10 @@ namespace Assets.Scripts.Game.GameMap
 
         public GameTilemapController GameTilemapController;
 
+
+        [HideInInspector]
+        public GameMapSizeController GameMapSizeController;
+
         [HideInInspector]
         public StatisticsController StatisticsController;
 
@@ -109,12 +113,16 @@ namespace Assets.Scripts.Game.GameMap
                 GameTilemapController = GetComponentInChildren<GameTilemapController>();
             }
 
-            
+            if (GameMapSizeController == null)
+            {
+                GameMapSizeController = GetComponentInChildren<GameMapSizeController>();
+            }
 
             cam = Camera.main;
 
             GameLevelInputManager.Listener.OnAccept.AddListener(SwitchActiveItem);
             GameLevelInputManager.Listener.OnActivate.AddListener(UseCurentItem);
+            GameLevelInputManager.Listener.OnAlternativeAction.AddListener(UseCurentItem_Alt);
 
             GameRoomCounter.onVictory.AddListener(OnVictory);
         }
@@ -136,7 +144,7 @@ namespace Assets.Scripts.Game.GameMap
             isSetUpComplete = true;
             SetUpComplete.Invoke();
 
-            cam.transform.position = grid.GetCellCenter(new Vector2Int(7, 7)) + new Vector3(0, 0, -10);
+            cam.transform.position = grid.GetCellCenter(GameMapSizeController.curentMapSize / 2) + new Vector3(0, 0, -10);
         }
 
         private void SwitchActiveItem()
@@ -157,6 +165,11 @@ namespace Assets.Scripts.Game.GameMap
         private void UseCurentItem()
         {
             Player.itemsController.UseItem(GetItemArgs());
+        }
+
+        private void UseCurentItem_Alt()
+        {
+            Player.itemsController.UseItem_Alt(GetItemArgs());
         }
 
         private void Start()

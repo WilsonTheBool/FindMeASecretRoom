@@ -12,6 +12,7 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
         public UnityEvent OnPreviousPage;
 
         public UnityEvent OnBookClose;
+        public UnityEvent OnBookOpen;
 
         public ChapterEvent OnChapterSelect;
 

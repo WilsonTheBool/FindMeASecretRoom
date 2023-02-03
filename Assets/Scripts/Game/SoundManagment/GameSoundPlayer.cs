@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.SaveLoad;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Game.SoundManagment
@@ -10,7 +11,16 @@ namespace Assets.Scripts.Game.SoundManagment
         private void Start()
         {
             if(GameSoundController.Instance.curentSoundPlayer == null)
-            GameSoundController.Instance.curentSoundPlayer = this;
+                GameSoundController.Instance.curentSoundPlayer = this;
+            else
+                Destroy(gameObject);
+
+            SaveLoadController SaveLoadController = SaveLoadController.Instance;
+            if (SaveLoadController != null && SaveLoadController.optionsData != null && SaveLoadController.optionsData.SaveData != null)
+            {
+                SetVolume(SaveLoadController.optionsData.SaveData.soundVolume);
+                
+            }
         }
 
         public void SetVolume(float value)

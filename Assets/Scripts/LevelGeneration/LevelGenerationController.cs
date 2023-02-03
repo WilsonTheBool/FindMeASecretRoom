@@ -15,6 +15,10 @@ namespace Assets.Scripts.LevelGeneration
 
         public bool hideSecretRooms;
 
+        public bool isLargeMap;
+
+        public Vector2Int LargeMapSize;
+        public Vector2Int LargeMapStart;
        
         //public Room_GM roomPrefab;
 
@@ -32,7 +36,21 @@ namespace Assets.Scripts.LevelGeneration
             do
             {
                 loopCount++;
-                levelMap = new LevelMap();
+                
+
+                if (isLargeMap)
+                {
+                    levelMap = new LevelMap(LargeMapSize.x, LargeMapSize.y);
+                    levelMap.StartRoomX = LargeMapStart.x;
+                    levelMap.StartRoomY = LargeMapStart.y;
+                    levelMap.LevelX = LargeMapSize.x;
+                    levelMap.LevelY = LargeMapSize.y;
+                }
+                else
+                {
+                    levelMap = new LevelMap();
+                }
+
                 Debug.Log("Generation End");
 
                 if (loopCount > 30)

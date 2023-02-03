@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1caa5950061cbb41866eb81512084db, type: 3}
+  m_Name: Angel_Room
+  m_EditorClassIdentifier: 
+  startRoom: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
+  SecretRoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
+  BossRoomType: {fileID: 11400000, guid: 7962f0ad40348df42a4f722fe77a6098, type: 2}
+  SacrificeRoomType: {fileID: 11400000, guid: e165f2deb7e1d2948a3f8a9b26385857, type: 2}

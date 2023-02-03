@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 namespace Assets.Scripts.Game.Pregression.Actions
 {
     [CreateAssetMenu(menuName = "Progression/Action_loadScene")]
-    public class Progression_LoadScene : ProgresionAction
+    public class Progression_LoadScene : ProgressionAction
     {
         public string sceneName;
 

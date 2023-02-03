@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Assets.Scripts.Game.Items;
 using Assets.Scripts.InputManager;
 using UnityEngine.UI;
+using Assets.Scripts.Game.PlayerController;
 
 namespace Assets.Scripts.Game.UI
 {
@@ -19,6 +20,7 @@ namespace Assets.Scripts.Game.UI
         public TMPro.TMP_Text itemDescription;
         public TMPro.TMP_Text itemName;
         public TMPro.TMP_Text activeText;
+        public TMPro.TMP_Text onItemOverride;
 
         public ItemSelectUI.ItemSelecEvent ItemSelected;
 
@@ -45,6 +47,7 @@ namespace Assets.Scripts.Game.UI
 
         public void CreateWindow(Item[] items)
         {
+            SetText(null);
             InputListener.enabled = true;
 
             foreach (Item item in items)
@@ -105,6 +108,7 @@ namespace Assets.Scripts.Game.UI
                 itemName.text = "";
                 itemDescription.text = "";
                 activeText.text = "";
+                onItemOverride.text = "";
             }
             else
             {
@@ -119,7 +123,17 @@ namespace Assets.Scripts.Game.UI
                 {
                     activeText.text = "Passive item";
                 }
-                
+
+                PlayerItemsController controller = Player.instance.itemsController;
+                if (item.isUseItem && controller.ActiveItems.Count == controller.maxACtiveItemsCount)
+                {
+                    onItemOverride.text = "Will remove " + controller.ActiveItems[1].Name;
+                }
+                else
+                {
+                    onItemOverride.text = "";
+                }
+
             }
         }
 

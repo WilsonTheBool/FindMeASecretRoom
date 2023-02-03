@@ -40,11 +40,13 @@ namespace Assets.Scripts.Game.PlayerController
             main.onLevelOver.AddListener(ResetCombo);
 
             GameUIController = GameUIController.Instance;
+
+            curentCombo = 1;
         }
 
         private void ResetCombo()
         {
-            curentCombo = 0;
+            curentCombo = 1;
             onComboChanged.Invoke();
         }
 
@@ -77,7 +79,7 @@ namespace Assets.Scripts.Game.PlayerController
 
         private void GiveRewards(Room room)
         {
-            int ammount = baseRoomReward + rewardIncreasePerCombo * curentCombo;
+            int ammount = baseRoomReward + rewardIncreasePerCombo * (curentCombo - 1);
 
             var args = new RewardEventArgs(ammount, curentCombo);
 

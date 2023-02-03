@@ -419,7 +419,7 @@ MonoBehaviour:
   ListenerName: GameOverScreen
   InputManager_SO: {fileID: 11400000, guid: b527b3f252b9794429b63f10275d0b63, type: 2}
   passInputDown: 0
-  InputGroup: 0
+  InputGroup: 1000
   OnActivate:
     m_PersistentCalls:
       m_Calls: []

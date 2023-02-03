@@ -68,6 +68,14 @@ PrefabInstance:
       value: Can hold 1 more active item
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: onAddItemEffect.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -77,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 7359101444339469020}
     - target: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: m_Name
-      value: Backpack_prefab
+      value: Backpack_prefab Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}

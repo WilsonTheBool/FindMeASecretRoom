@@ -26,7 +26,7 @@ namespace Assets.Scripts.Game.Pregression
         public ProgressEvent transitionEnded;
         public ProgressEvent transitionFadeInEnd;
 
-        public ProgresionAction[] actions;
+        public ProgressionAction[] actions;
 
         public LevelData[] levels;
 
@@ -116,7 +116,7 @@ namespace Assets.Scripts.Game.Pregression
 
         }
 
-        private ProgresionAction GetCurent()
+        private ProgressionAction GetCurent()
         {
             if (actionCount < 0 || actionCount >= actions.Length)
             {
@@ -143,6 +143,16 @@ namespace Assets.Scripts.Game.Pregression
         {
             TransitionScreenInput.enabled = true;
             ScreenTransitionController.StartFadeIn(actionCount, levelName);
+        }
+
+        public LevelData GetCurentLevel()
+        {
+            if(leveldataCount >= levels.Length)
+            {
+                return null;
+            }
+
+            return levels[leveldataCount - 1];
         }
 
         public LevelData GetNextLevel()

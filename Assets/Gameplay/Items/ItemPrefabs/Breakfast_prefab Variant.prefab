@@ -68,6 +68,14 @@ PrefabInstance:
       value: Hp Up + Heal 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: onAddItemEffect.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -77,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 4457909927087037229}
     - target: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: m_Name
-      value: Breakfast_prefab
+      value: Breakfast_prefab Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
@@ -98,3 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ceb942da844a43b4a6896e8b99f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEffectActivated:
+    m_PersistentCalls:
+      m_Calls: []

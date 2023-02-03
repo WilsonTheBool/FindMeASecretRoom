@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 1095905291326652082}
   - component: {fileID: 1095905291326652081}
   - component: {fileID: 1095905291326652080}
+  - component: {fileID: 203540165500361306}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -358,6 +359,7 @@ MonoBehaviour:
   GameLevelInputManager: {fileID: 1095905291326652082}
   GameSelectTileController: {fileID: 1095905291326652083}
   GameTilemapController: {fileID: 1095905291326652080}
+  GameMapSizeController: {fileID: 0}
   StatisticsController: {fileID: 0}
   SetUpComplete:
     m_PersistentCalls:
@@ -400,8 +402,8 @@ MonoBehaviour:
   waitTimeTileGeneration: 0.05
   roomUnlockController: {fileID: 1095905291326652093}
   InputListener: {fileID: 1095905290215537713}
-  baseRenderColor: {r: 1, g: 1, b: 1, a: 1}
-  StartRoomBaseColor: {r: 0.48584908, g: 1, b: 0.48584908, a: 1}
+  baseRenderColor: {r: 0.7019608, g: 0.5529412, b: 0.37647063, a: 1}
+  StartRoomBaseColor: {r: 0.5016957, g: 0.5849056, b: 0.21244211, a: 1}
   onRenderEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -423,6 +425,9 @@ MonoBehaviour:
   levelGenerator: {fileID: 1095905291012708115}
   LevelGeneratorParams: {fileID: 11400000, guid: b70d0bc5feb376a48ac13130b28a3009, type: 2}
   hideSecretRooms: 0
+  isLargeMap: 0
+  LargeMapSize: {x: 25, y: 25}
+  LargeMapStart: {x: 12, y: 12}
 --- !u!114 &1095905291326652093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +552,21 @@ MonoBehaviour:
   markerTile: {fileID: 11400000, guid: 4dff1bacf7a436e4a9344a2f0d6a47c5, type: 2}
   tilemaps: []
   grid: {fileID: 1095905289971923597}
+--- !u!114 &203540165500361306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095905291326652090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738ef50e27b40b545a1916698dc068a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalTile: {fileID: 11400000, guid: 096b547f6ce2927479f4fd25a9525d61, type: 2}
+  redTile: {fileID: 11400000, guid: 3e86da814befa87438504a94e90d01a5, type: 2}
+  curentMapSize: {x: 13, y: 13}
 --- !u!1 &7263901672999572009
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,10 +668,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1095905289768995586}
     m_Modifications:
     - target: {fileID: 188064111261107102, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
-      propertyPath: items.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 188064111261107102, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
       propertyPath: items.Array.data[0]
       value: 
       objectReference: {fileID: 3117791943534749252, guid: 0b51a1fe9d1a1304685694b99a136b26, type: 3}
@@ -707,10 +723,6 @@ PrefabInstance:
       propertyPath: items.Array.data[13]
       value: 
       objectReference: {fileID: 1525075549126070782, guid: 83952774350b17441b553a145c34ba38, type: 3}
-    - target: {fileID: 188064112252936238, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
-      propertyPath: items.Array.size
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 188064112252936238, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
       propertyPath: items.Array.data[0]
       value: 
@@ -851,6 +863,14 @@ PrefabInstance:
       propertyPath: TransitionScreenInput
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 188064112479620725, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
+      propertyPath: actions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fbed5a6584c5c1418a4660e4d54154f, type: 2}
+    - target: {fileID: 188064112479620725, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
+      propertyPath: actions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e2c771cf515684f47a1cd94b543fa646, type: 2}
     - target: {fileID: 188064112479620725, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
       propertyPath: actions.Array.data[3]
       value: 

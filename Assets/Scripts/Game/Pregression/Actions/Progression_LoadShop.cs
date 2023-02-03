@@ -7,7 +7,7 @@ namespace Assets.Scripts.Game.Pregression.Actions
     
 
     [CreateAssetMenu(menuName = "Progression/Load Shop")]
-    public class Progression_LoadShop : ProgresionAction
+    public class Progression_LoadShop : ProgressionAction
     {
         GameProgressionController controller;
         public override void DoAction(GameProgressionController progression, MainGameLevelMapController main)

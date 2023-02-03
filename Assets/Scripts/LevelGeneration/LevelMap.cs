@@ -6,8 +6,11 @@ namespace Assets.Scripts.LevelGeneration
 {
     public class LevelMap
     {
-        public const int LevelX = 13;
-        public const int LevelY = 13;
+        public int LevelX = 13;
+        public int LevelY = 13;
+
+        public int StartRoomX = 7;
+        public int StartRoomY = 7;
 
         public Room[,] level;
 
@@ -139,6 +142,8 @@ namespace Assets.Scripts.LevelGeneration
             return true;
         }
 
+        
+
         //public bool IsTileFreeToPlaceRoom(Room_Figure figure, Vector2Int pos)
         //{
         //    if(figure == null)
@@ -248,6 +253,12 @@ namespace Assets.Scripts.LevelGeneration
         public LevelMap()
         {
             level = new Room[LevelX, LevelY];
+            rooms = new List<Room>();
+        }
+
+        public LevelMap(int levelX, int levelY)
+        {
+            level = new Room[levelX, levelY];
             rooms = new List<Room>();
         }
     }

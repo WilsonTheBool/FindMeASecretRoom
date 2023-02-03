@@ -96,6 +96,16 @@ namespace Assets.Scripts.LevelGeneration
                 return secretRoomMap.ContainsKey(key);
             }
 
+            public float GetValue(Vector2Int key)
+            {
+                if (secretRoomMap.TryGetValue(key, out float value))
+                {
+                    return value;
+                }
+
+                return 0;
+            }
+
             public void AddValue(Vector2Int key, float valueToAdd)
             {
                 if (secretRoomMap.ContainsKey(key))

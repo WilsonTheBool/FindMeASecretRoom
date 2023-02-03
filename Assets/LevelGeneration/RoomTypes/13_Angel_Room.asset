@@ -17,6 +17,6 @@ MonoBehaviour:
   icon: {fileID: -8505006750107047164, guid: 388e8cca6b736124c95b888e0a734173, type: 3}
   HasSpecialFigure: 0
   isSecretRoom: 1
-  rule: {fileID: 11400000, guid: 767384f02e754ec4e91e9554b87f0b0b, type: 2}
+  rule: {fileID: 11400000, guid: e743ab6a894a5d24ab7c75f5da001ef5, type: 2}
   overridesColor: 1
-  colorOfBase: {r: 0.29411766, g: 0.7490196, b: 0.77254903, a: 1}
+  colorOfBase: {r: 0.23028658, g: 0.41497543, b: 0.4245283, a: 1}

@@ -26,6 +26,7 @@ namespace Assets.Scripts.Game.UI
 
         public TMPro.TMP_Text ifCantBuy;
         public TMPro.TMP_Text itemDescription;
+        public TMPro.TMP_Text onItemOverride;
         public TMPro.TMP_Text itemName;
         public TMPro.TMP_Text activeText;
 
@@ -45,7 +46,7 @@ namespace Assets.Scripts.Game.UI
         {
             skipButton.onClick.AddListener(RequestSkip);
             CloseWIndow();
-            SetText(null);
+            //SetText(null);
         }
 
         public UnityEvent SkipRequested;
@@ -59,6 +60,8 @@ namespace Assets.Scripts.Game.UI
 
         public void CreateWindow(Item[] items, ShopRoomController shopRoomController, bool spawnHp)
         {
+            SetText(null);
+
             ShopRoomController = shopRoomController;
 
             InputListener.enabled = true;
@@ -77,6 +80,8 @@ namespace Assets.Scripts.Game.UI
             CanvasGroup.alpha = 1;
             CanvasGroup.interactable = true;
             CanvasGroup.blocksRaycasts = true;
+
+            
         }
 
         public void CloseWIndow()
@@ -157,6 +162,7 @@ namespace Assets.Scripts.Game.UI
                 itemName.text = "";
                 itemDescription.text = "";
                 activeText.text = "";
+                onItemOverride.text = "";
                 ifCantBuy.gameObject.SetActive(false);
 
             }
@@ -181,6 +187,16 @@ namespace Assets.Scripts.Game.UI
                 else
                 {
                     ifCantBuy.gameObject.SetActive(true);
+                }
+
+                PlayerItemsController controller = Player.instance.itemsController;
+                if(item.isUseItem && controller.ActiveItems.Count == controller.maxACtiveItemsCount)
+                {
+                    onItemOverride.text = "Will remove " + controller.ActiveItems[1].Name;
+                }
+                else
+                {
+                    onItemOverride.text = "";
                 }
 
             }

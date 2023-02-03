@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d774bdef6bbed04e80d92f78ee9da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEffectActivated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7584254829264022795
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +124,7 @@ MonoBehaviour:
   isUseItem: 0
   isChargeItem: 0
   Name: Holy Mantle
-  Description: bocks 1 damage per floor
+  Description: Bocks first damage every floor
   Sprite: {fileID: -7101769422365902707, guid: fb0900f377d1522429e2ccd18f452bea, type: 3}
   useBehaviours: []
   onAddItemEffect:

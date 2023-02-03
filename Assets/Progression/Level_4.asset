@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 4
   levelName: Caves II
   generatorParams: {fileID: 11400000, guid: f4e4dad9b88ceab40802e6a80062dc5e, type: 2}
-  baseColor: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 1}
+  baseColor: {r: 0.5019608, g: 0.40392157, b: 0.2901961, a: 1}

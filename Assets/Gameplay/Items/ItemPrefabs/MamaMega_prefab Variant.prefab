@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: -8993731787056230730, guid: e73fd3e52ec42ca489ae727fd5d33249, type: 3}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: Description
-      value: Create big explosion (single use)
+      value: Creates a big explosion (single use)
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: isChargeItem
@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 836973171}
     - target: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: m_Name
-      value: MamaMega_prefab
+      value: MamaMega_prefab Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  ItemUsed_Alt:
     m_PersistentCalls:
       m_Calls: []
   bombSelectTileSprite: {fileID: 21300000, guid: d08b542c9cacd704e8b96379baa3b8a3, type: 3}

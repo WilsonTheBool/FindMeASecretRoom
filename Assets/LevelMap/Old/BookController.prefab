@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684583173211178702}
   - component: {fileID: 684583173211178703}
+  - component: {fileID: 4907442705467677915}
   m_Layer: 0
   m_Name: BookController
   m_TagString: Untagged
@@ -43,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd0c693fb3301e4697024c567a5b0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputManager_SO: {fileID: 0}
+  gameInput: {fileID: 0}
   Book: {fileID: 0}
   chapters:
   - id: 0
@@ -50,11 +53,77 @@ MonoBehaviour:
     pages:
     - {fileID: 9030671595705933801, guid: 804a302e0433a93458d819bd77499b95, type: 3}
     - {fileID: 8978391649720465591, guid: 817632078d062fd48be3f096ae7f2b7d, type: 3}
+    - {fileID: 1791064024846403600, guid: bda734b039eaf7444aa1e3a90aadf34a, type: 3}
     - {fileID: 5851481648856189606, guid: dd4d2c5dc28b0b04286b066a6175fc93, type: 3}
     - {fileID: 1827328282911145392, guid: c5752fde879ae364ebe163d58b61eb70, type: 3}
     - {fileID: 2833541874902627165, guid: 7d69ac6457d7a684aa3cf06bf1b594b5, type: 3}
     - {fileID: 2645908178128457832, guid: 58ab097ad8a7b174d838aff52b399405, type: 3}
+    - {fileID: 1498103072215776406, guid: 78764be74c6337643bb0248be9cb7b0a, type: 3}
   - id: 1
     type: 1
     pages:
     - {fileID: 2123117176056766150, guid: 045852fccdb847c44b656788fe0d7c9f, type: 3}
+  BookOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4907442705467677915}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.SoundManagment.PlaySound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  BookClose:
+    m_PersistentCalls:
+      m_Calls: []
+  NextPage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4907442705467677915}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.SoundManagment.PlaySound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PrevPage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4907442705467677915}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.SoundManagment.PlaySound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isMainController: 1
+--- !u!114 &4907442705467677915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684583173211178696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dd1da092437794dbbbdaba19f3cce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 0170dc6cd4f34d44f942b419734b27c0, type: 3}
+  volumeScale: 0.5
+  playOnStart: 0

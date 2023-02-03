@@ -182,6 +182,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9562f65c-2f03-43a4-974d-e5579b321d07",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Alternative_Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a2ab4226-6f25-4db7-9486-8a4305e2b2ef",
                     "path": "<Mouse>/rightButton",
                     "interactions": "Hold",

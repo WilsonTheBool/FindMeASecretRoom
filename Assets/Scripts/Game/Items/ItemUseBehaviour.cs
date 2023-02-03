@@ -10,6 +10,7 @@ namespace Assets.Scripts.Game.Items
         public abstract void OnUse(Item.ItemInternalEventArgs args);
 
         public UnityEngine.Events.UnityEvent ItemUsed;
+        public UnityEngine.Events.UnityEvent ItemUsed_Alt;
 
         public abstract void OnSelected(Item.ItemInternalEventArgs args);
 

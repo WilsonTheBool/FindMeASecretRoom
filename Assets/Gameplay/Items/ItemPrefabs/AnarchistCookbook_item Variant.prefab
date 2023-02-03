@@ -114,4 +114,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   explosionsCount_min: 1
-  explosionsCount_max: 1
+  explosionsCount_max: 2

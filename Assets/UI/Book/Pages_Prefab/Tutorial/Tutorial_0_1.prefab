@@ -217,18 +217,21 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'To complete the level you need to unlock all secret rooms.
 
+    
 
-    Diffrent
-    secret rooms have diffrent rules where they can appear.
+    Different
+    secret rooms have different rules where they can appear.
 
+    
 
-    Regular Secret
-    Room <sprite=5> is <u>always connected to largest number of non-secret rooms.</U>
+    Regular
+    Secret Room <sprite=5> is <u>always connected to largest number of non-secret
+    rooms.</U>
 
+    
 
-    You
-    can <u>click on the room icon</u> in the top right corner of the screen to get
-    more info.
+    You can <u>click on the room icon</u> in the top right
+    corner of the screen to get more info.
 
 '
   m_isRightToLeft: 0
@@ -819,9 +822,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "If you think you found the place click on the tile to try to unlock \na
-    secret room.\n\n\n\n\n\n\n\nKeep in mind that if you miss you will loose 1\nIf
-    you are out of    its game over."
+  m_text: "If you think you found the place click on the tile to try to unlock \r\na
+    secret room.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nKeep in mind that if you miss you
+    will lose 1\r\nIf you are out of    it\u2019s game over.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a211b63d77485234cb24092b66bf9b55, type: 2}
   m_sharedMaterial: {fileID: 6502141226634604396, guid: a211b63d77485234cb24092b66bf9b55, type: 2}

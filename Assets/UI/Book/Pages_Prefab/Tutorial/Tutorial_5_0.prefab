@@ -293,21 +293,30 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Most active items have limitade usage per floor, represented by <u>charge</u>.
+  m_text: 'Most active items have limited usage per floor, represented by <u>charge</u>.
 
+    
 
     0
     uses per floor
 
+    
 
+    
 
+    
 
     1 use per floor
 
+    
 
+    
 
+    
 
-    2 uses per floor
+    2
+    uses per floor
+
 
 
 
@@ -528,7 +537,7 @@ MonoBehaviour:
     default you can hold 1 active item at a time.
 
 
-    Press ''E'' to switch your
+    Press [E] to switch your
     active items.
 
 

@@ -26,6 +26,7 @@ namespace Assets.Scripts.Game.UI
         public PlayerPassiveItemsUIController PlayerPassiveItemsUIController;
 
         public GameOverScreenController GameOverScreenController;
+        public GameOverScreenController VictoryScreenController;
 
         public static GameUIController Instance { get; private set; }
 

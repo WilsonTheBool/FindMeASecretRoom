@@ -20,6 +20,9 @@ namespace Assets.Scripts.Game.UI
 
         public Material active;
 
+        public TMPro.TMP_Text swapTip;
+        public TMPro.TMP_Text altFireTip;
+
         private void Start()
         {
             PlayerItemsController = Player.instance.itemsController;
@@ -107,6 +110,24 @@ namespace Assets.Scripts.Game.UI
             else
             {
                 items[0].material = null;
+            }
+
+            if(PlayerItemsController.CurentActiveItems > 1)
+            {
+                swapTip?.gameObject.SetActive(true);
+            }
+            else
+            {
+                swapTip?.gameObject.SetActive(false);
+            }
+
+            if (selected.hasAltMode)
+            {
+                altFireTip?.gameObject.SetActive(true);
+            }
+            else
+            {
+                altFireTip?.gameObject.SetActive(false);
             }
         }
     }

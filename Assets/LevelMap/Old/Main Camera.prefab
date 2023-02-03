@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 0}
-  speed: 100
+  speed: 5
   mousePrev: {x: 0, y: 0, z: 0}
 --- !u!114 &7336659438383156691
 MonoBehaviour:

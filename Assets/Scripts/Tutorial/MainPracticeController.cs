@@ -38,6 +38,7 @@ namespace Assets.Scripts.Tutorial
             Player.instance.playerHPController.afterTakeDamage.AddListener((PlayerHPController.HpEventArgs args) => Player.instance.playerHPController.HealToFullRedHP());
 
             MainGameLevelMapController.LevelGenerationController.LevelGeneratorParams = null;
+            
             MainGameLevelMapController.SetUpLevel();
         }
 
@@ -64,6 +65,7 @@ namespace Assets.Scripts.Tutorial
                         MainGameLevelMapController.LevelMapRenderer.ClearAll();
 
                         MainGameLevelMapController.LevelGenerationController.LevelGeneratorParams = levelDatas[savedId].generatorParams;
+                        MainGameLevelMapController.GameTilemapController.ClearAll();
                         MainGameLevelMapController.SetUpLevel();
                         MainGameLevelMapController.LevelMapRenderer.StartRenderMap(MainGameLevelMapController.LevelMap);
                         MainGameLevelMapController.levelStarted.Invoke();

@@ -46,11 +46,11 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.482
+    chanceToGen: 0.453
   - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.481
+    chanceToGen: 0.473
   - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 0
@@ -63,5 +63,4 @@ MonoBehaviour:
   maxRoomsCount: 22
   minDeadEndsCount: 7
   secretRoomsCount: 4
-  SecretRooms: 0
   giveUpRandomlyChance: 0.5

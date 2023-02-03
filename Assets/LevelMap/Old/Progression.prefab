@@ -46,8 +46,26 @@ MonoBehaviour:
   removeItemOnGet: 1
   poolType: 0
   items:
-  - {fileID: 4123329167077379408, guid: f80e065349896b14e885bc916c715bec, type: 3}
+  - {fileID: 3117791943534749252, guid: 0b51a1fe9d1a1304685694b99a136b26, type: 3}
   - {fileID: 6319040756373062428, guid: 147657879bc5f1e4d89a4a00e28fda2b, type: 3}
+  - {fileID: 852261420332437902, guid: e0fcd2c4fd777da40bc99183c18f3aaf, type: 3}
+  - {fileID: 8906992647273251727, guid: f46b7fab13d7ecb499c025ad744a0c40, type: 3}
+  - {fileID: 4123329167077379408, guid: f80e065349896b14e885bc916c715bec, type: 3}
+  - {fileID: 3370788958946241566, guid: 787e84086b5255a42a89a8629bd61000, type: 3}
+  - {fileID: 4869027120948002166, guid: 050e8c85bbe73a443837441e63ee47be, type: 3}
+  - {fileID: 8886595467903877193, guid: a8f25e5b8ed5a80498145d33f678b40c, type: 3}
+  - {fileID: 2186087728586039429, guid: 268cf8e3acd1ed448be8d03ac8f2aba1, type: 3}
+  - {fileID: 7280795452000820668, guid: ecb9fcbd0e373de44bc708c721f18f85, type: 3}
+  - {fileID: 4573171532100897767, guid: 3b0804230d9b15f4b9b785768fa24dff, type: 3}
+  - {fileID: 2761849740590137341, guid: 7a9e58a4fb723bc4aaa4525afad5b735, type: 3}
+  - {fileID: 8522606823527833444, guid: aa3123ad318c6d543928ee0874b3e8a6, type: 3}
+  - {fileID: 27621423902592825, guid: 9eab5ec44a74f7b44aab457d8cdb00ce, type: 3}
+  - {fileID: 3370788958946241566, guid: 787e84086b5255a42a89a8629bd61000, type: 3}
+  - {fileID: 4869027120948002166, guid: 050e8c85bbe73a443837441e63ee47be, type: 3}
+  - {fileID: 3811655103621649145, guid: 70265de8f20fecf46882d8cd62de66e4, type: 3}
+  - {fileID: 619398068653734678, guid: 5a07d8b8497045f4390e9dde8095f81a, type: 3}
+  - {fileID: 8004990062824585380, guid: 042a12434c0241e45b60d76d56cb8bbc, type: 3}
+  - {fileID: 2588206401365375736, guid: 116a37d7ce9d0d74c9644b6386fea275, type: 3}
   itemPooled:
     m_PersistentCalls:
       m_Calls: []
@@ -98,7 +116,25 @@ MonoBehaviour:
   poolType: 1
   items:
   - {fileID: 3117791943534749252, guid: 0b51a1fe9d1a1304685694b99a136b26, type: 3}
+  - {fileID: 6319040756373062428, guid: 147657879bc5f1e4d89a4a00e28fda2b, type: 3}
+  - {fileID: 852261420332437902, guid: e0fcd2c4fd777da40bc99183c18f3aaf, type: 3}
+  - {fileID: 8906992647273251727, guid: f46b7fab13d7ecb499c025ad744a0c40, type: 3}
+  - {fileID: 4123329167077379408, guid: f80e065349896b14e885bc916c715bec, type: 3}
+  - {fileID: 3370788958946241566, guid: 787e84086b5255a42a89a8629bd61000, type: 3}
+  - {fileID: 4869027120948002166, guid: 050e8c85bbe73a443837441e63ee47be, type: 3}
+  - {fileID: 8886595467903877193, guid: a8f25e5b8ed5a80498145d33f678b40c, type: 3}
+  - {fileID: 2186087728586039429, guid: 268cf8e3acd1ed448be8d03ac8f2aba1, type: 3}
   - {fileID: 7280795452000820668, guid: ecb9fcbd0e373de44bc708c721f18f85, type: 3}
+  - {fileID: 4573171532100897767, guid: 3b0804230d9b15f4b9b785768fa24dff, type: 3}
+  - {fileID: 2761849740590137341, guid: 7a9e58a4fb723bc4aaa4525afad5b735, type: 3}
+  - {fileID: 8522606823527833444, guid: aa3123ad318c6d543928ee0874b3e8a6, type: 3}
+  - {fileID: 27621423902592825, guid: 9eab5ec44a74f7b44aab457d8cdb00ce, type: 3}
+  - {fileID: 3370788958946241566, guid: 787e84086b5255a42a89a8629bd61000, type: 3}
+  - {fileID: 4869027120948002166, guid: 050e8c85bbe73a443837441e63ee47be, type: 3}
+  - {fileID: 3811655103621649145, guid: 70265de8f20fecf46882d8cd62de66e4, type: 3}
+  - {fileID: 619398068653734678, guid: 5a07d8b8497045f4390e9dde8095f81a, type: 3}
+  - {fileID: 8004990062824585380, guid: 042a12434c0241e45b60d76d56cb8bbc, type: 3}
+  - {fileID: 2588206401365375736, guid: 116a37d7ce9d0d74c9644b6386fea275, type: 3}
   itemPooled:
     m_PersistentCalls:
       m_Calls: []
@@ -342,4 +378,5 @@ MonoBehaviour:
   saleChance: 0.2
   maxSaleItems: 1
   shopItemsCount: 3
+  spawnHp: 1
   items: []

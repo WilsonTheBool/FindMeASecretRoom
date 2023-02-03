@@ -47,7 +47,7 @@ namespace Assets.Scripts.LevelGeneration
             
             giveUpRandomlyChance = data.giveUpRandomlyChance;
 
-            levelMap.PlaceRoom(start, new Vector2Int(StartRoomX, StartRoomY), new Vector2Int(-1,-1));
+            levelMap.PlaceRoom(start, new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY), new Vector2Int(-1,-1));
             roomQueue.Enqueue(start);
 
 
@@ -110,7 +110,7 @@ namespace Assets.Scripts.LevelGeneration
                 return false;
             }
 
-            levelMap.GetRoom(new Vector2Int(StartRoomX, StartRoomY)).Figure = starRoom;
+            levelMap.GetRoom(new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY)).Figure = starRoom;
 
             return true;
         }
@@ -210,12 +210,27 @@ namespace Assets.Scripts.LevelGeneration
 
         private Room AddRandomRoom(Vector2Int globalPos, LevelMap levelMap, Room owner, Vector2Int direction)
         {
+            int d = owner.distance;
 
-            Room room = new Room(data.RoomLayoutPicker.GetRandomLayout(owner.type, owner.Figure, direction, true), owner.distance + 1);
+            if (owner.Figure.isLarge)
+            {
+                d += CalculateDistance(levelMap, owner, direction);
+                //Debug.Log("Room (after large): " + globalPos.ToString() + " - Distance = " + d.ToString());
+            }
+            else
+            {
+                
+                d += 1;
+                //Debug.Log("Room: " + globalPos.ToString() + " - Distance = " + d.ToString());
+            }
+
+            
+
+            Room room = new Room(data.RoomLayoutPicker.GetRandomLayout(owner.type, owner.Figure, direction, true), d);
 
             if (!levelMap.CanFitRoom(room,globalPos))
             {
-                room = new Room(data.RoomLayoutPicker.GetRandomLayout(owner.type, owner.Figure, direction, false), owner.distance + 1);
+                room = new Room(data.RoomLayoutPicker.GetRandomLayout(owner.type, owner.Figure, direction, false), d);
 
                 if (levelMap.CanFitRoom(room, globalPos))
                 {
@@ -242,6 +257,70 @@ namespace Assets.Scripts.LevelGeneration
             }
 
             return null;
+        }
+
+        private int CalculateDistance(LevelMap levelMap, Room owner, Vector2Int exit_2_pos)
+        {
+            Vector2Int exit_1_pos = new Vector2Int(-1000, -1000);
+            Room parent = levelMap.GetRoom(owner.parent);
+
+            //if room does not have a parent we take any exit connected to its origin point;
+            if(parent == null)
+            {
+                var e = owner.Figure.GetRoomExitsOfTile(new Vector2Int(0, 0));
+
+                if(e.Length > 0)
+                {
+                    exit_1_pos = e[0];
+                }
+                else
+                {
+                    throw new System.Exception("cant find rooms connected to origin point");
+                }
+            }
+            else
+            {
+                if (parent.Figure.isLarge)
+                {
+                    if (parent.Figure.isLarge)
+                    {
+                        bool exitfound = false;
+                        Vector2Int offset = owner.position - parent.position;
+                        foreach (Vector2Int exit in owner.Figure.RoomExits)
+                        {
+                            if (parent.Figure.IsRoomContainsPos(exit + offset))
+                            {
+                                exit_1_pos = exit;
+                                exitfound = true;
+                            }
+                        }
+
+
+                        if (!exitfound)
+                            throw new System.Exception("cant find connecting rooms (2 large rooms)");
+                    }
+                    else
+                    {
+                        exit_1_pos = parent.position - owner.position;
+
+                    }
+                }
+                else
+                {
+                    exit_1_pos = parent.position - owner.position;
+                    
+                }
+               
+            }
+            //Debug.Log("Exit_1 = " + exit_1_pos.ToString() + "// Exit_2 = " + exit_2_pos.ToString());
+            int distance = owner.Figure.GetDistance_FromLocal(exit_1_pos, exit_2_pos);
+
+            if (distance == -1)
+            {
+                throw new System.Exception("Cant find exits");
+            }
+
+            return distance;
         }
 
         private bool AddSpecialRooms(LevelMap map)

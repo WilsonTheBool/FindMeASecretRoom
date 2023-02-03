@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -17,6 +18,8 @@ namespace Assets.Scripts.LevelGeneration
 
         public Vector2Int[] BlockedExits;
 
+        public ExitDistanceData[] exitDistances;
+
         public bool isLarge;
 
         public bool IsRoomContainsPos(Vector2Int localPos)
@@ -32,9 +35,50 @@ namespace Assets.Scripts.LevelGeneration
             return false;
         }
 
-        public Vector2Int[] GetRoomExitsOfTile(Vector2Int localPos)
+        public bool IsExitsContainsPos(Vector2Int localPos)
         {
-            return RoomExits;
+            foreach (Vector2Int tile in RoomExits)
+            {
+                if (tile == localPos)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Vector2Int[] GetRoomExitsOfTile(Vector2Int local)
+        {
+            List<Vector2Int> roomExits = new List<Vector2Int>();
+
+            foreach(Vector2Int exit in RoomExits)
+            {
+                if(Vector2Int.Distance(exit,local) == 1)
+                {
+                    roomExits.Add(exit);
+                }
+            }
+
+            return roomExits.ToArray();
+        }
+
+        public int GetDistance_FromLocal(Vector2Int exit1_local, Vector2Int exit2_local)
+        {
+            if (isLarge)
+            {
+                foreach(ExitDistanceData exitDistanceData in exitDistances)
+                {
+                    if((exitDistanceData.exit1 == exit1_local && exitDistanceData.exit2 == exit2_local) || 
+                        (exitDistanceData.exit1 == exit2_local && exitDistanceData.exit2 == exit1_local))
+                    {
+                        return exitDistanceData.distance;
+                    }
+                }
+
+                return -1;
+            }
+            return 1;
         }
 
         public Vector2Int[] GetRoomExitsOfTileRandomized(Vector2Int localPos)
@@ -64,23 +108,29 @@ namespace Assets.Scripts.LevelGeneration
         {
             Vector2Int ownerPos = roomGlobalPos - ownerGlobalPos;
 
-            //Debug.Log("Type = "+ name + "Owner_Type = " + owner.name + "| RelativePos = " + ownerPos + "| Global: = " + ownerGlobalPos);
+            
 
             foreach (Vector2Int exit in RoomExits)
             {
                 if (owner.IsRoomContainsPos(exit + ownerPos))
                 {
-                    //Debug.Log("Trying Exit = " + exit + " Succses");
+                    
                     return true;
                 }
-                else
-                {
-                    //Debug.Log("Trying Exit = " + exit + " FAIL");
-                }
+
             }
 
             return false;
 
+        }
+
+        [System.Serializable]
+        public class ExitDistanceData
+        {
+            public Vector2Int exit1;
+            public Vector2Int exit2;
+
+            public int distance;
         }
     }
 }
