@@ -7,7 +7,7 @@ namespace Assets.Scripts.Game.PlayerController
     public class PlayerHPController : MonoBehaviour
     {
         [SerializeField]
-        int maxHpSlotsCount;
+        public int maxHpSlotsCount;
 
         [SerializeField]
         int startHp;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Game.PlayerController
         public PlayerDeathEvent afterDeath;
 
         public HpControllerEvent onAnyHpChanged;
-        private void Start()
+        private void Awake()
         {
             Initialize(true);
         }
@@ -196,6 +196,18 @@ namespace Assets.Scripts.Game.PlayerController
                 this.isDead = isDead;
                 isDeadChanged = isDead;
             }
+        }
+
+        public void SetStartHP(int red)
+        {
+            hpObjects.Clear();
+
+            for (int i = 0; i < red; i++)
+            {
+                rule.OnAddContainer(hpObjects, maxHpSlotsCount);
+            }
+
+            onAnyHpChanged.Invoke(new HpEventArgs(red, null));
         }
 
         public void Initialize(bool fromStart)

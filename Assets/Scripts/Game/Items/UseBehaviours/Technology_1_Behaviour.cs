@@ -20,7 +20,9 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
 
         public override bool CanUse(Item.ItemInternalEventArgs args)
         {
+
             return args.external.mainGameController.GameMapRoomUnlockController.CanCheckToUnlock(args.external.tilePos);
+
         }
 
         public override void OnAlternativeUse(Item.ItemInternalEventArgs args)

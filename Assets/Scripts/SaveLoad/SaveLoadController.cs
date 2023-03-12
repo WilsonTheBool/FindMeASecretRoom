@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Challenges;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.SaveLoad
@@ -13,6 +14,9 @@ namespace Assets.Scripts.SaveLoad
 
         [HideInInspector]
         public CheatsSaveLoadDataHolder cheatsData;
+
+        [HideInInspector]
+        public ChallengesSaveDataHolder challengesSaveData;
 
         private void Awake()
         {
@@ -34,6 +38,11 @@ namespace Assets.Scripts.SaveLoad
                 if (cheatsData == null)
                 {
                     cheatsData = GetComponentInChildren<CheatsSaveLoadDataHolder>();
+                }
+
+                if (challengesSaveData == null)
+                {
+                    challengesSaveData = GetComponentInChildren<ChallengesSaveDataHolder>();
                 }
             }
 

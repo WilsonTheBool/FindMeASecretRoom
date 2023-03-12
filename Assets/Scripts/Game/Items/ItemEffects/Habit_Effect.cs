@@ -43,8 +43,9 @@ namespace Assets.Scripts.Game.Items.ItemEffects
             {
                 playerItemsController.TryChargeItem(GetNotChargedRandom(), 1);
 
-                
-                //play sound
+                //main.PlayerPassiveItemsUIController.StartHIghlightAnim(item);
+                //play sound?
+
                 main.CreateTransferAnimation(new GameUIController.TransferAnimData()
                 {
                     origin = main.GetPosition_Ui_To_World(main.PlayerPassiveItemsUIController.FindElement(item).transform.position),

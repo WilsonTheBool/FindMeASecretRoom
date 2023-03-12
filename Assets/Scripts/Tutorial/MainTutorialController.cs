@@ -15,6 +15,8 @@ namespace Assets.Scripts.Tutorial
 
         public SecretRoomBookController tutorialBook;
 
+        public UnityEngine.Events.UnityEvent OnNextStage;
+
 
         private void Awake()
         {
@@ -28,9 +30,15 @@ namespace Assets.Scripts.Tutorial
 
         private void Start()
         {
-            main.onVictory.AddListener(() => curentLevelID++);
+            main.onVictory.AddListener(OnVictory);
             main.LevelMapRenderer.onRenderEnded.AddListener(SetUp);
             main.onDefeat.AddListener(Restart);
+        }
+
+        private void OnVictory()
+        {
+            curentLevelID++;
+            OnNextStage.Invoke();
         }
 
         public Room_GM_TypeHolder[] GetCurentLevel()

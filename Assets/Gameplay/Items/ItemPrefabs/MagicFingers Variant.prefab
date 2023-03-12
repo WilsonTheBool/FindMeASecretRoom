@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &269652415769321331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942185970176494221, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: Name
+      value: Magic Fingers
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: Sprite
+      value: 
+      objectReference: {fileID: -3397151355281000270, guid: e73fd3e52ec42ca489ae727fd5d33249, type: 3}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: Description
+      value: Unlocks a tile for 5 <sprite=0>
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: useBehaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: onAddItemEffect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: useBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 8257134789934602872}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: onAddItemEffect.Array.data[0]
+      value: 
+      objectReference: {fileID: 916613830011280271}
+    - target: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: m_Name
+      value: MagicFingers Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+--- !u!1 &2833165604613549863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+  m_PrefabInstance: {fileID: 269652415769321331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6691645560675117163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833165604613549863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dd1da092437794dbbbdaba19f3cce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 83cf56ce9701db1408bfeac214791c8f, type: 3}
+  volumeScale: 0.5
+  playOnStart: 0
+--- !u!114 &916613830011280271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833165604613549863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b699a33f31bdf5849be7d307510fef6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEffectActivated:
+    m_PersistentCalls:
+      m_Calls: []
+  AddGoldOnStart: 5
+--- !u!114 &8257134789934602872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833165604613549863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f775c0c430a5f94fb8c4b2bf626305f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6691645560675117163}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.SoundManagment.PlaySound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ItemUsed_Alt:
+    m_PersistentCalls:
+      m_Calls: []
+  cost: 5
+  selectTile: {fileID: 21300000, guid: c1c62626bf60ec146a0ff0984821c584, type: 3}

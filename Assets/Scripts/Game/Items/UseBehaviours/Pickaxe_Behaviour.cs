@@ -3,6 +3,9 @@ using UnityEngine;
 using Assets.Scripts.Game.Items;
 using Assets.Scripts.Game.Gameplay;
 using Assets.Scripts.Game.PlayerController;
+using System.Collections.Generic;
+using Assets.Scripts.LevelGeneration;
+using Assets.Scripts.Game.GameMap;
 
 namespace Assets.Scripts.Game.Items.UseBehaviours
 {
@@ -19,7 +22,18 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
         [SerializeField]
         private Sprite PickAxesSlectTileSprite;
 
-       
+        MainGameLevelMapController main;
+
+        private void Start()
+        {
+            main = MainGameLevelMapController.Instance;
+            main.onLevelOver.AddListener(OnLevelOver);
+            main.GameMapRoomUnlockController.roomUnlocked.AddListener(OnUnlocked);
+            main.GameMapRoomUnlockController.roomUnlocked.AddListener(OnUnlocked);
+            flags = new Dictionary<Vector2Int, GameObject>();
+
+        }
+
         public override bool CanUse(Item.ItemInternalEventArgs args)
         {
             if (args.external.mainGameController.GameMapRoomUnlockController.IsUnlocked(args.external.tilePos))
@@ -58,13 +72,58 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
             if (arg2 != null && arg2.secretRoomsUnlocked <= 0)
             {
                 playerHPController.RequestTakeDamage(new PlayerHPController.HpEventArgs(damageOnItemMiss, this.gameObject));
+
+                foreach(Vector2Int pos in arg2.areaHit)
+                {
+                    if (flags.TryGetValue(pos, out GameObject flag))
+                    {
+                        Destroy(flag);
+                        flags.Remove(pos);
+                    }
+                }
             }
 
         }
 
 
+        private Dictionary<Vector2Int,GameObject> flags;
+
+        [SerializeField]
+        private GameObject flag_prefab;
+
         public override void OnAlternativeUse(Item.ItemInternalEventArgs args)
         {
+            if (!flags.ContainsKey(args.external.tilePos) && main.LevelMap.IsInRange(args.external.tilePos))
+            {
+                var flag = Instantiate(flag_prefab, main.grid.GetCellCenter(args.external.tilePos), Quaternion.Euler(0, 0, 0), this.transform);
+
+                flags.Add(args.external.tilePos, flag);
+            }
+            else
+            {
+                if (flags.TryGetValue(args.external.tilePos, out GameObject flag))
+                {
+                    Destroy(flag);
+                    flags.Remove(args.external.tilePos);
+                }
+            }
+
+            ItemUsed_Alt.Invoke();
+        }
+
+        private void OnLevelOver()
+        {
+            foreach(GameObject value in flags.Values)
+            {
+                Destroy(value);
+            }
+
+            flags.Clear();
+        }
+
+        private void OnUnlocked(Room room)
+        {
+
 
         }
 

@@ -31,6 +31,8 @@ namespace Assets.Scripts.InputManager
 
         public UnityEvent OnOpenBook;
 
+        public UnityEvent OnTrinketUse;
+
         public Vector3 mousePosition;
         public Vector3 worldMousePosition;
         public Vector3 viewportMousePos;

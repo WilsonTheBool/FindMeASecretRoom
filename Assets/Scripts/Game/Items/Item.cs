@@ -86,17 +86,17 @@ namespace Assets.Scripts.Game.Items
                 }
             }
 
-
+            if (isChargeItem)
+            {
+                curentCharge--;
+            }
 
             foreach (ItemUseBehaviour behaviour in useBehaviours)
             {
                 behaviour.OnUse(iArgs);
             }
 
-            if (isChargeItem)
-            {
-                curentCharge--;
-            }
+           
 
             return true;
         }

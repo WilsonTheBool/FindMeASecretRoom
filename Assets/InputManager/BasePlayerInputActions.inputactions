@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TrinketUse",
+                    "type": "Button",
+                    "id": "161463cf-0768-466d-88ae-af673d5b99fd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -171,17 +180,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3c43d611-3b2c-46fe-b2ab-7effe4338f91",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Alternative_Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9562f65c-2f03-43a4-974d-e5579b321d07",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -221,6 +219,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe18a623-0f50-48eb-bc4c-02f5fb5f82fb",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TrinketUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6,6 +6,8 @@ namespace Assets.Scripts.Game.Pregression
 {
     public class ProgressionAction : ScriptableObject
     {
+        public bool needTransition;
+
         public virtual void DoAction(GameProgressionController progression, MainGameLevelMapController main)
         {
         }

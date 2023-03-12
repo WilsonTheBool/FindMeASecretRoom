@@ -10,8 +10,6 @@ namespace Assets.Scripts.SaveLoad
 
         private SaveLoadController controller;
 
-
-
         private void LoadSaveData()
         {
             SaveData = controller.LoadObject<CheatsData>(SaveDataName);

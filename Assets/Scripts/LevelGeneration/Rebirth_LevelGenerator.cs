@@ -94,23 +94,23 @@ namespace Assets.Scripts.LevelGeneration
             if(deadEndRooms.Count < data.minDeadEndsCount)
             {
                 //Debug.Log("deadEndRooms.Count < data.minDeadEndsCount ->" + deadEndRooms.Count.ToString());
-                print("Error");
+                //print("Error");
                 return false;
             }
 
             if (curentRoomCount < maxRoomCount)
             {
-                print("Error");
+                //print("Error");
                 return false;
             }
 
             if (!AddSpecialRooms(levelMap))
             {
-                print("Error");
+                //print("Error");
                 return false;
             }
 
-            levelMap.GetRoom(new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY)).Figure = starRoom;
+            //levelMap.GetRoom(new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY)).Figure = starRoom;
 
             return true;
         }

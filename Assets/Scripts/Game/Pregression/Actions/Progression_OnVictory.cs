@@ -22,7 +22,8 @@ namespace Assets.Scripts.Game.Pregression.Actions
             GameUIController.Instance.VictoryScreenController.SetUp(stats.ItemsCollected.ToArray(), stats.roomsUnlocked.ToArray(),
                 stats.levelsCompleted, stats.maxLevelCount);
             p.transitionEnded.RemoveListener(OnTransitionEnd);
-            
+
+            p.OnRunCompleted.Invoke(p);
         }
     }
 }

@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4752367949287302621, guid: dfe0c464d282af24fb64f5f8fe4e9315, type: 3}
       propertyPath: m_text
-      value: Congratulations! You completed all available levels.
+      value: 'Congratulations! '
       objectReference: {fileID: 0}
     - target: {fileID: 4752367949532952742, guid: dfe0c464d282af24fb64f5f8fe4e9315, type: 3}
       propertyPath: m_AnchoredPosition.y

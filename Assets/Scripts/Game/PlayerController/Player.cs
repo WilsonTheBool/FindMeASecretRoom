@@ -14,6 +14,8 @@ namespace Assets.Scripts.Game.PlayerController
 
         public PlayerGoldController goldController;
 
+        public PlayerTrinketController trinketController;
+
         [HideInInspector]
         public GameUIController gameUIController;
 
@@ -43,6 +45,11 @@ namespace Assets.Scripts.Game.PlayerController
             if (roomRewardController == null)
             {
                 roomRewardController = GetComponentInChildren<PlayerRoomRewardController>();
+            }
+
+            if(trinketController == null)
+            {
+                trinketController = GetComponentInChildren<PlayerTrinketController>();
             }
         }
 

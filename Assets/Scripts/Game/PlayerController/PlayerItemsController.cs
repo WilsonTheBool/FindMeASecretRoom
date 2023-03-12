@@ -182,7 +182,7 @@ namespace Assets.Scripts.Game.PlayerController
                 }
 
                 if(ActiveItems.Remove(item))
-                item.OnItemRemove(args);
+                    item.OnItemRemove(args);
                 ActiveItemSwitched.Invoke(item);
             }
             else
@@ -190,6 +190,32 @@ namespace Assets.Scripts.Game.PlayerController
                 if(passiveItems.Remove(item))
                 item.OnItemRemove(args);
                 
+            }
+
+            ItemRemoved.Invoke(item);
+        }
+
+        public void RemoveItem(string name, Item.ItemExternalEventArgs args)
+        {
+            Item item = ActiveItems.Find((Item i) => i.Name == name);
+
+            if (item != null && item.isUseItem)
+            {
+                if (selectedActiveItem > 0)
+                {
+                    selectedActiveItem--;
+                }
+
+                if (ActiveItems.Remove(item))
+                    item.OnItemRemove(args);
+                ActiveItemSwitched.Invoke(item);
+            }
+            else
+            {
+                item = passiveItems.Find((Item i) => i.Name == name);
+
+                if (item != null && passiveItems.Remove(item))
+                    item.OnItemRemove(args);
             }
 
             ItemRemoved.Invoke(item);

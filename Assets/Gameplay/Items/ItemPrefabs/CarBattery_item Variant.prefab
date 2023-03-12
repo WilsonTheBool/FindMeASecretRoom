@@ -110,3 +110,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   effects: []
+  excludingItems:
+  - {fileID: 6319040756373062428, guid: 147657879bc5f1e4d89a4a00e28fda2b, type: 3}
+  - {fileID: 8886595467903877193, guid: a8f25e5b8ed5a80498145d33f678b40c, type: 3}

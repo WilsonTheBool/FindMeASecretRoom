@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbd2440878791d4b91db55b3e9c5640, type: 3}
   m_Name: LoadTreasureRoom
   m_EditorClassIdentifier: 
+  needTransition: 1

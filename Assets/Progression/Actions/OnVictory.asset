@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44eb4184d9a775b47ac8531c4a307a37, type: 3}
   m_Name: OnVictory
   m_EditorClassIdentifier: 
+  needTransition: 1

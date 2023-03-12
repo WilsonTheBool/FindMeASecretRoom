@@ -10,8 +10,15 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
         private Item.ItemInternalEventArgs args;
 
+        public List<Item> excludingItems;
+
         public override void OnEffectAdd(Item.ItemInternalEventArgs args)
         {
+            if (excludingItems.Exists((Item i) => i.Name == args.item.Name))
+            {
+                return;
+            }
+
             this.args = args;
             args.external.player.itemsController.ItemAdded.AddListener(OnItemAdd);
             args.external.player.itemsController.ItemRemoved.AddListener(OnItemRemove);
@@ -24,6 +31,11 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
         public override void OnEffectRemove(Item.ItemInternalEventArgs args)
         {
+            if (excludingItems.Exists((Item i) => i.Name == args.item.Name))
+            {
+                return;
+            }
+
             args.external.player.itemsController.ItemAdded.RemoveListener(OnItemAdd);
             args.external.player.itemsController.ItemRemoved.RemoveListener(OnItemRemove);
 
@@ -48,7 +60,9 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
                     effects.Add(itemEffect);
 
-                    itemEffect.OnEffectAdd(args);
+                    Item.ItemInternalEventArgs args2 = new Item.ItemInternalEventArgs() { item = item, external = args.external };
+
+                    itemEffect.OnEffectAdd(args2);
                 }
             }
         }

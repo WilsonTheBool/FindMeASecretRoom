@@ -122,6 +122,7 @@ namespace Assets.Scripts.Game.GameMap
 
             GameLevelInputManager.Listener.OnAccept.AddListener(SwitchActiveItem);
             GameLevelInputManager.Listener.OnActivate.AddListener(UseCurentItem);
+            GameLevelInputManager.Listener.OnTrinketUse.AddListener(UseTrinket);
             GameLevelInputManager.Listener.OnAlternativeAction.AddListener(UseCurentItem_Alt);
 
             GameRoomCounter.onVictory.AddListener(OnVictory);
@@ -160,6 +161,11 @@ namespace Assets.Scripts.Game.GameMap
                 player = Player,
                 tilePos = GameLevelInputManager.CurentTileMousePosition
             };
+        }
+
+        private void UseTrinket()
+        {
+            Player.trinketController.UseTrinket(GetItemArgs());
         }
 
         private void UseCurentItem()

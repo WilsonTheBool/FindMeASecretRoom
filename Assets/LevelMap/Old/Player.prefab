@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3997161204103119814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699968883002910826}
+  - component: {fileID: 901083189290406530}
+  m_Layer: 0
+  m_Name: TrinketController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &699968883002910826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997161204103119814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7574521842161539039}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &901083189290406530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997161204103119814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5698449473a76424bb86a1c858eec526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trinket: {fileID: 0}
+  OnTrinketChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7574521842057586825
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +102,9 @@ MonoBehaviour:
   ActiveItemSwitched:
     m_PersistentCalls:
       m_Calls: []
+  ActiveItemUpdated:
+    m_PersistentCalls:
+      m_Calls: []
   ItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -95,6 +145,7 @@ Transform:
   - {fileID: 7574521842327223569}
   - {fileID: 7574521842057586822}
   - {fileID: 7574521842366946299}
+  - {fileID: 699968883002910826}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,6 +164,7 @@ MonoBehaviour:
   playerHPController: {fileID: 7574521842488755200}
   itemsController: {fileID: 7574521842057586823}
   goldController: {fileID: 7574521842366946296}
+  trinketController: {fileID: 0}
   gameUIController: {fileID: 0}
   roomRewardController: {fileID: 7574521842366946298}
 --- !u!114 &7574521842161539036
@@ -268,6 +320,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 93c45479-e6e9-438b-8ee0-a7d2bef5b312
     m_ActionName: Player/Tab[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7574521842161539041}
+        m_TargetAssemblyTypeName: Assets.Scripts.InputManager.InputReader, Assembly-CSharp
+        m_MethodName: OnTrinketUseAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 161463cf-0768-466d-88ae-af673d5b99fd
+    m_ActionName: Player/TrinketUse[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

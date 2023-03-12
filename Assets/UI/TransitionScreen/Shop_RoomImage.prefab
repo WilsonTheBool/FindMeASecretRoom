@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5862264070070111541}
   - component: {fileID: 2126558359510696736}
   - component: {fileID: 7196151859126934669}
+  - component: {fileID: 5253760342582124821}
   m_Layer: 5
   m_Name: Shop_RoomImage
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5253760342582124821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184466324870466302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c73f1b8ff2760f48adc29653bb02cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!1 &5600601192997900883
 GameObject:
   m_ObjectHideFlags: 0

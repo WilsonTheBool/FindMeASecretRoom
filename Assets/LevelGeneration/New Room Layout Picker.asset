@@ -15,7 +15,7 @@ MonoBehaviour:
   LayoutHolders:
   - Room_Figure: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
     Room: {fileID: 4734495459355458228, guid: 6b0900847467a66438f048a967f0f8f3, type: 3}
-    weight: 10
+    weight: 11
   - Room_Figure: {fileID: 11400000, guid: 76911ea41700ca34094f76684102b77b, type: 2}
     Room: {fileID: 5195933266585087744, guid: 9b38e37ebce21bc46be6a8aeb3125f4f, type: 3}
     weight: 2

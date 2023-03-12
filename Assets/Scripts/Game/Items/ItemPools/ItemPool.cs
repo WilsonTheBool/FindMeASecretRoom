@@ -30,6 +30,11 @@ namespace Assets.Scripts.Game.Items.ItemPools
             return item;
         }
 
+        public void AddItem(Item item)
+        {
+            items.Add(item);
+        }
+
         public void RemoveItem(Item item)
         {
             if(removeItemOnGet)

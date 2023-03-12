@@ -213,5 +213,18 @@ namespace Assets.Scripts.InputManager
                 listener.OnOpenBook.Invoke();
             }
         }
+
+        public void OnTrinketUseAction(InputAction.CallbackContext callbackContext)
+        {
+            if (!callbackContext.performed)
+            {
+                return;
+            }
+
+            foreach (var listener in curentListeners)
+            {
+                listener.OnTrinketUse.Invoke();
+            }
+        }
     }
 }

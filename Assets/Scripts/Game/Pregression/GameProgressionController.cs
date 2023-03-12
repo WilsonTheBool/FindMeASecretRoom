@@ -26,11 +26,15 @@ namespace Assets.Scripts.Game.Pregression
         public ProgressEvent transitionEnded;
         public ProgressEvent transitionFadeInEnd;
 
+        public ProgressEvent OnRunCompleted;
+        public ProgressEvent OnRunFailed;
+
         public ProgressionAction[] actions;
 
         public LevelData[] levels;
 
         public int actionCount = 0;
+        private int actionsForTransition = 0;
 
         public int leveldataCount = 0;
 
@@ -82,6 +86,8 @@ namespace Assets.Scripts.Game.Pregression
             MainGameLevelMapController = MainGameLevelMapController.Instance;
             MainGameLevelMapController.onVictory.AddListener(LoadNextStep);
 
+            MainGameLevelMapController.onDefeat.AddListener(() => OnRunFailed.Invoke(this));
+
             LoadNextStep();
         }
 
@@ -96,7 +102,8 @@ namespace Assets.Scripts.Game.Pregression
            {
                 return;
            }
-            
+
+            if(GetCurent().needTransition)
            StartTransitionAnimation(GetCurent().GetTransitionName(this));
 
            ActivateNextAction();
@@ -128,9 +135,17 @@ namespace Assets.Scripts.Game.Pregression
 
         private void ActivateNextAction()
         {
-            GetCurent().DoAction(this, MainGameLevelMapController);
+            var action = GetCurent();
+
+            if (action.needTransition)
+            {
+                actionsForTransition++;
+            }
+
             ScreenTransitionController.FadeInEnded.RemoveListener(ActivateNextAction);
             actionCount++;
+
+            action.DoAction(this, MainGameLevelMapController);
         }
 
         private void CancelTransition_Event()
@@ -142,7 +157,7 @@ namespace Assets.Scripts.Game.Pregression
         public void StartTransitionAnimation(string levelName)
         {
             TransitionScreenInput.enabled = true;
-            ScreenTransitionController.StartFadeIn(actionCount, levelName);
+            ScreenTransitionController.StartFadeIn(actionsForTransition, levelName);
         }
 
         public LevelData GetCurentLevel()

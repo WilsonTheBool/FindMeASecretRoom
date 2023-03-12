@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2d450fbd864474684ffc44392ab511, type: 3}
+  m_Name: Challenge_Setup
+  m_EditorClassIdentifier: 
+  needTransition: 0
+  ChallengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
+  SkipTransition: {fileID: 11400000, guid: d64305fea66a7ee44aa9937650ee1796, type: 2}
+  loadTreasureRoom: {fileID: 11400000, guid: 421ba0e5e6872be4a8e0f17f556fb391, type: 2}
+  loadShop: {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}

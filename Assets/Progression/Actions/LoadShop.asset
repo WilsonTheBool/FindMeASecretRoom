@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55b929708838c24ebbedc1466c37e17, type: 3}
   m_Name: LoadShop
   m_EditorClassIdentifier: 
+  needTransition: 1

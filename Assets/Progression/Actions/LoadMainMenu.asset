@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939e7f6f1ed26a042a1d27ce24999c1b, type: 3}
   m_Name: LoadMainMenu
   m_EditorClassIdentifier: 
+  needTransition: 1
   sceneName: MainMenu

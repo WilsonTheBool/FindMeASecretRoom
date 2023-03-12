@@ -72,7 +72,12 @@ namespace Assets.Scripts.Game.UI
 
             }
 
-            Item selected = PlayerItemsController.ActiveItems[PlayerItemsController.selectedActiveItem];
+            Item selected = null;
+
+            if (PlayerItemsController.CurentActiveItems > 0)
+            {
+                selected = PlayerItemsController.ActiveItems[PlayerItemsController.selectedActiveItem];
+            }
 
             if (PlayerItemsController.CurentActiveItems > 0 && selected.isChargeItem)
             {
@@ -103,7 +108,7 @@ namespace Assets.Scripts.Game.UI
                 itemCharge.gameObject.SetActive(false);
             }
 
-            if (PlayerItemsController.CurentActiveItems > 0 && selected.CanUseItem_AtAll())
+            if (PlayerItemsController.CurentActiveItems > 0 && selected != null && selected.CanUseItem_AtAll())
             {
                 items[0].material = active;
             }
@@ -121,7 +126,7 @@ namespace Assets.Scripts.Game.UI
                 swapTip?.gameObject.SetActive(false);
             }
 
-            if (selected.hasAltMode)
+            if (selected != null && selected.hasAltMode)
             {
                 altFireTip?.gameObject.SetActive(true);
             }

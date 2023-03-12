@@ -88,7 +88,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                     map.PlaceRoom(secret, max, max);
                 }
 
-                Debug.Log("Room:" + max + "Distance = " + (costMap.GetValue(max) - 10).ToString());
+                //Debug.Log("Room:" + max + "Distance = " + (costMap.GetValue(max) - 10).ToString());
             }
 
             return true;

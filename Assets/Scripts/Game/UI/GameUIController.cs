@@ -28,9 +28,13 @@ namespace Assets.Scripts.Game.UI
         public GameOverScreenController GameOverScreenController;
         public GameOverScreenController VictoryScreenController;
 
+        public PlayerTrinketUI PlayerTrinketUI;
+
         public static GameUIController Instance { get; private set; }
 
         public Camera Camera;
+
+        public Canvas mainCanvas;
 
         private List<Queue<TransferAnimData>> list;
         private List<float> delayList;
@@ -105,6 +109,11 @@ namespace Assets.Scripts.Game.UI
             if (GameOverScreenController == null)
             {
                 GameOverScreenController = GetComponentInChildren<GameOverScreenController>(true);
+            }
+
+            if(PlayerTrinketUI == null)
+            {
+                PlayerTrinketUI = GetComponentInChildren<PlayerTrinketUI>(true);
             }
 
             list = new List<Queue<TransferAnimData>>();

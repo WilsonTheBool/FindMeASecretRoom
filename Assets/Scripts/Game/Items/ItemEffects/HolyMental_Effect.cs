@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Game.PlayerController;
+using Assets.Scripts.Game.UI;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,8 +9,11 @@ namespace Assets.Scripts.Game.Items.ItemEffects
     {
         bool canUse;
 
+        private Item item;
+
         public override void OnEffectAdd(Item.ItemInternalEventArgs args)
         {
+            item = args.item;
             canUse = true;
 
             args.external.mainGameController.levelStarted.AddListener(OnVictory);
@@ -27,6 +31,8 @@ namespace Assets.Scripts.Game.Items.ItemEffects
         private void OnVictory()
         {
             canUse = true;
+            Debug.Log(item.Name);
+            GameUIController.Instance.PlayerPassiveItemsUIController.SetHighlight(item, true);
         }
 
         private void OnTakeDamage(PlayerHPController.HpEventArgs args)
@@ -42,7 +48,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
                 args.change = -100;
                 canUse = false;
-
+                GameUIController.Instance.PlayerPassiveItemsUIController.SetHighlight(item, false);
                 OnEffectActivated.Invoke();
             }
         }

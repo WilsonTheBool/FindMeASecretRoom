@@ -23,6 +23,25 @@ namespace Assets.Scripts.Game.Items.ItemPools
             }
         }
 
+        public void AddItemToPools(Item item)
+        {
+            foreach (PoolType type in item.pools)
+            {
+                foreach (ItemPool pool in itemPools)
+                {
+                    if (pool.poolType == type && pool.removeItemOnGet)
+                    {
+                        pool.AddItem(item);
+                    }
+                }
+            }
+        }
+
+        public ItemPool GetPool(PoolType poolType)
+        {
+            return itemPools.Find((ItemPool pool)=> pool.poolType == poolType);
+        }
+
         public Item GetItemFromPool(PoolType type)
         {
             ItemPool pool = itemPools.Find((pool) => pool.poolType == type);
@@ -46,7 +65,7 @@ namespace Assets.Scripts.Game.Items.ItemPools
             }
         }
 
-        private void OnItemPooled(Item item)
+        public void OnItemPooled(Item item)
         {
             foreach(PoolType type in item.pools)
             {

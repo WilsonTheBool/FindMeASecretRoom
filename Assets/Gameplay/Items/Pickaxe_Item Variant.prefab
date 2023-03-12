@@ -60,6 +60,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4721414c3f4abeb43a3a5264d87a7251, type: 3}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: hasAltMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: Description
       value: Opens a room, at a cost.
       objectReference: {fileID: 0}
@@ -106,6 +110,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeec942f585c7a8458b46c7ca395722f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  ItemUsed_Alt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8366679681920248884}
+        m_TargetAssemblyTypeName: Assets.Scripts.Game.SoundManagment.PlaySound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   damageOnItemMiss: 1
   smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
   PickAxesSlectTileSprite: {fileID: -2204390187195788853, guid: e2c83623db95a604b9d4065f98ffff03, type: 3}
+  flag_prefab: {fileID: 5509713451784646848, guid: 124c0fecb9697134da346058140a64c6, type: 3}
+--- !u!114 &8366679681920248884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035566709553166876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dd1da092437794dbbbdaba19f3cce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 0cde050a94ae09c47a8a7e166a250957, type: 3}
+  volumeScale: 0.5
+  playOnStart: 0

@@ -10,6 +10,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
         public override void OnEffectAdd(Item.ItemInternalEventArgs args)
         {
+
             args.external.player.itemsController.ChangeMaxActiveCount(slotsToAdd);
         }
 
