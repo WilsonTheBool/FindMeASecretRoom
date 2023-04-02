@@ -193,7 +193,8 @@ namespace Assets.Scripts.Game.GameMap
 
         private void OnPlayerDeath(PlayerHPController.DeathEventArgs args)
         {
-            onLevelOver.Invoke();
+            //onLevelOver.Invoke();
+
             onDefeat.Invoke();
 
             
@@ -240,6 +241,19 @@ namespace Assets.Scripts.Game.GameMap
             onVictory.Invoke();
 
 
+        }
+
+        public class LevelSetUpArgs
+        {
+            public bool isGenerateLevel;
+
+            public LevelMap level;
+
+            public LevelGeneration.LevelGeneratorParams LevelGeneratorParams;
+
+            public bool isSetUpRoomCounter;
+
+            public bool isSetUpRoomUnlocks;
         }
     }
 }

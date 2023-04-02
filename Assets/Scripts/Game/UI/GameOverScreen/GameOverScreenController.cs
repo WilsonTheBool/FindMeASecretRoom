@@ -48,7 +48,7 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
         private int maxlevel;
 
         private bool isSkip = false;
-
+        private bool isHiden = false;
 
         private void Awake()
         {
@@ -64,7 +64,18 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
 
             InputListener.OnActivate.AddListener(Skip);
             InputListener.OnAccept.AddListener(Skip);
-            InputListener.OnEscape.AddListener(Skip);
+            InputListener.OnEscape.AddListener(HideShowWindow);
+        }
+
+        public void HideShowWindow()
+        {
+            isSkip = true;
+            isHiden = !isHiden;
+
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(!isHiden);
+            }
         }
 
         private void Start()

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67449dfc64688044c9c3c9debc0f2058, type: 3}
-  m_Name: Level_5_Params
+  m_Name: Level_Mult_3
   m_EditorClassIdentifier: 
   specailRoomTypes:
   - RoomType: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
-    count: 2
+    count: 1
     cancelGenerationIfNotGenerated: 0
     chanceToGen: 1
   - RoomType: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}
@@ -70,14 +70,18 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.302
+    chanceToGen: 0.815
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 0.323
+  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  LevelGenerator: {fileID: 11400000, guid: dac7fe80fe1e35b429f339f0d70e3339, type: 2}
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
-  maxRoomsCount: 42
-  minDeadEndsCount: 9
-  secretRoomsCount: 8
-  SecretRooms: 0
+  maxRoomsCount: 30
+  minDeadEndsCount: 6
+  secretRoomsCount: 18
   giveUpRandomlyChance: 0.5

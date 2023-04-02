@@ -28,7 +28,7 @@ namespace Assets.Scripts.Game.Gameplay
 
         private float curentDelay = 0;
 
-        public LevelMap level;
+        public MainGameLevelMapController main;
 
         private ExplosionQueue queue = new ExplosionQueue();
 
@@ -71,7 +71,7 @@ namespace Assets.Scripts.Game.Gameplay
 
         public void SetUp(LevelMap levelMap)
         {
-            this.level = levelMap;
+            this.main = MainGameLevelMapController.Instance;
         }
 
         public ExplosionResult Explode_Fake(Explosion explosion)
@@ -90,7 +90,7 @@ namespace Assets.Scripts.Game.Gameplay
 
             foreach (var pos in lockedPos)
             {
-                Room room = level.GetRoom(pos);
+                Room room = main.LevelMap.GetRoom(pos);
 
                 if (room != null)
                 {
@@ -129,7 +129,7 @@ namespace Assets.Scripts.Game.Gameplay
 
             foreach(var pos in lockedPos)
             {
-                Room room = level.GetRoom(pos);
+                Room room = main.LevelMap.GetRoom(pos);
 
                 if(room != null)
                 {
@@ -162,7 +162,7 @@ namespace Assets.Scripts.Game.Gameplay
 
             foreach (var pos in explosionResult.unlockPositions)
             {
-                Room room = level.GetRoom(pos);
+                Room room = main.LevelMap.GetRoom(pos);
 
                 if (room != null)
                 {

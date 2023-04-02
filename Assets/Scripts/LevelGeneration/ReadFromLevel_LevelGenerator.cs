@@ -41,5 +41,10 @@ namespace Assets.Scripts.LevelGeneration
 
             return true;
         }
+
+        public override Vector2Int[] GetStartRooms()
+        {
+            return new Vector2Int[0];
+        }
     }
 }

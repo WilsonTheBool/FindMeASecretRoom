@@ -6,14 +6,13 @@ namespace Assets.Scripts.LevelGeneration
     [CreateAssetMenu(menuName = "LevelGeneration/Generation_Params")]
     public class LevelGeneratorParams : ScriptableObject
     {
-       
-
         public RoomTypeContainer[] specailRoomTypes;
 
         public RoomTypeContainer[] bossRooms;
 
         public RoomTypeContainer[] secretRooms;
-        
+
+        public LevelGenerator LevelGenerator;
 
         public RoomLayoutPicker RoomLayoutPicker;
 

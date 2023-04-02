@@ -38,18 +38,16 @@ namespace Assets.Scripts.LevelGeneration
                 loopCount++;
                 
 
-                if (isLargeMap)
+                if (true)
                 {
                     levelMap = new LevelMap(LargeMapSize.x, LargeMapSize.y);
                     levelMap.StartRoomX = LargeMapStart.x;
                     levelMap.StartRoomY = LargeMapStart.y;
                     levelMap.LevelX = LargeMapSize.x;
                     levelMap.LevelY = LargeMapSize.y;
+                    levelMap.startRooms = levelGenerator.GetStartRooms();
                 }
-                else
-                {
-                    levelMap = new LevelMap();
-                }
+               
 
                 Debug.Log("Generation End");
 

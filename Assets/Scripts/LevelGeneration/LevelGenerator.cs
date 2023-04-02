@@ -2,8 +2,10 @@
 
 namespace Assets.Scripts.LevelGeneration
 {
-    public abstract class LevelGenerator : MonoBehaviour
+    public abstract class LevelGenerator : ScriptableObject
     {
         public abstract bool GenerateLevel(LevelMap levelMap, LevelGeneratorParams data);
+
+        public abstract Vector2Int[] GetStartRooms();
     }
 }

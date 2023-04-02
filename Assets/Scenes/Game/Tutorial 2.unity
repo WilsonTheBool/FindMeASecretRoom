@@ -5972,7 +5972,7 @@ PrefabInstance:
     - target: {fileID: 8377081358441174728, guid: a10de52db1a95fb4aa59d7f906270b7e, type: 3}
       propertyPath: levelGenerator
       value: 
-      objectReference: {fileID: 948716531}
+      objectReference: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
     - target: {fileID: 8377081358441174729, guid: a10de52db1a95fb4aa59d7f906270b7e, type: 3}
       propertyPath: cam
       value: 
@@ -6072,23 +6072,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8377081358817214308, guid: a10de52db1a95fb4aa59d7f906270b7e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a10de52db1a95fb4aa59d7f906270b7e, type: 3}
---- !u!1 &948716530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8377081358817214314, guid: a10de52db1a95fb4aa59d7f906270b7e, type: 3}
-  m_PrefabInstance: {fileID: 948716529}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &948716531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948716530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb841b44286579149b50cc68a0912816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &949999199
 GameObject:
   m_ObjectHideFlags: 0
@@ -14343,6 +14326,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTrinketUse:
+    m_PersistentCalls:
+      m_Calls: []
   mousePosition: {x: 0, y: 0, z: 0}
   worldMousePosition: {x: 0, y: 0, z: 0}
   viewportMousePos: {x: 0, y: 0, z: 0}
@@ -16993,7 +16979,9 @@ MonoBehaviour:
   PlayerPassiveItemsUIController: {fileID: 6281678731085875017}
   GameOverScreenController: {fileID: 0}
   VictoryScreenController: {fileID: 0}
+  PlayerTrinketUI: {fileID: 0}
   Camera: {fileID: 882741174}
+  mainCanvas: {fileID: 0}
   TransferAnimDelay: 0.2
 --- !u!224 &6281678731085875014
 RectTransform:
@@ -17048,6 +17036,8 @@ MonoBehaviour:
   items: []
   prefab: {fileID: 3633882444235988780, guid: 1c88fd3a1e1328e4eb21a91623ed9bb8, type: 3}
   PlayerItemsController: {fileID: 0}
+  highlight: {fileID: 0}
+  defaultMat: {fileID: 0}
 --- !u!114 &6281678731085875018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18911,6 +18901,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnOpenBook:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrinketUse:
     m_PersistentCalls:
       m_Calls: []
   mousePosition: {x: 0, y: 0, z: 0}

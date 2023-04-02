@@ -18,6 +18,7 @@ namespace Assets.Scripts.Game.Pregression.Actions
         {
             LevelGeneratorParams generatorParams = progression.GetNextLevel().generatorParams;
             main.LevelGenerationController.LevelGeneratorParams = generatorParams;
+            main.LevelGenerationController.levelGenerator = generatorParams.LevelGenerator;
             progression.transitionEnded.AddListener(OnTransitionEnd);
             progression.transitionFadeInEnd.AddListener(OnTransitionMiddle);
             

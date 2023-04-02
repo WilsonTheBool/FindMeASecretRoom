@@ -62,6 +62,8 @@ MonoBehaviour:
   GameLevelInputManager: {fileID: 8377081358441174725}
   GameSelectTileController: {fileID: 8377081358441174724}
   GameTilemapController: {fileID: 8377081358441174727}
+  GameMapSizeController: {fileID: 0}
+  StatisticsController: {fileID: 0}
   SetUpComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -69,7 +71,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   progression: {fileID: 0}
-  onGameOver:
+  onLevelOver:
     m_PersistentCalls:
       m_Calls: []
   onVictory:
@@ -95,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6474e1d9d36dcf44c81633467f6516a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGenerator: {fileID: 8377081358817214308}
   LevelGeneratorParams: {fileID: 11400000, guid: b70d0bc5feb376a48ac13130b28a3009, type: 2}
   renderSecretRoomsOnStart: 1
   grid: {fileID: 8377081359989416822}
@@ -124,9 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3018beab9aa8d5342978e2ba60852667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGenerator: {fileID: 8377081358817214308}
+  levelGenerator: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
   LevelGeneratorParams: {fileID: 11400000, guid: b70d0bc5feb376a48ac13130b28a3009, type: 2}
   hideSecretRooms: 0
+  isLargeMap: 0
+  LargeMapSize: {x: 0, y: 0}
+  LargeMapStart: {x: 0, y: 0}
 --- !u!114 &8377081358441174730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +264,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8377081358817214315}
-  - component: {fileID: 8377081358817214308}
   m_Layer: 0
   m_Name: LevelGeneration
   m_TagString: Untagged
@@ -282,20 +285,6 @@ Transform:
   m_Father: {fileID: 8377081358441174734}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8377081358817214308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8377081358817214314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7111893b143f454dac384fdd31717c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  starRoom: {fileID: 11400000, guid: 53687087de53d224ea79141463e65f2f, type: 2}
-  CancelGenerationIfNotEnoughSpecialRoomSpace: 0
 --- !u!1 &8377081359613858884
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508b66d0b029f584183c0e2fed26e839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListenerName: 
   InputManager_SO: {fileID: 11400000, guid: b527b3f252b9794429b63f10275d0b63, type: 2}
   passInputDown: 0
   InputGroup: 100
@@ -360,8 +350,18 @@ MonoBehaviour:
   OnMove:
     m_PersistentCalls:
       m_Calls: []
+  OnEscape:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOpenBook:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrinketUse:
+    m_PersistentCalls:
+      m_Calls: []
   mousePosition: {x: 0, y: 0, z: 0}
   worldMousePosition: {x: 0, y: 0, z: 0}
+  viewportMousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &8377081359989416827
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508b66d0b029f584183c0e2fed26e839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListenerName: 
   InputManager_SO: {fileID: 11400000, guid: b527b3f252b9794429b63f10275d0b63, type: 2}
   passInputDown: 0
   InputGroup: 0
@@ -441,5 +442,15 @@ MonoBehaviour:
   OnMove:
     m_PersistentCalls:
       m_Calls: []
+  OnEscape:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOpenBook:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrinketUse:
+    m_PersistentCalls:
+      m_Calls: []
   mousePosition: {x: 0, y: 0, z: 0}
   worldMousePosition: {x: 0, y: 0, z: 0}
+  viewportMousePos: {x: 0, y: 0, z: 0}

@@ -14,7 +14,10 @@ namespace Assets.Scripts.LevelGeneration
 
         public Room[,] level;
 
+        public Vector2Int[] startRooms;
+
         public List<Room> rooms;
+        public List<Room> curentGenRooms;
 
         public Room GetNeighbour(Room origin, Vector2Int globalPos)
         {
@@ -223,6 +226,7 @@ namespace Assets.Scripts.LevelGeneration
                 room.position = pos;
                 room.parent = parentPos;
                 rooms.Add(room);
+                curentGenRooms.Add(room);
 
                 return true;
             }
@@ -254,12 +258,14 @@ namespace Assets.Scripts.LevelGeneration
         {
             level = new Room[LevelX, LevelY];
             rooms = new List<Room>();
+            curentGenRooms = new List<Room>();
         }
 
         public LevelMap(int levelX, int levelY)
         {
             level = new Room[levelX, levelY];
             rooms = new List<Room>();
+            curentGenRooms = new List<Room>();
         }
     }
 }

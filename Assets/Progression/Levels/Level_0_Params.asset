@@ -39,9 +39,9 @@ MonoBehaviour:
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 1
+  LevelGenerator: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
   maxRoomsCount: 11
   minDeadEndsCount: 5
   secretRoomsCount: 2
-  SecretRooms: 0
   giveUpRandomlyChance: 0.5

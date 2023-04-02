@@ -41,7 +41,7 @@ namespace Assets.Scripts.Game.GameMap
         /// Rooms (Game Objects) rendered in game
         /// </summary>
         private List<Room_GM> rooms = new List<Room_GM>();
-        Room_GM startRoom;
+        
 
         private void Awake()
         {
@@ -58,6 +58,7 @@ namespace Assets.Scripts.Game.GameMap
         private void Start()
         {
             MainGameLevelMapController.Instance.onLevelOver.AddListener(ClearAll);
+            MainGameLevelMapController.Instance.onDefeat.AddListener(RenderNotUnlockedAllSecretRooms);
             InputListener.enabled = false;
         }
 
@@ -80,7 +81,21 @@ namespace Assets.Scripts.Game.GameMap
 
         }
 
-       
+       public void RenderNotUnlockedAllSecretRooms()
+        {
+            if(levelMap == null)
+            {
+                return;
+            }
+
+            foreach(Room room in levelMap.rooms)
+            {
+                if (room.type != null && room.type.isSecretRoom && !roomUnlockController.IsUnlocked(room.position))
+                {
+                    RenderRoom_Unsafe(room);
+                }
+            }
+        }
 
         public void RenderRoom_Unsafe(Room room)
         {
@@ -90,11 +105,6 @@ namespace Assets.Scripts.Game.GameMap
             gm.position = room.position;
             rooms.Add(gm);
 
-            if (startRoom == null)
-            {
-                if (room.type == null)
-                    startRoom = gm;
-            }
 
             if (room.type != null)
             {
@@ -142,12 +152,7 @@ namespace Assets.Scripts.Game.GameMap
                 gm.position = room.position;
                 rooms.Add(gm);
 
-                if (startRoom == null)
-                {
-                    if (room.type == null)
-                        startRoom = gm;
-                }
-
+                
                 if (room.type != null)
                 {
                     gm.SetIcon(room.type.icon);
@@ -165,6 +170,26 @@ namespace Assets.Scripts.Game.GameMap
                 {
                     gm.SetColor_Base(baseRenderColor);
                 }
+            }
+        }
+
+        public void RenderRoom(Room room, bool isStart)
+        {
+            if (!isStart)
+            {
+                RenderRoom(room);
+                return;
+            }
+
+            if (roomUnlockController.IsUnlocked(room))
+            {
+                Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+                Vector2Int pos = new Vector2Int(room.position.x, room.position.y);
+                Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenter(pos), Quaternion.Euler(0, 0, 0));
+                gm.position = room.position;
+                rooms.Add(gm);
+
+                gm.SetColor_Base(StartRoomBaseColor);
             }
         }
 
@@ -199,7 +224,6 @@ namespace Assets.Scripts.Game.GameMap
             {
                 Destroy(room.gameObject);
             }
-            startRoom = null;
             rooms.Clear();
         }
 
@@ -211,6 +235,8 @@ namespace Assets.Scripts.Game.GameMap
 
             LevelData level = GameProgressionController.Instance.GetCurentLevel();
 
+            List<Vector2Int> startRooms = new List<Vector2Int>(level.generatorParams.LevelGenerator.GetStartRooms());
+
             if(level != null)
             {
                 baseRenderColor = level.baseColor;
@@ -219,15 +245,17 @@ namespace Assets.Scripts.Game.GameMap
 
             foreach (Room room in levelMap.rooms)
             {
-                RenderRoom(room);
+
+                if (startRooms.Contains(room.position))
+                {
+                    RenderRoom(room, true);
+                }
+                else
+                {
+                    RenderRoom(room,false);
+                }
 
                 yield return new WaitForSeconds(waitTimeTileGeneration);
-            }
-
-            if (startRoom != null)
-            {
-                startRoom.SetColor_Base(StartRoomBaseColor);
-
             }
                 
 

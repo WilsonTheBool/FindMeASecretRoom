@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67449dfc64688044c9c3c9debc0f2058, type: 3}
-  m_Name: Level_3_Params
+  m_Name: Level_Mult_4
   m_EditorClassIdentifier: 
   specailRoomTypes:
-  - RoomType: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}
+  - RoomType: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 0
     chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
+  - RoomType: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 0
     chanceToGen: 1
@@ -31,41 +31,57 @@ MonoBehaviour:
     chanceToGen: 1
   bossRooms:
   - RoomType: {fileID: 11400000, guid: 7962f0ad40348df42a4f722fe77a6098, type: 2}
-    count: 2
+    count: 1
     cancelGenerationIfNotGenerated: 0
     chanceToGen: 1
   secretRooms:
+  - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.905
+  - RoomType: {fileID: 11400000, guid: 47188dca2b7862c4490183d8a5fe6d4a, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.307
+  - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.286
+  - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.958
+  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.963
+  - RoomType: {fileID: 11400000, guid: 39f1859357c67a244a43dc76ce4e20e5, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
   - RoomType: {fileID: 11400000, guid: 47188dca2b7862c4490183d8a5fe6d4a, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
-    count: 1
-    cancelGenerationIfNotGenerated: 1
-    chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
-    count: 1
-    cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.82
-  - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
-    count: 1
-    cancelGenerationIfNotGenerated: 1
-    chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
-    count: 1
-    cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.508
   - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.818
-  - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
+    chanceToGen: 0.815
+  - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.567
-  LevelGenerator: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
+    chanceToGen: 0.323
+  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  LevelGenerator: {fileID: 11400000, guid: 1f7dbd8b8d0a37042b0e0782fa922777, type: 2}
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
-  maxRoomsCount: 28
-  minDeadEndsCount: 8
-  secretRoomsCount: 5
+  maxRoomsCount: 24
+  minDeadEndsCount: 5
+  secretRoomsCount: 18
   giveUpRandomlyChance: 0.5
