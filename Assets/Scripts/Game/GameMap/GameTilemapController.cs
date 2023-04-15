@@ -20,6 +20,14 @@ namespace Assets.Scripts.Game.GameMap
 
         public Grid grid;
 
+        private List<Vector2Int> markedPos = new List<Vector2Int>();
+
+        private Dictionary<Vector2Int, GameObject> flags = new Dictionary<Vector2Int, GameObject>();
+
+        [SerializeField]
+        private GameObject flag_prefab;
+
+
         private void Awake()
         {
             if(grid == null)
@@ -38,6 +46,7 @@ namespace Assets.Scripts.Game.GameMap
         public void SetMarker(Vector2Int pos)
         {
             checkedMarkerTilemap.SetTile(new Vector3Int(pos.x,pos.y,0), markerTile);
+            markedPos.Add(pos);
         }
 
         public void RemoveMarker(Vector2Int pos)
@@ -53,13 +62,33 @@ namespace Assets.Scripts.Game.GameMap
         public void ClearAll()
         {
             checkedMarkerTilemap.ClearAllTiles();
+            markedPos.Clear();
+            DeleteFlags();
+            flags.Clear();
 
-            while(tilemaps.Count > 0)
+            while (tilemaps.Count > 0)
             {
                 Tilemap tilemap = tilemaps[0];
                 tilemaps.RemoveAt(0);
                 Destroy(tilemap.gameObject);
             }
+        }
+
+        private void DeleteFlags()
+        {
+            foreach (GameObject value in flags.Values)
+            {
+                Destroy(value);
+            }
+
+            flags.Clear();
+        }
+
+        public void ClearMarkers()
+        {
+            checkedMarkerTilemap.ClearAllTiles();
+            markedPos.Clear();
+            DeleteFlags();
         }
 
         public Tilemap AddTilemap(Tilemap prefab, string name)
@@ -94,6 +123,65 @@ namespace Assets.Scripts.Game.GameMap
         public Tilemap GetTilemap(string name)
         {
             return tilemaps.Find(x => x.name == name);
+        }
+
+        public void AddFlag(Vector2Int tilePos)
+        {
+            var flag = Instantiate(flag_prefab, mainGameLevelMapController.grid.GetCellCenter(tilePos), Quaternion.Euler(0, 0, 0), this.transform);
+
+            flags.Add(tilePos, flag);
+        }
+
+        public bool CanPlaceFlag(Vector2Int tilePos)
+        {
+            return !flags.ContainsKey(tilePos) && mainGameLevelMapController.LevelMap.IsInRange(tilePos);
+        }
+
+        public void RemoveFlag(Vector2Int tilePos)
+        {
+            if (flags.TryGetValue(tilePos, out GameObject flag))
+            {
+                Destroy(flag);
+                flags.Remove(tilePos);
+            }
+        }
+
+        public void Save(ref SaveData saveData)
+        {
+
+            saveData.markedPos = new List<Vector2Int>(this.markedPos);
+
+            saveData.flags = new List<Vector2Int>(flags.Keys);
+        }
+
+        public bool Load(ref SaveData data)
+        {
+            if (data == null || data.markedPos == null)
+            {
+                return false;
+            }
+
+            ClearMarkers();
+
+
+            foreach(Vector2Int pos in data.markedPos)
+            {
+                SetMarker(pos);
+            }
+
+            foreach (Vector2Int pos in data.flags)
+            {
+                AddFlag(pos);
+            }
+
+            return true;
+        }
+
+        public class SaveData
+        {
+            public List<Vector2Int> markedPos;
+
+            public List<Vector2Int> flags;
         }
     }
 }

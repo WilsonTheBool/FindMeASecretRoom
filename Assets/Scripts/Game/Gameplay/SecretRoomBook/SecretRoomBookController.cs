@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.InputManager;
+﻿using Assets.Scripts.Game.Pause;
+using Assets.Scripts.InputManager;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,8 +50,9 @@ namespace Assets.Scripts.Game.Gameplay.SecretRoomBook
             Book.OnChapterSelect.AddListener(OpenBook);
             Book.OnBookClose.AddListener(CloseBook);
 
-            
-            
+            BookOpen.AddListener(GamePauseController.Pause);
+            BookClose.AddListener(GamePauseController.Resume);
+
         }
 
         public virtual bool HasNextPage()

@@ -49,6 +49,7 @@ namespace Assets.Scripts.Game.Gameplay
                 GameMapRoomUnlockController = MainGameLevelMapController.Instance.GameMapRoomUnlockController;
             }
 
+            this.main = MainGameLevelMapController.Instance;
         }
 
         private void Update()
@@ -67,11 +68,6 @@ namespace Assets.Scripts.Game.Gameplay
                     curentDelay = delaySec;
                 }
             }
-        }
-
-        public void SetUp(LevelMap levelMap)
-        {
-            this.main = MainGameLevelMapController.Instance;
         }
 
         public ExplosionResult Explode_Fake(Explosion explosion)

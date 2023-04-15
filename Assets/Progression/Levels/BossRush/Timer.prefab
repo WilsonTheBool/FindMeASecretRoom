@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3316263398556109513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3316263398556109515}
+  - component: {fileID: 3316263398556109514}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3316263398556109515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316263398556109513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 685.1183, y: 383.36993, z: -161.96675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3316263398556109514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316263398556109513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c7a969ebb1ac440a5b36497b28259c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText_prefab: {fileID: 1613048354226952504, guid: bbc2f145311c0db4e9bdf370293818bb, type: 3}
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTimerEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  targetTime: 0
+  curentTime: 0
+  isDecending: 1
+  NormalColor: {r: 1, g: 1, b: 1, a: 1}
+  DangerColor: {r: 0.9433962, g: 0.24474904, b: 0.24474904, a: 1}
+  DangerValue: 5
+  resetOnAction: 1

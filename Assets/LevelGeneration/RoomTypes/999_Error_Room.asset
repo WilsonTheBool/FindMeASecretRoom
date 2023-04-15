@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3fe0965fab294bb300bd9010aaef5, type: 3}
+  m_Name: 999_Error_Room
+  m_EditorClassIdentifier: 
+  id: 999
+  typeName: Error Room
+  icon: {fileID: 21300000, guid: 7ed8b0ebce3aae74c8e4b2389d439987, type: 3}
+  HasSpecialFigure: 0
+  isSecretRoom: 1
+  rule: {fileID: 11400000, guid: a5ba3e8fb7b714d4d8e9afdac7cb754a, type: 2}
+  overridesColor: 1
+  colorOfBase: {r: 0.6603774, g: 0.6225303, b: 0.5762727, a: 1}
+  customRenderObject: 1
+  renderObject: {fileID: 9220639824251725048, guid: 9a5c428316d6d0b4c98af0e63a85d4ce, type: 3}

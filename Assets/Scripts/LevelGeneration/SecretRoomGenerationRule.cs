@@ -86,6 +86,8 @@ namespace Assets.Scripts.LevelGeneration
 
             List<KeyValuePair<Vector2Int, float>> list;
 
+            float minValueToGet = 0; 
+
             public int ListCount
             {
                 get { return list.Count; }
@@ -144,7 +146,7 @@ namespace Assets.Scripts.LevelGeneration
 
             public bool CanGetMax()
             {
-                if (list == null || list.Count == 0 || list[0].Value < 0)
+                if (list == null || list.Count == 0 || list[0].Value < minValueToGet)
                 {
                     return false;
                 }
@@ -160,6 +162,33 @@ namespace Assets.Scripts.LevelGeneration
                 list.RemoveAt(0);
 
                 return key;
+            }
+
+            public Vector2Int[] GetAllMax()
+            {
+                List<Vector2Int> positions = new List<Vector2Int>();
+
+                int lastMaxIndex = 1;
+                float maxValue = list[0].Value;
+
+                for (int i = 1; i < list.Count; i++)
+                {
+                    if (list[i].Value < maxValue)
+                    {
+                        lastMaxIndex = i;
+
+                        break;
+                    }
+                }
+
+                for(int i = 0; i < lastMaxIndex; i++)
+                {
+                    positions.Add(list[i].Key);
+                }
+
+                list.RemoveRange(0, lastMaxIndex);
+
+                return positions.ToArray();
             }
 
             public Vector2Int GetMaxKey_Randomized()
@@ -188,6 +217,13 @@ namespace Assets.Scripts.LevelGeneration
             public RuleCostMap()
             {
                 secretRoomMap = new Dictionary<Vector2Int, float>();
+            }
+
+            public RuleCostMap(float minValue)
+            {
+                secretRoomMap = new Dictionary<Vector2Int, float>();
+
+                minValueToGet = minValue;
             }
 
             public  string GetTileText(Vector2Int tile)

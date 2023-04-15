@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3fe0965fab294bb300bd9010aaef5, type: 3}
+  m_Name: 18_Blocked_RoomType
+  m_EditorClassIdentifier: 
+  id: 18
+  typeName: Baricaded Room
+  icon: {fileID: -713083417727401017, guid: 388e8cca6b736124c95b888e0a734173, type: 3}
+  HasSpecialFigure: 0
+  isSecretRoom: 1
+  rule: {fileID: 11400000, guid: 8bbd0274200053c4bb61dfd404008831, type: 2}
+  overridesColor: 1
+  colorOfBase: {r: 0.2735849, g: 0.2166858, b: 0.14840691, a: 1}

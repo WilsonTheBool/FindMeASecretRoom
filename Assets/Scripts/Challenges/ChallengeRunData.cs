@@ -14,6 +14,8 @@ namespace Assets.Scripts.Challenges
         [TextArea(7,14)]
         public string description;
 
+        public CompainLevelsData_SO Compain;
+
         public bool HideTreasureRooms;
         public bool HideShops;
 

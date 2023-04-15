@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Game.Gameplay;
 using Assets.Scripts.Game.PlayerController;
 using Assets.Scripts.Game.Pregression;
+using Assets.Scripts.Game.VictoryController;
 using Assets.Scripts.InputManager;
 using Assets.Scripts.LevelGeneration;
 using System.Collections;
@@ -125,7 +126,6 @@ namespace Assets.Scripts.Game.GameMap
             GameLevelInputManager.Listener.OnTrinketUse.AddListener(UseTrinket);
             GameLevelInputManager.Listener.OnAlternativeAction.AddListener(UseCurentItem_Alt);
 
-            GameRoomCounter.onVictory.AddListener(OnVictory);
         }
 
         public void SetUpLevel()
@@ -140,10 +140,29 @@ namespace Assets.Scripts.Game.GameMap
 
             GameRoomCounter.SetUp(LevelMap);
 
-            ExplosionController.SetUp(LevelMap);
-
             isSetUpComplete = true;
             SetUpComplete.Invoke();
+
+            cam.transform.position = grid.GetCellCenter(GameMapSizeController.curentMapSize / 2) + new Vector3(0, 0, -10);
+        }
+
+        public void SetUpLevel(LevelMap level, bool invokeCompleteEveents)
+        {
+            GameTilemapController.beckgroundTilemap.gameObject.SetActive(true);
+
+            GameSelectTileController.selectTile.SetActive(true);
+
+            LevelMap = level;
+
+            GameMapRoomUnlockController.SetUp(LevelMap);
+
+            GameRoomCounter.SetUp(LevelMap);
+
+            if (invokeCompleteEveents)
+            {
+                isSetUpComplete = true;
+                SetUpComplete.Invoke();
+            }
 
             cam.transform.position = grid.GetCellCenter(GameMapSizeController.curentMapSize / 2) + new Vector3(0, 0, -10);
         }
@@ -187,6 +206,8 @@ namespace Assets.Scripts.Game.GameMap
             progression = GameProgressionController.Instance;
 
             Player.playerHPController.afterDeath.AddListener(OnPlayerDeath);
+
+            GameVictoryController.OnVictory.AddListener(OnVictory);
 
             //SetUpLevel();
         }

@@ -23,7 +23,7 @@ namespace Assets.Scripts.LevelGeneration
         {
             Room room = GetRoom(globalPos);
 
-            if(room == origin)
+            if (room == origin)
             {
                 return null;
             }
@@ -84,18 +84,18 @@ namespace Assets.Scripts.LevelGeneration
 
         public bool CanFitRoom(Room room, Vector2Int pos)
         {
-            if(room == null || room.Figure == null)
+            if (room == null || room.Figure == null)
             {
                 return false;
             }
 
-            foreach(Vector2Int tile in room.Figure.RoomTiles)
+            foreach (Vector2Int tile in room.Figure.RoomTiles)
             {
                 Vector2Int p = pos + tile;
 
                 if (IsInRange(p))
                 {
-                    if(GetRoom_Unsafe(p) != null)
+                    if (GetRoom_Unsafe(p) != null)
                     {
                         return false;
                     }
@@ -109,13 +109,13 @@ namespace Assets.Scripts.LevelGeneration
             //Check if connected to blocked exits
             if (room.Figure.isLarge)
             {
-                foreach(Vector2Int exit in room.Figure.RoomExits)
+                foreach (Vector2Int exit in room.Figure.RoomExits)
                 {
                     Vector2Int p = pos + exit;
                     Room neighbour = GetRoom(p);
                     if (neighbour != null)
                     {
-                        foreach(Vector2Int blocked in neighbour.Figure.BlockedExits)
+                        foreach (Vector2Int blocked in neighbour.Figure.BlockedExits)
                         {
                             if (room.Figure.IsRoomContainsPos(blocked + exit))
                             {
@@ -145,7 +145,7 @@ namespace Assets.Scripts.LevelGeneration
             return true;
         }
 
-        
+
 
         //public bool IsTileFreeToPlaceRoom(Room_Figure figure, Vector2Int pos)
         //{
@@ -170,7 +170,7 @@ namespace Assets.Scripts.LevelGeneration
 
             Vector2Int neighbourPos;
 
-            neighbourPos = globalPos + new Vector2Int(1,0);
+            neighbourPos = globalPos + new Vector2Int(1, 0);
             if (IsInRange(neighbourPos))
             {
                 if (GetNeighbour(room, neighbourPos) != null)
@@ -218,8 +218,8 @@ namespace Assets.Scripts.LevelGeneration
                 {
                     Vector2Int v = pos + tile;
 
-                     level[v.x, v.y] = room;
-                    
+                    level[v.x, v.y] = room;
+
                 }
 
 
@@ -252,6 +252,51 @@ namespace Assets.Scripts.LevelGeneration
         public bool IsInRange(Vector2Int pos)
         {
             return LevelMath.IsInRange(pos, LevelX, LevelY);
+        }
+
+        public bool TryMoveRoom(Room room, Vector2Int newPos)
+        {
+
+            if (room == null)
+            {
+                return false;
+            }
+
+            if (!IsInRange(newPos))
+            {
+                return false;
+            }
+
+            //check if canMove
+            if (!CanFitRoom(room, newPos))
+            {
+                return false;
+            }
+
+            //clear old
+            foreach (Vector2Int roomInsides in room.Figure.RoomTiles)
+            {
+                Vector2Int pos = roomInsides + room.position;
+
+                if (IsInRange(pos))
+                {
+                    if (level[pos.x, pos.y] == room)
+                        level[pos.x, pos.y] = null;
+                }
+            }
+
+            //Set New
+            foreach (Vector2Int tile in room.Figure.RoomTiles)
+            {
+                Vector2Int v = newPos + tile;
+
+                level[v.x, v.y] = room;
+            }
+
+
+            room.position = newPos;
+
+            return true;
         }
 
         public LevelMap()

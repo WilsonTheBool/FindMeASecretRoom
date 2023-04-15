@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.LevelGeneration;
+﻿using Assets.Scripts.Game.Gameplay.BossRush;
+using Assets.Scripts.LevelGeneration;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,5 +15,11 @@ namespace Assets.Scripts.Game.Pregression
         public LevelGeneratorParams generatorParams;
 
         public Color baseColor;
+
+        public bool hasTimer;
+
+        public int timerLength;
+
+        public BossRush_Timer timer_prefab;
     }
 }

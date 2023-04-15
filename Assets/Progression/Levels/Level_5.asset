@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   levelName: Caves III
-  generatorParams: {fileID: 11400000, guid: 077795772e341d84e865898a3fc66a88, type: 2}
+  generatorParams: {fileID: 11400000, guid: c9d3c7896472af44fb1eae957eb7bec6, type: 2}
   baseColor: {r: 0.5019608, g: 0.40392157, b: 0.2901961, a: 1}

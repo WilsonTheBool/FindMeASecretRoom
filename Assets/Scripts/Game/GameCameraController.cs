@@ -23,7 +23,7 @@ namespace Assets.Scripts.Game
             Vector2 scroll = Input.mouseScrollDelta;
             if (scroll.y != 0)
             {
-                Camera.orthographicSize -= cameraZoomSpeed * scroll.y * Time.deltaTime;
+                Camera.orthographicSize -= cameraZoomSpeed * scroll.y * Time.fixedDeltaTime;
 
                 Camera.orthographicSize = Mathf.Clamp(Camera.orthographicSize, minCameraZoomValue, maxCameraZoomValue);
             }

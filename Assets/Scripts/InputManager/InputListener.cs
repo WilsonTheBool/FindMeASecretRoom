@@ -24,9 +24,6 @@ namespace Assets.Scripts.InputManager
 
         public UnityEvent OnAlternativeAction;
 
-        public UnityEvent OnMoveStart;
-        public UnityEvent OnMove;
-
         public UnityEvent OnEscape;
 
         public UnityEvent OnOpenBook;

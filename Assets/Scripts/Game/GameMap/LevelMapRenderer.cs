@@ -37,6 +37,8 @@ namespace Assets.Scripts.Game.GameMap
         public UnityEvent onRenderEnded;
         public UnityEvent onRenderStarted;
 
+        public UnityEvent<Room_GM> onRoomRender;
+
         /// <summary>
         /// Rooms (Game Objects) rendered in game
         /// </summary>
@@ -99,9 +101,20 @@ namespace Assets.Scripts.Game.GameMap
 
         public void RenderRoom_Unsafe(Room room)
         {
-            Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+            
+            Room_GM roomPrefab;
+            if (room.type != null && room.type.customRenderObject)
+            {
+                roomPrefab = room.type.renderObject;
+            }
+            else
+            {
+                roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+            }
+
             Vector2Int pos = new Vector2Int(room.position.x, room.position.y);
             Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenter(pos), Quaternion.Euler(0, 0, 0));
+
             gm.position = room.position;
             rooms.Add(gm);
 
@@ -119,13 +132,23 @@ namespace Assets.Scripts.Game.GameMap
                     gm.SetColor_Base(baseRenderColor);
                 }
             }
+
+            onRoomRender.Invoke(gm);
         }
 
         public void RenderRoom(Room room)
         {
             if (renderSecretRoomsOnStart && room.type != null && room.type.isSecretRoom)
             {
-                Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+                Room_GM roomPrefab;
+                if (room.type != null && room.type.customRenderObject)
+                {
+                    roomPrefab = room.type.renderObject;
+                }
+                else
+                {
+                    roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+                }
                 Vector2Int pos = new Vector2Int(room.position.x, room.position.y);
                 Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenter(pos), Quaternion.Euler(0, 0, 0));
                 gm.position = room.position;
@@ -142,11 +165,20 @@ namespace Assets.Scripts.Game.GameMap
                     gm.SetColor_Base(baseRenderColor);
                 }
 
+                onRoomRender.Invoke(gm);
             }
 
             if (roomUnlockController.IsUnlocked(room))
             {
-                Room_GM roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+                Room_GM roomPrefab;
+                if (room.type != null && room.type.customRenderObject)
+                {
+                    roomPrefab = room.type.renderObject;
+                }
+                else
+                {
+                    roomPrefab = LevelGeneratorParams.RoomLayoutPicker.GetRoomObjectFromLayout(room.Figure, room.type);
+                }
                 Vector2Int pos = new Vector2Int(room.position.x, room.position.y);
                 Room_GM gm = Instantiate(roomPrefab, grid.GetCellCenter(pos), Quaternion.Euler(0, 0, 0));
                 gm.position = room.position;
@@ -170,6 +202,8 @@ namespace Assets.Scripts.Game.GameMap
                 {
                     gm.SetColor_Base(baseRenderColor);
                 }
+
+                onRoomRender.Invoke(gm);
             }
         }
 
@@ -190,7 +224,11 @@ namespace Assets.Scripts.Game.GameMap
                 rooms.Add(gm);
 
                 gm.SetColor_Base(StartRoomBaseColor);
+
+                onRoomRender.Invoke(gm);
             }
+
+            
         }
 
         public GameObject CreateObject(GameObject prefab, Vector2Int pos)
@@ -225,6 +263,41 @@ namespace Assets.Scripts.Game.GameMap
                 Destroy(room.gameObject);
             }
             rooms.Clear();
+        }
+
+        public void RenderAll(LevelMap map)
+        {
+            ClearAll();
+
+            onRenderStarted.Invoke();
+
+            LevelData level = GameProgressionController.Instance.GetCurentLevel();
+
+            List<Vector2Int> startRooms = new List<Vector2Int>(level.generatorParams.LevelGenerator.GetStartRooms());
+
+            if (level != null)
+            {
+                baseRenderColor = level.baseColor;
+            }
+
+
+            foreach (Room room in map.rooms)
+            {
+
+                if (startRooms.Contains(room.position))
+                {
+                    RenderRoom(room, true);
+                }
+                else
+                {
+                    RenderRoom(room, false);
+                }
+            }
+
+
+            onRenderEnded.Invoke();
+
+            InputListener.enabled = false;
         }
 
         IEnumerator RenderCo()

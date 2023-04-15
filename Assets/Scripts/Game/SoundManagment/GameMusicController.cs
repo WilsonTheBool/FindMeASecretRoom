@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Assets.Scripts.SaveLoad;
+using Assets.Scripts.Game.Pause;
 
 namespace Assets.Scripts.Game.SoundManagment
 {
@@ -44,6 +45,20 @@ namespace Assets.Scripts.Game.SoundManagment
             {
                 audioSource.Play();
             }
+
+            GamePauseController.onPauseToggle.AddListener(OnPauseToggle);
+        }
+
+        public void OnPauseToggle(bool isPaused)
+        {
+            //if (isPaused)
+            //{
+            //    audioSource.Pause();
+            //}
+            //else
+            //{
+            //    audioSource.UnPause();
+            //}
         }
 
         public void SetMusic(AudioClip song)

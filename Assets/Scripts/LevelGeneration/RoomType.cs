@@ -19,5 +19,9 @@ namespace Assets.Scripts.LevelGeneration
         public bool overridesColor;
 
         public Color colorOfBase;
+
+        public bool customRenderObject;
+
+        public Room_GM renderObject;
     }
 }

@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "3c47f3cc-1518-40b6-a33c-e39941299976",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "InvertVector2",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -38,16 +38,7 @@
                     "id": "339e1e1c-896b-4f61-bc3d-14e9d16ad389",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Move",
-                    "type": "Button",
-                    "id": "78b41c57-b2cb-4df1-a6c1-4bff4a022f81",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 },
                 {
@@ -76,16 +67,34 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StartMove",
+                    "type": "Button",
+                    "id": "c52f7175-7264-48d7-bb20-928e5ccf5c66",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=9999)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraStart",
+                    "type": "Button",
+                    "id": "1976c530-0e89-498d-b45e-11c13e8fa0cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.12)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "Keyboard&Mouse",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -191,17 +200,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a2ab4226-6f25-4db7-9486-8a4305e2b2ef",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "86e1e069-62da-4218-b792-d6bebbb3b5a8",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -230,6 +228,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "TrinketUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "568086b6-1273-47d7-93f3-22ddae2dbcfc",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "StartMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3a2a6fc-20a7-408f-839c-48b2d2373a31",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "CameraStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

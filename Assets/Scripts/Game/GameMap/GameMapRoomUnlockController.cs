@@ -111,6 +111,16 @@ namespace Assets.Scripts.Game.GameMap
             return result.ToArray();
         }
 
+        public void LockPosition_Unsafe(Vector2Int pos)
+        {
+            isUnlockedMap[pos.x, pos.y] = false;
+        }
+
+        public void UnlockPosition_Unsafe(Vector2Int pos)
+        {
+            isUnlockedMap[pos.x, pos.y] = true;
+        }
+
         public bool CanCheckToUnlock(Vector2Int position)
         {
             if (!IsInMapRange(position))
@@ -142,10 +152,57 @@ namespace Assets.Scripts.Game.GameMap
                 return true;
             }
 
+            neighbour = position + new Vector2Int(1, 1);
+            if (IsUnlocked(neighbour))
+            {
+                return true;
+            }
+
+            neighbour = position + new Vector2Int(1, -1);
+            if (IsUnlocked(neighbour))
+            {
+                return true;
+            }
+
+            neighbour = position + new Vector2Int(-1, 1);
+            if (IsUnlocked(neighbour))
+            {
+                return true;
+            }
+
+            neighbour = position + new Vector2Int(-1, -1);
+            if (IsUnlocked(neighbour))
+            {
+                return true;
+            }
+
 
             return false;
         }
-    }
+
+        public void Save(ref SaveData saveData)
+        {
+        
+            saveData.isUnlockedMap = this.isUnlockedMap;
+        }
+
+        public bool Load(ref SaveData data)
+        {
+            if(data == null || data.isUnlockedMap == null)
+            {
+                return false;
+            }
+
+            this.isUnlockedMap = data.isUnlockedMap;
+
+            return true;
+        }
+
+        public class SaveData
+        {
+            public bool[,] isUnlockedMap;
+        }
+    }  
 
     [System.Serializable]
     public class RoomUnlockEvent: UnityEvent<Room>

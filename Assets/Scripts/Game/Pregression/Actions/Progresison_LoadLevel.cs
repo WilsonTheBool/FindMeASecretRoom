@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Game.GameMap;
+using Assets.Scripts.Game.Gameplay.BossRush;
 using Assets.Scripts.LevelGeneration;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,24 @@ namespace Assets.Scripts.Game.Pregression.Actions
 
         public override void DoAction(GameProgressionController progression, MainGameLevelMapController main)
         {
-            LevelGeneratorParams generatorParams = progression.GetNextLevel().generatorParams;
+            LevelData levelData = progression.GetNextLevel();
+            LevelGeneratorParams generatorParams = levelData.generatorParams;
             main.LevelGenerationController.LevelGeneratorParams = generatorParams;
             main.LevelGenerationController.levelGenerator = generatorParams.LevelGenerator;
             progression.transitionEnded.AddListener(OnTransitionEnd);
             progression.transitionFadeInEnd.AddListener(OnTransitionMiddle);
+
+            if (levelData.hasTimer)
+            {
+                if(levelData.timer_prefab != null)
+                {
+                    Instantiate<BossRush_Timer>(levelData.timer_prefab).SetUp(levelData.timerLength);
+                }
+                else
+                {
+                    Debug.LogError("Timer is null in levelData");
+                }
+            }
             
         }
 

@@ -41,6 +41,11 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
                 return false;
             }
 
+            if (args.external.mainGameController.GameTilemapController.IsMarked(args.external.tilePos))
+            {
+                return false;
+            }
+
             return args.external.mainGameController.GameMapRoomUnlockController.CanCheckToUnlock(args.external.tilePos);
         }
 
@@ -72,15 +77,11 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
             if (arg2 != null && arg2.secretRoomsUnlocked <= 0)
             {
                 playerHPController.RequestTakeDamage(new PlayerHPController.HpEventArgs(damageOnItemMiss, this.gameObject));
+            }
 
-                foreach(Vector2Int pos in arg2.areaHit)
-                {
-                    if (flags.TryGetValue(pos, out GameObject flag))
-                    {
-                        Destroy(flag);
-                        flags.Remove(pos);
-                    }
-                }
+            foreach (Vector2Int pos in arg2.areaHit)
+            {
+                main.GameTilemapController.RemoveFlag(pos);
             }
 
         }
@@ -93,19 +94,13 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
 
         public override void OnAlternativeUse(Item.ItemInternalEventArgs args)
         {
-            if (!flags.ContainsKey(args.external.tilePos) && main.LevelMap.IsInRange(args.external.tilePos))
+            if (main.GameTilemapController.CanPlaceFlag(args.external.tilePos))
             {
-                var flag = Instantiate(flag_prefab, main.grid.GetCellCenter(args.external.tilePos), Quaternion.Euler(0, 0, 0), this.transform);
-
-                flags.Add(args.external.tilePos, flag);
+                main.GameTilemapController.AddFlag(args.external.tilePos);
             }
             else
             {
-                if (flags.TryGetValue(args.external.tilePos, out GameObject flag))
-                {
-                    Destroy(flag);
-                    flags.Remove(args.external.tilePos);
-                }
+                main.GameTilemapController.RemoveFlag(args.external.tilePos);
             }
 
             ItemUsed_Alt.Invoke();
@@ -113,12 +108,7 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
 
         private void OnLevelOver()
         {
-            foreach(GameObject value in flags.Values)
-            {
-                Destroy(value);
-            }
 
-            flags.Clear();
         }
 
         private void OnUnlocked(Room room)

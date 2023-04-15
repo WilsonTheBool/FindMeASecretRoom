@@ -150,7 +150,19 @@ namespace Assets.Scripts.Game.GameMap
             }
         }
 
-        
+        public RoomCounter GetRoomCounter(RoomType type)
+        {
+            if (type != null)
+            {
+                return roomCounters.Find(r => r.type == type);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
 
         [System.Serializable]
         public class RoomCounter
@@ -160,6 +172,40 @@ namespace Assets.Scripts.Game.GameMap
             public int maxCount;
 
             public int unlockedCount;
+        }
+
+
+        public void Save(ref SaveData saveData)
+        {
+            if(saveData == null)
+            {
+                saveData = new SaveData();
+            }
+
+            saveData.roomCounters = new List<RoomCounter>(this.roomCounters);
+
+            //print("Save Counters Count: " + roomCounters.Count.ToString());
+        }
+
+        public bool Load(ref SaveData data)
+        {
+            if (data == null || data.roomCounters == null)
+            {
+                return false;
+            }
+
+            this.roomCounters = data.roomCounters;
+
+            //print("Load Counters Count: " + roomCounters.Count.ToString());
+
+            //onCounterChanged.Invoke();
+
+            return true;
+        }
+
+        public class SaveData
+        {
+            public List<RoomCounter> roomCounters;
         }
     }
 }

@@ -21,11 +21,15 @@ namespace Assets.Scripts.Game.GameMap
 
         private Sprite curentSprite;
 
+        private Predicate<Vector2Int> CurentCheckFunc;
+
         private void Awake()
         {
             spriteRenderer = selectTile.GetComponentInChildren<SpriteRenderer>();
 
             InputListener.TilePositionChanged.AddListener(UpdateSelectTile);
+
+            CurentCheckFunc = Default_Check;
         }
 
         //private void Start()
@@ -33,6 +37,10 @@ namespace Assets.Scripts.Game.GameMap
         //    UpdateSelectTile();
         //}
 
+        private bool Default_Check(Vector2Int pos)
+        {
+            return GameMapRoomUnlockController.CanCheckToUnlock(pos);
+        }
        
         public void SetTileSprite(Sprite sprite)
         {
@@ -51,10 +59,18 @@ namespace Assets.Scripts.Game.GameMap
             
         }
 
+        public void SetPredicate_CanChectTile(Predicate<Vector2Int> predicate)
+        {
+            CurentCheckFunc = predicate;
+        }
+
+        public void SetPredicate_Default()
+        {
+            CurentCheckFunc = Default_Check;
+        }
+
         public void ReturnToDefaultSprite()
         {
-           
-
             if (spriteRenderer.sprite != cantCheckSprite)
             {
                 curentSprite = normalSprite;
@@ -68,8 +84,6 @@ namespace Assets.Scripts.Game.GameMap
 
         public void SetEmptySprite()
         {
-            
-
             if (spriteRenderer.sprite != cantCheckSprite)
             {
                 curentSprite = EmptySprite;
@@ -79,6 +93,8 @@ namespace Assets.Scripts.Game.GameMap
             {
                 curentSprite = EmptySprite;
             }
+
+            UpdateSelectTile();
         }
 
         private void UpdateSelectTile()
@@ -95,13 +111,13 @@ namespace Assets.Scripts.Game.GameMap
                 return;
             }
 
-            if (GameMapRoomUnlockController.CanCheckToUnlock(InputListener.CurentTileMousePosition))
+            if (CurentCheckFunc(InputListener.CurentTileMousePosition))
             {
                 spriteRenderer.sprite = curentSprite;
             }
             else
             {
-                spriteRenderer.sprite = cantCheckSprite;
+                    spriteRenderer.sprite = cantCheckSprite;
             }
         }
     }

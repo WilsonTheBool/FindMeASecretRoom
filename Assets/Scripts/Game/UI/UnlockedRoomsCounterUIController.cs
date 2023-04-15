@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Game.GameMap;
+using Assets.Scripts.LevelGeneration;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,7 +47,7 @@ namespace Assets.Scripts.Game.UI
             }
         }
 
-        private void SetUp()
+        public void SetUp()
         {
             DeleteAll();
 
@@ -59,6 +60,19 @@ namespace Assets.Scripts.Game.UI
                 el.SetUp(count);
 
                 roomCounterUIs.Add(el);
+            }
+        }
+
+        public void TrySwapCounterObject(RoomType roomType, RoomCounterUIElement newCounter_prefab)
+        {
+            RoomCounterUIElement el = roomCounterUIs.Find(r => r.type == roomType);
+
+            if (el != null)
+            {
+                roomCounterUIs.Remove(el);
+                RoomCounterUIElement newEl = Instantiate(newCounter_prefab, this.transform);
+                newEl.SetUp(counter.GetRoomCounter(roomType));
+                roomCounterUIs.Add(newEl);
             }
         }
 

@@ -11,9 +11,9 @@ namespace Assets.Scripts
 
         public float speed;
 
-        Camera cam;
+        //public float maxVelosity;
 
-        public Vector3 mousePrev;
+        Camera cam;
 
         CameraBoundsController cameraBoundsController;
 
@@ -21,46 +21,39 @@ namespace Assets.Scripts
         {
             cameraBoundsController = GetComponent<CameraBoundsController>();
             cam = GetComponent<Camera>();
-            input.OnMove.AddListener(OnMove);
-            input.OnMoveStart.AddListener(OnMoveStart);
         }
 
         private void LateUpdate()
         {
-        //    if (Input.GetMouseButtonDown(1))
-        //    {
-        //        OnMoveStart();
-        //    }
-
-        //    if (Input.GetMouseButton(1))
-        //    {
-        //        OnMove();
-        //    }
-
-            OnMove();
+            //OnMove();
         }
 
-        private void OnMoveStart()
+        //private void OnMove()
+        //{
+        //    float vertical = Input.GetAxisRaw("Vertical");
+        //    float horizontal = Input.GetAxisRaw("Horizontal");
+
+        //    Vector3 tr = new Vector3(horizontal, vertical, 0);
+        //    tr.Normalize();
+        //    tr *= speed * Time.deltaTime;
+
+        //    cam.transform.position = cameraBoundsController.GetCamPosition(cam.transform.position + tr);
+        //}
+
+        public bool useCamSize;
+
+        public void Move(Vector3 tr)
         {
-            mousePrev = input.viewportMousePos;
-            print(mousePrev);
-        }
-        private void OnMove()
-        {
-            //Vector3 vec = (input.viewportMousePos - mousePrev);
+            if(useCamSize)
+            tr *= speed * (cam.orthographicSize/10) * Time.fixedDeltaTime;
+            else
+            tr *= speed * Time.fixedDeltaTime;
+            //if(tr.magnitude > maxVelosity)
+            //{
+            //    tr = tr.normalized * maxVelosity;
+            //}
 
-            //vec.z = 0;
-            //Vector3 tr = -speed * Time.deltaTime * vec;
-            //cam.transform.Translate(tr);
-            //cam.transform.position = cameraBoundsController.GetCamPosition(cam.transform.position);
-            //mousePrev = input.viewportMousePos;
-
-            float vertical = Input.GetAxisRaw("Vertical");
-            float horizontal = Input.GetAxisRaw("Horizontal");
-
-            Vector3 tr = new Vector3(horizontal, vertical, 0);
-            tr.Normalize();
-            tr *= speed * Time.deltaTime;
+            //tr *= Time.deltaTime;
 
             cam.transform.position = cameraBoundsController.GetCamPosition(cam.transform.position + tr);
         }

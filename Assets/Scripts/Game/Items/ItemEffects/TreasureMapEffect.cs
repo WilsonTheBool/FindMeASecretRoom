@@ -27,6 +27,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
             {
                 foreach(Vector2Int blocked in room.Figure.BlockedExits)
                 {
+                    if(main.LevelMap.GetRoom(blocked + room.position) == null)
                     main.GameTilemapController.SetMarker(blocked + room.position);
                 }
             }

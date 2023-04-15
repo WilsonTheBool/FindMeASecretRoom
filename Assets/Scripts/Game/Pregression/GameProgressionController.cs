@@ -31,6 +31,9 @@ namespace Assets.Scripts.Game.Pregression
 
         public ProgressionAction[] actions;
 
+        [HideInInspector]
+        public CompainLevelsData_SO CompainLevelsData_SO;
+
         public LevelData[] levels;
 
         public int actionCount = 0;

@@ -11,7 +11,8 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
 
         public override bool CanUse(Item.ItemInternalEventArgs args)
         {
-            return args.external.mainGameController.GameMapRoomUnlockController.CanCheckToUnlock(args.external.tilePos);
+            //return args.external.mainGameController.GameMapRoomUnlockController.CanCheckToUnlock(args.external.tilePos);
+            return args.external.mainGameController.GameMapRoomUnlockController.IsInMapRange(args.external.tilePos);
         }
 
         public override void OnAlternativeUse(Item.ItemInternalEventArgs args)
@@ -21,11 +22,18 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
 
         public override void OnDeselected(Item.ItemInternalEventArgs args)
         {
+            args.external.mainGameController.GameSelectTileController.
+               SetPredicate_Default();
             args.external.mainGameController.GameSelectTileController.ReturnToDefaultSprite();
         }
 
         public override void OnSelected(Item.ItemInternalEventArgs args)
         {
+            
+
+            args.external.mainGameController.GameSelectTileController.
+                SetPredicate_CanChectTile(args.external.mainGameController.GameMapRoomUnlockController.IsInMapRange);
+
             OnTilePosChnaged(args);
         }
 

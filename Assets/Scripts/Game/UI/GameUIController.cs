@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Game.UI.GameOverScreen;
+﻿using Assets.Scripts.Game.Gameplay.BossRush;
+using Assets.Scripts.Game.UI.GameOverScreen;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ namespace Assets.Scripts.Game.UI
 {
     public class GameUIController : MonoBehaviour
     {
+        public Transform Background_Holder;
+        public Transform GameUI_Holder;
+        public Transform MenuUI_Holder;
+        public Transform OnTopUI_Holder;
+
         public TransferAnimationUIObject gold_prefab;
 
         public TransferAnimationUIObject genericPrefab;
@@ -179,6 +185,43 @@ namespace Assets.Scripts.Game.UI
             obj.StartTransfer(data.destination, data.endScale);
         }
 
+        private Transform GetCanvasHolder(UIRenderType type)
+        {
+            switch (type)
+            {
+                case UIRenderType.Background:
+                    {
+                        return Background_Holder;
+                    }
+                case UIRenderType.GameUI:
+                    {
+                        return GameUI_Holder;
+                    }
+                case UIRenderType.MenuUI:
+                    {
+                        return MenuUI_Holder;
+                    }
+                case UIRenderType.OnTopUI:
+                    {
+                        return OnTopUI_Holder;
+                    }
+                default:
+                    {
+                        return null;
+                    }
+            }
+        }
+
+        public GameObject InstantiateToCanvas(GameObject prefab, UIRenderType type)
+        {
+            return Instantiate(prefab, GetCanvasHolder(type));
+        }
+
+        public T InstantiateToCanvas<T>(T prefab, UIRenderType type) where T : MonoBehaviour
+        {
+            return Instantiate<T>(prefab, GetCanvasHolder(type));
+        }
+
         public struct TransferAnimData
         {
             public Vector3 origin;
@@ -189,6 +232,14 @@ namespace Assets.Scripts.Game.UI
             public TransferAnimationUIObject prefab;
 
             public Sprite spriteToChange;
+        }
+
+        public enum UIRenderType
+        {
+            Background,
+            GameUI,
+            MenuUI,
+            OnTopUI,
         }
     }
 }

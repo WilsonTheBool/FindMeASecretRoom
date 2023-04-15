@@ -23,6 +23,7 @@ namespace Assets.Scripts.Game.PlayerController
         public int selectedActiveItem;
 
         public ItemUseEvent OnItemUsed;
+        public ItemUseEvent OnAfterItemUsed;
 
         public ItemEvent ActiveItemSwitched;
         public ItemEvent ActiveItemUpdated;
@@ -227,6 +228,7 @@ namespace Assets.Scripts.Game.PlayerController
             if (item.TryUseItem(args))
             {
                 OnItemUsed.Invoke(item, args);
+                OnAfterItemUsed.Invoke(item, args);
             }
         }        
         

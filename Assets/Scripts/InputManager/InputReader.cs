@@ -133,17 +133,6 @@ namespace Assets.Scripts.InputManager
             }
         }
 
-        public void OnMove_InputAction(InputAction.CallbackContext callbackContext)
-        {
-
-            foreach (var listener in curentListeners)
-            {
-                listener.OnMove.Invoke();
-            }
-
-
-        }
-
         public void OnAleternativeAction(InputAction.CallbackContext callbackContext)
         {
             if (!callbackContext.performed)
