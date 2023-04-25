@@ -42,7 +42,16 @@ namespace Assets.Scripts.Game.UI
 
         public PassiveItemUIElement FindElement(Item item)
         {
-            return items.Find((ui) => ui.item.Name == item.Name);
+            var result =  items.Find((ui) => ui.item == item);
+
+            if(result.item == null)
+            {
+                return items.Find((ui) => ui.item.Name == item.Name);
+            }
+            else
+            {
+                return result;
+            }
         }
 
         public PassiveItemUIElement FindElement(string name)

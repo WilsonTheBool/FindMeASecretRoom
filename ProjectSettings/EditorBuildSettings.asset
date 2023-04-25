@@ -5,18 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Dev/MainScene_Copy.unity
-    guid: 0e6a7aaded7d2124da973a2cba1a04a4
   - enabled: 1
     path: Assets/Scenes/Game/MainMenu.unity
-    guid: d42a80873f2bd5c44865dc0e9e36b629
+    guid: 2c943ba833c592942b6d23084d30883f
   - enabled: 1
-    path: Assets/Scenes/Game/MainScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+    path: Assets/Scenes/Dev/MainScene_Dev.unity
+    guid: 0e6a7aaded7d2124da973a2cba1a04a4
+  - enabled: 1
     path: Assets/Scenes/Game/Tutorial.unity
     guid: 7258b77e29fb7694c91ddd67c80abc8c
+  - enabled: 0
+    path: Assets/Scenes/Game/MainScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: Assets/Scenes/Game/Practice.unity
     guid: fd04ef3a5ae15644ba50a7887aeb035f

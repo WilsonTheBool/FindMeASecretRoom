@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0ad57de7fb12b43b972a7423b0aff0, type: 3}
+  m_Name: Transition Interpreter
+  m_EditorClassIdentifier: 
+  interpreterDatas:
+  - action: {fileID: 11400000, guid: 20f711fda9021754292c658d38fea493, type: 2}
+    TransitionRoom: {fileID: 443802409421576316, guid: ce56f51b5e6857b4ea72afa73b1e6dc5, type: 3}
+  - action: {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+    TransitionRoom: {fileID: 5253760342582124821, guid: dfd70aa9f1650a44d99a9539aaceecd3, type: 3}
+  - action: {fileID: 11400000, guid: 421ba0e5e6872be4a8e0f17f556fb391, type: 2}
+    TransitionRoom: {fileID: 571813865543531816, guid: f6d299c258d9c3d4696679cc7dce2a73, type: 3}
+  - action: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    TransitionRoom: {fileID: 1940476454696761836, guid: 9ed1bd70072db6f4899afdba4a88a4a7, type: 3}
+  - action: {fileID: 11400000, guid: 5fbed5a6584c5c1418a4660e4d54154f, type: 2}
+    TransitionRoom: {fileID: 1940476454696761836, guid: 9ed1bd70072db6f4899afdba4a88a4a7, type: 3}
+  - action: {fileID: 11400000, guid: e2c771cf515684f47a1cd94b543fa646, type: 2}
+    TransitionRoom: {fileID: 1940476454696761836, guid: 9ed1bd70072db6f4899afdba4a88a4a7, type: 3}
+  - action: {fileID: 11400000, guid: b7e46b293c500c44180bb7e64f0c7276, type: 2}
+    TransitionRoom: {fileID: 1940476454696761836, guid: 9ed1bd70072db6f4899afdba4a88a4a7, type: 3}
+  - action: {fileID: 11400000, guid: 782f89a7cfe554c48be0cea22d7ca2d8, type: 2}
+    TransitionRoom: {fileID: 1940476454696761836, guid: 9ed1bd70072db6f4899afdba4a88a4a7, type: 3}
+  defaultRoom: {fileID: 1940476454696761836, guid: 9ed1bd70072db6f4899afdba4a88a4a7, type: 3}
+  bossRoom: {fileID: 443802409421576316, guid: ce56f51b5e6857b4ea72afa73b1e6dc5, type: 3}

@@ -43,10 +43,10 @@ MonoBehaviour:
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+  - RoomType: {fileID: 11400000, guid: 1d96b064b68682a40aab886aa656de35, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.82
+    chanceToGen: 1
   - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
@@ -54,11 +54,11 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.508
+    chanceToGen: 0.303
   - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.818
+    chanceToGen: 1
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
@@ -67,5 +67,5 @@ MonoBehaviour:
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
   maxRoomsCount: 28
   minDeadEndsCount: 8
-  secretRoomsCount: 5
+  secretRoomsCount: 6
   giveUpRandomlyChance: 0.5

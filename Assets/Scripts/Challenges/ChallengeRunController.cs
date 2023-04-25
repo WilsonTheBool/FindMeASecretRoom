@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Game.GameMap;
+using Assets.Scripts.Game.Items;
 using Assets.Scripts.Game.Pregression;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.Unlocks;
@@ -17,7 +18,11 @@ namespace Assets.Scripts.Challenges
 
         public ChallengeRunData[] allChalanges;
 
+        public CompainLevelsData_SO default_compain;
+
         public List<ChallengeRunData> completedChallenges;
+
+        public List<ChallengeRunData> unlockedChallenges;
 
         [HideInInspector]
         public ChallengesSaveDataHolder ChallengesSaveDataHolder;
@@ -26,14 +31,19 @@ namespace Assets.Scripts.Challenges
         public UnityEvent<ChallengeRunData> ChallengeVictory;
         public UnityEvent<ChallengeRunData> ChallengeFail;
 
-        public void StartChallenge(ChallengeRunData data, GameProgressionController progression)
+        public void StartChallenge(GameProgressionController progression)
         {
             ChallengesSaveDataHolder = SaveLoadController.Instance.challengesSaveData;
-            CurentChallenge = data;
             progression.OnRunCompleted.AddListener(OnChallengeVictory);
             progression.OnRunFailed.AddListener(OnChallengeFail);
-            ChallengeStarted.Invoke(data);
-            Debug.Log("Chellange: " + CurentChallenge.id + " Started");
+            ChallengeStarted.Invoke(CurentChallenge);
+
+            if(CurentChallenge != null)
+            {
+                CurentChallenge.OnSetUp(progression, MainGameLevelMapController.Instance);
+                
+            }
+
 
         }
 
@@ -42,11 +52,37 @@ namespace Assets.Scripts.Challenges
             progression.OnRunCompleted.RemoveListener(OnChallengeVictory);
             progression.OnRunFailed.RemoveListener(OnChallengeFail);
 
-            ChallengeFail.Invoke(CurentChallenge);
-            Debug.Log("Chellange: " + CurentChallenge.id + " Fail");
-            CurentChallenge = null;
+            if(CurentChallenge != null)
+            {
+                ChallengeFail.Invoke(CurentChallenge);
+                CurentChallenge = null;
+            }
+            
 
             
+        }
+
+        public bool IsChallangeUnlocked(ChallengeRunData data)
+        {
+            if (data == null)
+            {
+                return false;
+            }
+
+            return unlockedChallenges.Contains(data);
+        }
+
+        public void UnlockChallenge(ChallengeRunData challenge)
+        {
+            if (unlockedChallenges.Contains(challenge))
+            {
+                return;
+            }
+            else
+            {
+                unlockedChallenges.Add(challenge);
+                ChallengesSaveDataHolder.UpdateUnlocks(unlockedChallenges.ToArray());
+            }
         }
 
         public void OnChallengeVictory(GameProgressionController progression)
@@ -54,17 +90,55 @@ namespace Assets.Scripts.Challenges
             progression.OnRunCompleted.RemoveListener(OnChallengeVictory);
             progression.OnRunFailed.RemoveListener(OnChallengeFail);
 
-            completedChallenges.Add(CurentChallenge);
+            if (CurentChallenge != null && !completedChallenges.Contains(CurentChallenge))
+            {
+                completedChallenges.Add(CurentChallenge);
 
+                ChallengesSaveDataHolder.UpdateCompleteedChalanges(completedChallenges.ToArray());
+
+                if (CurentChallenge.hasUnlockReward)
+                {
+                    new Achievements.Actions.Action_UnlockItem() { itemToUnlock = CurentChallenge.itemUnlock }.DoAction(
+                        new Achievements.AchievmentAction.AchivementArgs(Assets.Scripts.Game.PlayerController.Player.instance,
+                        MainGameLevelMapController.Instance, progression, Assets.Scripts.Game.UI.GameUIController.Instance, this));
+                }
+            }
             ChallengeVictory.Invoke(CurentChallenge);
 
-            ChallengesSaveDataHolder.UpdateCompleteedChalanges(completedChallenges.ToArray());
-
             ChallengesSaveDataHolder.WriteSaveData();
-            Debug.Log("Chellange: " + CurentChallenge.id + " Victory");
+
             CurentChallenge = null;
 
             
+        }
+
+        public ChallengeRunData[] GetChallenges(int[] ids)
+        {
+            ChallengeRunData[] result = new ChallengeRunData[ids.Length];
+
+            for(int i = 0; i < ids.Length; i++)
+            {
+                result[i] = GetChallenge(ids[i]);
+            }
+
+            return result;
+        }
+
+        public Item[] GetChallengesUnlockItems(int[] ids)
+        {
+            List<Item> result = new List<Item>();
+
+            foreach(int id in ids)
+            {
+                ChallengeRunData run = GetChallenge(id);
+
+                if(run != null && run.hasUnlockReward)
+                {
+                    result.Add(run.itemUnlock);
+                }
+            }
+
+            return result.ToArray();
         }
 
         public ChallengeRunData GetChallenge(int id)
@@ -84,11 +158,18 @@ namespace Assets.Scripts.Challenges
         {
             ChallengeRunData[] result = new ChallengeRunData[saveData.challengesCompleted.Length];
 
+            unlockedChallenges = new List<ChallengeRunData>(saveData.challengesUnlocked.Length);
+
             for(int i = 0; i < result.Length; i++)
             {
                 result[i] = GetChallenge(saveData.challengesCompleted[i]);
+                
             }
 
+            for(int i = 0; i < saveData.challengesUnlocked.Length; i++)
+            {
+                unlockedChallenges.Add(GetChallenge(saveData.challengesUnlocked[i]));
+            }
             completedChallenges = new List<ChallengeRunData>(result);
         }
 

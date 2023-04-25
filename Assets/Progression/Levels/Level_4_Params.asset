@@ -43,26 +43,26 @@ MonoBehaviour:
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+  - RoomType: {fileID: 11400000, guid: 1d96b064b68682a40aab886aa656de35, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.942
+    chanceToGen: 0.971
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.9
+    chanceToGen: 1
   - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 0.926
-  - RoomType: {fileID: 11400000, guid: 39f1859357c67a244a43dc76ce4e20e5, type: 2}
+  - RoomType: {fileID: 11400000, guid: 8414ae27909fb184a907a69d8ea07a94, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 1
-  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    chanceToGen: 0.06
+  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 1
+    chanceToGen: 0.651
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1

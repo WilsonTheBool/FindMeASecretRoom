@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Game.GameMap;
 using Assets.Scripts.Game.Gameplay.SecretRoomBook;
+using Assets.Scripts.Game.Pregression;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ namespace Assets.Scripts.Tutorial
         public SecretRoomBookController tutorialBook;
 
         public UnityEngine.Events.UnityEvent OnNextStage;
+
+        public ProgressionAction MainMenu;
 
 
         private void Awake()
@@ -47,6 +50,8 @@ namespace Assets.Scripts.Tutorial
             {
                return tutorialLevelHolders[curentLevelID].levelHolder.GetComponentsInChildren<Room_GM_TypeHolder>(true);
             }
+
+            MainMenu.DoAction(null, null);
 
             return null;
         }

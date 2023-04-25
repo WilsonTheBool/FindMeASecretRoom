@@ -37,8 +37,6 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
         {
             args.external.mainGameController.GameSelectTileController.ReturnToDefaultSprite();
 
-            
-
             args.external.player.itemsController.RemoveItem(args.item, args.external);
 
             ItemUsed.Invoke();

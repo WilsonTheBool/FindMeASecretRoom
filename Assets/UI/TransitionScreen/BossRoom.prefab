@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.08624784, b: 0.0036044943, a: 1}
+  m_Color: {r: 0.6509804, g: 0.21568628, b: 0.13725491, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  room: {fileID: 4375817570973797215}
+  bridge: {fileID: 0}
 --- !u!1 &5881602335093281323
 GameObject:
   m_ObjectHideFlags: 0

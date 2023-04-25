@@ -128,7 +128,7 @@ MonoBehaviour:
   OnEffectActivated:
     m_PersistentCalls:
       m_Calls: []
-  AddGoldOnStart: 5
+  AddGoldOnStart: 0
 --- !u!114 &8257134789934602872
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -295,6 +295,39 @@ namespace Assets.Scripts.Game.GameMap
             }
 
 
+            //onRenderEnded.Invoke();
+
+            InputListener.enabled = false;
+        }
+
+        public void RenderAll(LevelMap map, LevelData level)
+        {
+            ClearAll();
+
+            onRenderStarted.Invoke();
+
+            List<Vector2Int> startRooms = new List<Vector2Int>(level.generatorParams.LevelGenerator.GetStartRooms());
+
+            if (level != null)
+            {
+                baseRenderColor = level.baseColor;
+            }
+
+
+            foreach (Room room in map.rooms)
+            {
+
+                if (startRooms.Contains(room.position))
+                {
+                    RenderRoom(room, true);
+                }
+                else
+                {
+                    RenderRoom(room, false);
+                }
+            }
+
+
             onRenderEnded.Invoke();
 
             InputListener.enabled = false;

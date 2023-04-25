@@ -9,7 +9,7 @@ namespace Assets.Scripts.LevelGeneration.LevelGenerators
         [Range(1, 4)]
         public int CountOfStarts;
 
-        private List<Vector2Int> startPositions;
+        private List<Vector2Int> startPositions = new List<Vector2Int>();
 
         //public Rebirth_LevelGenerator Rebirth_LevelGenerator;
 
@@ -21,30 +21,88 @@ namespace Assets.Scripts.LevelGeneration.LevelGenerators
             return startPositions.ToArray();
         }
 
+
         public override bool GenerateLevel(LevelMap levelMap, LevelGeneratorParams data)
         {
            startPositions = new List<Vector2Int>();
 
-            if(CountOfStarts >= 1)
-            startPositions.Add(new Vector2Int(levelMap.StartRoomX / multDistnceFromBorder, levelMap.StartRoomY / multDistnceFromBorder));
+            List<Room> rooms = new List<Room>();
 
+            if(CountOfStarts >= 1)
+            {
+                Vector2Int vec = new Vector2Int(levelMap.StartRoomX / multDistnceFromBorder, levelMap.StartRoomY / multDistnceFromBorder);
+                startPositions.Add(vec);
+                var newRoom = new Room(starRoom, 0);
+                if(!levelMap.PlaceRoom(newRoom, vec, new Vector2Int(-1, -1)))
+                {
+                    CountOfStarts++;
+                }
+                else
+                {
+                    rooms.Add(newRoom);
+                }
+                
+            }
+            
             if (CountOfStarts >= 2)
-                startPositions.Add(new Vector2Int(levelMap.StartRoomX / multDistnceFromBorder, levelMap.LevelY - levelMap.StartRoomY / multDistnceFromBorder));
+            {
+                Vector2Int vec = new Vector2Int(levelMap.LevelX - levelMap.StartRoomX / multDistnceFromBorder, levelMap.LevelY - levelMap.StartRoomY / multDistnceFromBorder);
+                startPositions.Add(vec);
+                var newRoom = new Room(starRoom, 0);
+                if (!levelMap.PlaceRoom(newRoom, vec, new Vector2Int(-1, -1)))
+                {
+                    CountOfStarts++;
+                }
+                else
+                {
+                    rooms.Add(newRoom);
+                }
+            }
+
 
             if (CountOfStarts >= 3)
-                startPositions.Add(new Vector2Int(levelMap.LevelX - levelMap.StartRoomX / multDistnceFromBorder, levelMap.LevelY - levelMap.StartRoomY / multDistnceFromBorder));
+            {
+                Vector2Int vec = new Vector2Int(levelMap.StartRoomX / multDistnceFromBorder, levelMap.LevelY - levelMap.StartRoomY / multDistnceFromBorder);
+                startPositions.Add(vec);
+                var newRoom = new Room(starRoom, 0);
+                if (!levelMap.PlaceRoom(newRoom, vec, new Vector2Int(-1, -1)))
+                {
+                    CountOfStarts++;
+                }
+                else
+                {
+                    rooms.Add(newRoom);
+                }
+            }
 
             if (CountOfStarts >= 4)
-                startPositions.Add(new Vector2Int(levelMap.LevelX - levelMap.StartRoomX / multDistnceFromBorder, levelMap.StartRoomY / multDistnceFromBorder));
+            {
+                Vector2Int vec = new Vector2Int(levelMap.LevelX - levelMap.StartRoomX / multDistnceFromBorder, levelMap.StartRoomY / multDistnceFromBorder);
+                startPositions.Add(vec);
+                var newRoom = new Room(starRoom, 0);
+                if (!levelMap.PlaceRoom(newRoom, vec, new Vector2Int(-1, -1)))
+                {
+                    CountOfStarts++;
+                }
+                else
+                {
+                    rooms.Add(newRoom);
+                }
+            }
 
-            for (int i = 0; i < CountOfStarts; i++)
+
+            //Room start = new Room(starRoom, 0);
+            //levelMap.PlaceRoom(start, new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY), new Vector2Int(-1, -1));
+
+            for (int i = 0; i < rooms.Count; i++)
             {
                 levelMap.StartRoomX = startPositions[i].x;
                 levelMap.StartRoomY = startPositions[i].y;
 
                 levelMap.curentGenRooms.Clear();
-
-                if (!RebirthGeneration(levelMap, data))
+                levelMap.curentGenRooms.Add(rooms[i]);
+                
+                if (!RebirthGeneration(levelMap, data, rooms[i]))
                 {
                     return false;
                 }
@@ -73,12 +131,12 @@ namespace Assets.Scripts.LevelGeneration.LevelGenerators
 
         public bool CancelGenerationIfNotEnoughSpecialRoomSpace;
 
-        public bool RebirthGeneration(LevelMap levelMap, LevelGeneratorParams data)
+        public bool RebirthGeneration(LevelMap levelMap, LevelGeneratorParams data, Room start)
         {
 
             if (data == null)
             {
-                return true;
+                return false;
             }
 
 
@@ -87,22 +145,25 @@ namespace Assets.Scripts.LevelGeneration.LevelGenerators
 
             this.data = data;
 
-            Room start = new Room(starRoom, 0);
+            //Room start = new Room(starRoom, 0);
 
-            //0 - because -1 for superSecretRoom
             curentRoomCount = 1;
             maxRoomCount = data.maxRoomsCount;
 
             giveUpRandomlyChance = data.giveUpRandomlyChance;
 
-            levelMap.PlaceRoom(start, new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY), new Vector2Int(-1, -1));
+            //levelMap.PlaceRoom(start, new Vector2Int(levelMap.StartRoomX, levelMap.StartRoomY), new Vector2Int(-1, -1));
             roomQueue.Enqueue(start);
 
 
             int mainLoopCount = 0;
             int maxLoop = maxRoomCount * 3;
+
             while (curentRoomCount < maxRoomCount)
             {
+
+                
+
                 CheckAddRoom(roomQueue.Peek(), levelMap);
                 mainLoopCount++;
 
@@ -115,6 +176,12 @@ namespace Assets.Scripts.LevelGeneration.LevelGenerators
                         deadEndRooms.Remove(room);
 
                         roomQueue.Enqueue(room);
+                    }
+
+                    if (roomQueue.Count == 0)
+                    {
+                        Debug.LogError("roomQueue.Count == 0");
+                        return false;
                     }
                 }
 

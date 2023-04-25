@@ -23,84 +23,96 @@ namespace Assets.Scripts.Challenges
 
         public override void DoAction(GameProgressionController progression, MainGameLevelMapController main)
         {
-            if(ChallengeRunController != null && ChallengeRunController.CurentChallenge != null)
-            {
-                var data = ChallengeRunController.CurentChallenge;
-
-                if (data.HideShops)
+            if (ChallengeRunController != null)
+                if (ChallengeRunController.CurentChallenge != null)
                 {
-                    HideShops(progression, main);
-                }
+                    var data = ChallengeRunController.CurentChallenge;
 
-                if (data.HideTreasureRooms)
-                {
-                    HideTreasureRooms(progression, main);
-                }
+                    //if(data.Compain != null)
+                    //{
+                    //    progression.compainData = data.Compain;
+                    //}
+                    //else
+                    //{
+                    //    progression.compainData = ChallengeRunController.default_compain;
+                    //}
 
-                Player player = Player.instance;
-                if (data.OverrrideStartHP)
-                {
-                    player.playerHPController.maxHpSlotsCount = data.maxHpContainers;
-                    player.playerHPController.SetStartHP(data.redHpOnStart);
-                }
-
-                if (data.OverrideGold)
-                {
-                    if(data.GoldOnStart <= player.goldController.maxGold)
+                    if (data.HideShops)
                     {
-                        player.goldController.gold = data.GoldOnStart;
-                        player.goldController.GoldChanged.Invoke();
+                        HideShops(progression, main);
                     }
 
-                }
-
-                if (data.removeItemsFromPlayer)
-                {
-                    foreach (Item item in data.itemsToRemove)
+                    if (data.HideTreasureRooms)
                     {
-                        player.itemsController.RemoveItem(item.Name, new Item.ItemExternalEventArgs() { player = player, mainGameController = main });
+                        HideTreasureRooms(progression, main);
+                    }
+
+                    Player player = Player.instance;
+                    if (data.OverrrideStartHP)
+                    {
+                        player.playerHPController.maxHpSlotsCount = data.maxHpContainers;
+                        player.playerHPController.SetStartHP(data.redHpOnStart);
+                    }
+
+                    if (data.OverrideGold)
+                    {
+                        if (data.GoldOnStart <= player.goldController.maxGold)
+                        {
+                            player.goldController.gold = data.GoldOnStart;
+                            player.goldController.GoldChanged.Invoke(player.goldController);
+                        }
+
+                    }
+
+                    if (data.removeItemsFromPlayer)
+                    {
+                        foreach (Item item in data.itemsToRemove)
+                        {
+                            player.itemsController.RemoveItem(item.Name, new Item.ItemExternalEventArgs() { player = player, mainGameController = main });
+                        }
+                    }
+
+                    if (data.AddItemsOnStart)
+                    {
+                        foreach (Item item in data.itemsToAdd)
+                        {
+                            Item instance = Instantiate(item, player.transform);
+
+                            player.itemsController.AddItem(instance, new Item.ItemExternalEventArgs() { player = player, mainGameController = main });
+
+                            progression.ItemPoolController.OnItemPooled(item);
+                        }
+                    }
+
+                    if (data.RemoveItemsFromPool)
+                    {
+                        foreach (Item item in data.itemsToPool)
+                        {
+                            progression.ItemPoolController.OnItemPooled(item);
+                        }
+                    }
+
+
+
+                    if (data.AddTrinket)
+                    {
+                        player.trinketController.SetTrinket(data.Trinket);
+                    }
+
+                    if (data.OverrideRoomReward)
+                    {
+                        player.roomRewardController.baseRoomReward = data.baseReward;
+                        player.roomRewardController.rewardIncreasePerCombo = data.rewardPerCombo;
                     }
                 }
-
-                if (data.AddItemsOnStart)
+                else
                 {
-                    foreach(Item item in data.itemsToAdd)
-                    {
-                        Item instance = Instantiate(item, player.transform);
-
-                        player.itemsController.AddItem(instance, new Item.ItemExternalEventArgs() { player = player, mainGameController = main});
-
-                        progression.ItemPoolController.OnItemPooled(item);
-                    }
+                    //progression.compainData = ChallengeRunController.default_compain;
                 }
 
-                if (data.RemoveItemsFromPool)
-                {
-                    foreach (Item item in data.itemsToPool)
-                    {
-                        progression.ItemPoolController.OnItemPooled(item);
-                    }
-                }
+            ChallengeRunController.StartChallenge(progression);
 
-                
-
-                if (data.AddTrinket)
-                {
-                    player.trinketController.SetTrinket(data.Trinket);
-                }
-
-                if (data.OverrideRoomReward)
-                {
-                    player.roomRewardController.baseRoomReward = data.baseReward;
-                    player.roomRewardController.rewardIncreasePerCombo = data.rewardPerCombo;
-                }
-
-                ChallengeRunController.StartChallenge(data, progression);
-
-                data.OnSetUp(progression, main);
-            }
-
-            progression.LoadNextStep();
+            
         }
 
         private void HideTreasureRooms(GameProgressionController progression, MainGameLevelMapController main)
@@ -117,11 +129,11 @@ namespace Assets.Scripts.Challenges
 
 
 
-            for(int i = 0; i < progression.actions.Length; i++)
+            for(int i = 0; i < progression.compainData.levels.Length; i++)
             {
-                if (progression.actions[i] == loadTreasureRoom)
+                if (progression.compainData.levels[i].levelAction == loadTreasureRoom)
                 {
-                    progression.actions[i] = SkipTransition;
+                    progression.compainData.levels[i].levelAction = SkipTransition;
                 }
             }
         }
@@ -140,11 +152,11 @@ namespace Assets.Scripts.Challenges
 
 
 
-            for (int i = 0; i < progression.actions.Length; i++)
+            for (int i = 0; i < progression.compainData.levels.Length; i++)
             {
-                if (progression.actions[i] == loadShop)
+                if (progression.compainData.levels[i].levelAction == loadShop)
                 {
-                    progression.actions[i] = SkipTransition;
+                    progression.compainData.levels[i].levelAction = SkipTransition;
                 }
             }
         }

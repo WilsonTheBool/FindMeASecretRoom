@@ -76,11 +76,15 @@ namespace Assets.Scripts.Game.Items.ItemEffects
                 }
             }
 
-            Item random = passiveItems[Random.Range(0, passiveItems.Count)];
+            if(passiveItems.Count > 0)
+            {
+                Item random = passiveItems[Random.Range(0, passiveItems.Count)];
 
-            player.itemsController.AddItem(random, new Item.ItemExternalEventArgs() { mainGameController = MainGameLevelMapController.Instance, player = player});
-            poolController.OnItemPooled(random);
-            OnEffectActivated?.Invoke();
+                player.itemsController.AddItem(random, new Item.ItemExternalEventArgs() { mainGameController = MainGameLevelMapController.Instance, player = player });
+                poolController.OnItemPooled(random);
+                OnEffectActivated?.Invoke();
+            }
+            
         }
     }
 }

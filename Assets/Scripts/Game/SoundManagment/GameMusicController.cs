@@ -46,7 +46,8 @@ namespace Assets.Scripts.Game.SoundManagment
                 audioSource.Play();
             }
 
-            GamePauseController.onPauseToggle.AddListener(OnPauseToggle);
+
+            //GamePauseController.onPauseToggle.AddListener(OnPauseToggle);
         }
 
         public void OnPauseToggle(bool isPaused)

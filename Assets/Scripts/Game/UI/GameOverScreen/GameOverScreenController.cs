@@ -72,6 +72,9 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
             isSkip = true;
             isHiden = !isHiden;
 
+            StopAllCoroutines();
+            FullSkip();
+
             for(int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(!isHiden);
@@ -96,7 +99,54 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
 
             gameObject.SetActive(true);
 
+
             StartCoroutine(MainCo());
+        }
+
+        private void FullSkip()
+        {
+            Title.gameObject.SetActive(true);
+            description.gameObject.SetActive(true);
+
+            levelText.gameObject.SetActive(true);
+            levelCount.gameObject.SetActive(true);
+            levelCount.text = levelInt + "/" + maxlevel;
+
+            itemsTitle.gameObject.SetActive(true);
+            itemHolder.gameObject.SetActive(true);
+
+            for(int i = 0; i < itemHolder.childCount; i++)
+            {
+                Destroy(itemHolder.GetChild(i).gameObject);
+            }
+
+            itemHolder.DetachChildren();
+
+            //items showcase
+            foreach (Item item in items)
+            {
+
+                Image i = Instantiate(itemPrefab, itemHolder);
+                i.sprite = item.Sprite;
+            }
+
+            roomsTitle.gameObject.SetActive(true);
+           
+            roomIconHolder.gameObject.SetActive(true);
+
+            for (int i = 0; i < roomIconHolder.childCount; i++)
+            {
+                Destroy(roomIconHolder.GetChild(i).gameObject);
+            }
+
+            roomIconHolder.DetachChildren();
+
+            //rooms showcase
+            foreach (RoomType room in rooms)
+            {
+                Image i = Instantiate(itemPrefab, roomIconHolder);
+                i.sprite = room.icon;
+            }
         }
 
         public IEnumerator MainCo()

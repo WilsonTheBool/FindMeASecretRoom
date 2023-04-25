@@ -4,6 +4,7 @@ using Assets.Scripts.SaveLoad;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Achievements;
 
 namespace Assets.Scripts.Unlocks
 {
@@ -12,34 +13,71 @@ namespace Assets.Scripts.Unlocks
     {
         public ChallengeRunController challengeRunController;
 
-        public List<Item> UnlockedItems;
+        public AchievementsController achievementsController;
 
-        public  event UnityAction<Item> OnNewUnlock;
+        public List<Item> UnlockedItems = new List<Item>();
+
+        public UnityAction<Item> OnNewUnlock;
+
 
         public void SetUnlockedItems(ChallengesSaveData saveData)
         {
-            List<Item> unlockedItems = new List<Item>();
+            //List<Item> unlockedItems = new List<Item>();
 
-            foreach (ChallengeRunData data in challengeRunController.completedChallenges)
-            {
-                if (data != null && data.hasUnlockReward)
-                {
-                    unlockedItems.Add(data.itemUnlock);
-                }
-            }
+            //foreach (ChallengeRunData data in challengeRunController.completedChallenges)
+            //{
+            //    if (data != null && data.hasUnlockReward)
+            //    {
+            //        unlockedItems.Add(data.itemUnlock);
+            //    }
+            //}
 
-            UnlockedItems = unlockedItems;
+            //UnlockedItems = unlockedItems;
 
-            challengeRunController.ChallengeVictory.AddListener(OnChallengeVictory);
+            //challengeRunController.ChallengeVictory.AddListener(OnChallengeVictory);
         }
 
-        private void OnChallengeVictory(ChallengeRunData data)
+        public void AddUnlockedItems(Item[] items)
         {
-            if(data != null && data.hasUnlockReward)
+            if(UnlockedItems == null)
             {
-                TryUnlockItem(data.itemUnlock);
+                UnlockedItems = new List<Item>();
             }
+
+            foreach(Item item in items)
+            {
+                if (!UnlockedItems.Contains(item))
+                {
+                    UnlockedItems.Add(item);
+                }
+
+            }
+            //UnlockedItems.AddRange(items);
         }
+
+        public void AddUnlockedItems(Item item)
+        {
+            if (UnlockedItems == null)
+            {
+                UnlockedItems = new List<Item>();
+            }
+            if (!UnlockedItems.Contains(item))
+            {
+                UnlockedItems.Add(item);
+
+                OnNewUnlock?.Invoke(item);
+            }
+
+            //UnlockedItems.AddRange(items);
+        }
+
+        //private void OnChallengeVictory(ChallengeRunData data)
+        //{
+        //    if(data != null && data.hasUnlockReward)
+        //    {
+        //        TryUnlockItem(data.itemUnlock);
+        //    }
+        //}
 
         public void TryUnlockItem(Item item)
         {

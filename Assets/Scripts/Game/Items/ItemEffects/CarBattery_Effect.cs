@@ -14,10 +14,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
         public override void OnEffectAdd(Item.ItemInternalEventArgs args)
         {
-            if (excludingItems.Exists((Item i) => i.Name == args.item.Name))
-            {
-                return;
-            }
+
 
             this.args = args;
             args.external.player.itemsController.ItemAdded.AddListener(OnItemAdd);
@@ -25,7 +22,14 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
             foreach(Item item in args.external.player.itemsController.passiveItems)
             {
-                OnItemAdd(item);
+                if (excludingItems.Exists((Item i) => i.Name == args.item.Name))
+                {
+                   
+                }
+                else
+                {
+                    OnItemAdd(item);
+                }
             }
         }
 
@@ -71,6 +75,13 @@ namespace Assets.Scripts.Game.Items.ItemEffects
         {
             foreach(ItemEffect effect in item.onAddItemEffect)
             {
+
+                if (effect is CarBattery_Effect)
+                {
+                    return;
+                }
+
+
                 int found = effects.IndexOf(effect);
 
                 if(found != -1)

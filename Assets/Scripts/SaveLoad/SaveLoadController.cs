@@ -18,6 +18,9 @@ namespace Assets.Scripts.SaveLoad
         [HideInInspector]
         public ChallengesSaveDataHolder challengesSaveData;
 
+        //[HideInInspector]
+        //public AchievementsSaveDataHolder challengesSaveData;
+
         private void Awake()
         {
             if (Instance != null)

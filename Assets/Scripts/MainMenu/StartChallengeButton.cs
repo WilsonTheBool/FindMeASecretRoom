@@ -12,35 +12,60 @@ public class StartChallengeButton : MonoBehaviour, ISelectHandler, IPointerEnter
 
     public UnityEvent<StartChallengeButton> OnClick;
 
-    private Button Button;
+    public Button Button;
 
     public TMPro.TMP_Text cahllengeName;
     public TMPro.TMP_Text description;
 
     public Color green;
+    public Color red;
     public Color normal;
 
     private void Awake()
     {
+        if(Button == null)
         Button = GetComponent<Button>();
+
         Button.onClick.AddListener(() => OnClick.Invoke(this));
     }
 
-    public void SetUP(ChallengeRunData data, TMPro.TMP_Text desc, bool isCompleted)
+    public void SetUP(ChallengeRunData data, TMPro.TMP_Text desc, bool isCompleted, bool isUnlocked)
     {
         ChallengeRunData = data;
-        cahllengeName.text = data.Name;
-        description = desc;
 
-        if (isCompleted)
+        if (isUnlocked)
         {
-            cahllengeName.color = green;
+            cahllengeName.text = data.Name;
+            description = desc;
+
+            if (isCompleted)
+            {
+                cahllengeName.color = green;
+            }
+            else
+            {
+                cahllengeName.color = normal;
+            }
+
+            //EnableButton();
         }
         else
         {
-            cahllengeName.color = normal;
+            cahllengeName.text = "Locked";
+            cahllengeName.color = red;
+            DisableButton();
         }
 
+    }
+
+    public void DisableButton()
+    {
+        Button.interactable = false;
+    }
+
+    public void EnableButton()
+    {
+        Button.interactable = true;
     }
 
     public void OnSelect(BaseEventData eventData)

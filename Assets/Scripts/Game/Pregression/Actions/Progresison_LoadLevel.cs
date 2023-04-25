@@ -12,12 +12,12 @@ namespace Assets.Scripts.Game.Pregression.Actions
     {
         public override string GetTransitionName(GameProgressionController progression)
         {
-            return progression.levels[progression.leveldataCount].levelName;
+            return progression.compainData.levels[progression.actionCount].level.levelName;
         }
 
         public override void DoAction(GameProgressionController progression, MainGameLevelMapController main)
         {
-            LevelData levelData = progression.GetNextLevel();
+            LevelData levelData = progression.GetCurentLevel();
             LevelGeneratorParams generatorParams = levelData.generatorParams;
             main.LevelGenerationController.LevelGeneratorParams = generatorParams;
             main.LevelGenerationController.levelGenerator = generatorParams.LevelGenerator;

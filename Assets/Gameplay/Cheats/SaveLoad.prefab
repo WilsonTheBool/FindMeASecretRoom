@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2524066388065966035}
   - component: {fileID: 2524066388065966034}
   - component: {fileID: 2745100615839369215}
+  - component: {fileID: 4602538018673600313}
   m_Layer: 0
   m_Name: SaveLoad
   m_TagString: Untagged
@@ -91,5 +92,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaveData:
     challengesCompleted: 
+    challengesUnlocked: 
   ChallengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
   UnlockController: {fileID: 11400000, guid: 691304baaae6bd04e9a83d1cbfa0217d, type: 2}
+--- !u!114 &4602538018673600313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524066388065966039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915c3852fdf2e054c90ba78680744b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveData:
+    achievementsUnlocked: 
+  AchivementsController: {fileID: 11400000, guid: 7ce4e85848642424f9bae675d3745550, type: 2}

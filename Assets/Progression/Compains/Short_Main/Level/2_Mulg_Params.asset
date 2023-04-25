@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67449dfc64688044c9c3c9debc0f2058, type: 3}
+  m_Name: 2_Mulg_Params
+  m_EditorClassIdentifier: 
+  specailRoomTypes:
+  - RoomType: {fileID: 11400000, guid: f4a83af5485b9074ea589af57a96e694, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: d0ba86713b556f943a482ef1937dcd76, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: e165f2deb7e1d2948a3f8a9b26385857, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 7873017ca8cc9b8489d1718ef82ce416, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 1
+  bossRooms:
+  - RoomType: {fileID: 11400000, guid: 7962f0ad40348df42a4f722fe77a6098, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 0
+    chanceToGen: 1
+  secretRooms:
+  - RoomType: {fileID: 11400000, guid: 47188dca2b7862c4490183d8a5fe6d4a, type: 2}
+    count: 2
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
+    count: 2
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.963
+  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.968
+  - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.915
+  - RoomType: {fileID: 11400000, guid: 1d96b064b68682a40aab886aa656de35, type: 2}
+    count: 2
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.958
+  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 8414ae27909fb184a907a69d8ea07a94, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.11
+  - RoomType: {fileID: 11400000, guid: 47188dca2b7862c4490183d8a5fe6d4a, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.869
+  - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.323
+  - RoomType: {fileID: 11400000, guid: 2c348c5e42c75934aa7a885f5ca09afe, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.606
+  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.274
+  LevelGenerator: {fileID: 11400000, guid: a7ce5bc1f028605468c9b177b6f4ef90, type: 2}
+  RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
+  maxRoomsCount: 24
+  minDeadEndsCount: 5
+  secretRoomsCount: 13
+  giveUpRandomlyChance: 0.5

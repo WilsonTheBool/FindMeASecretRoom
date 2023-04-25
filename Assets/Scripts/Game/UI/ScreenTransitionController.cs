@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Game.Pregression;
+using Assets.Scripts.LevelGeneration;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,6 +29,46 @@ namespace Assets.Scripts.Game.UI
         public bool isFadeInCompleted = false;
         private bool isFadeOutStarted = false;
 
+        public LevelToTransitionObject interpreter;
+
+        private Color savedColor;
+
+        public void SetUp(GameProgressionController controller)
+        {
+            for(int i = 0; i < roomsHolder.childCount; i++)
+            {
+                Destroy(roomsHolder.GetChild(i).gameObject);
+            }
+            
+            roomsHolder.DetachChildren();
+
+            List<TransitionRoom> instance_rooms = new List<TransitionRoom>();
+
+            for (int i = 0; i < controller.compainData.levels.Length -1; i++)
+            {
+                if (controller.compainData.levels[i].level != null)
+                    savedColor = controller.compainData.levels[i].level.baseColor;
+
+                var room = interpreter.GetTransitionRoom(controller.compainData.levels[i].levelAction);
+
+
+                if (room != null)
+                {
+                    TransitionRoom instance = Instantiate(room, roomsHolder);
+                    instance.SetColor(savedColor);
+                    instance_rooms.Add(instance);
+                }
+            }
+
+            
+            instance_rooms.Add(Instantiate(interpreter.bossRoom, roomsHolder));
+
+            //if(instance_rooms[instance_rooms.Count - 1].bridge != null)
+            //{
+            //    instance_rooms[instance_rooms.Count - 1].bridge.gameObject.SetActive(false);
+            //}
+
+        }
 
         public void StartFadeIn(int curentRoom, string levelName)
         {

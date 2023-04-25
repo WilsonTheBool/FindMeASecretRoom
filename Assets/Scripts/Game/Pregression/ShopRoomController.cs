@@ -29,13 +29,13 @@ namespace Assets.Scripts.Game.Pregression
         [HideInInspector]
         public ItemPoolController ItemPoolController;
 
+        public ShopPricesController_SO shopPrices;
+
         public HpObject redHp;
         public int redHpPrice;        
         
         public HpObject blueHp;
         public int blueHpPrice;
-
-        public int itemDefaultPrice;
 
         public UnityEvent OnItemBuy;
         public UnityEvent OnCantBuy;
@@ -44,16 +44,17 @@ namespace Assets.Scripts.Game.Pregression
         public UnityEvent OnClose;
 
         public float saleChance;
+        public float saleMult = 0.5f;
 
         public int maxSaleItems;
-        private int curentSaleItems;
+        private int curentSaleItems = 0;
 
         public int shopItemsCount;
 
         public bool spawnHp = true;
 
         [HideInInspector]
-        public List<Items.Item> items = new List<Items.Item>();
+        public List<PriceData> items = new List<PriceData>();
 
         private void Start()
         {
@@ -73,9 +74,21 @@ namespace Assets.Scripts.Game.Pregression
         {
             
             items.Clear();
+            curentSaleItems = 0;
             for (int i = 0; i < shopItemsCount; i++)
             {
-                items.Add(ItemPoolController.GetItemFromPool(ItemPoolController.PoolType.shop));
+                Item item = ItemPoolController.GetItemFromPool(ItemPoolController.PoolType.shop);
+                bool isSale = false;
+                int price = shopPrices.GetPrice(item);
+
+                if(curentSaleItems < maxSaleItems && Random.Range(0f,1f) < saleChance)
+                {
+                    curentSaleItems++;
+                    price = Mathf.FloorToInt(price * saleMult);
+                    isSale = true;
+                }
+
+                items.Add(new PriceData(price, item, isSale));
             }
 
             ShopUIController.CreateWindow(items.ToArray(), this, spawnHp);
@@ -97,9 +110,9 @@ namespace Assets.Scripts.Game.Pregression
 
         public bool Request_Buy(Item item)
         {
-            if (CanBuy(itemDefaultPrice))
+            if (CanBuy(GetPrice(item)))
             {
-                PlayerGoldController.RemoveGold(itemDefaultPrice);
+                PlayerGoldController.RemoveGold(GetPrice(item));
                 PlayerItemsController.AddItem(Instantiate(item, PlayerItemsController.transform), 
                     new Item.ItemExternalEventArgs { mainGameController = MainGameLevelMapController.Instance,
                     player = Player.instance,
@@ -117,7 +130,15 @@ namespace Assets.Scripts.Game.Pregression
 
         public int GetPrice(Item item)
         {
-            return itemDefaultPrice;
+            foreach(var price in items)
+            {
+                if(price.item.Name == item.Name)
+                {
+                    return price.price;
+                }
+            }
+
+            return shopPrices.GetPrice(item);
         }
 
         public int GetPrice(HpObject hpObject)
@@ -170,6 +191,21 @@ namespace Assets.Scripts.Game.Pregression
             {
                 OnCantBuy.Invoke();
                 return false;
+            }
+        }
+
+        [System.Serializable]
+        public struct PriceData
+        {
+            public int price;
+            public Item item;
+            public bool isSale;
+
+            public PriceData(int price, Item item, bool isSale)
+            {
+                this.price = price;
+                this.item = item;
+                this.isSale = isSale;
             }
         }
     }

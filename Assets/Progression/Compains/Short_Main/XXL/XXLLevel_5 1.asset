@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb14ad2559951a409cc5971a673564c, type: 3}
+  m_Name: XXLLevel_5 1
+  m_EditorClassIdentifier: 
+  id: 5
+  levelName: Caves III
+  generatorParams: {fileID: 11400000, guid: 574f2184c120b7347ae88877d9e1383a, type: 2}
+  baseColor: {r: 0.5019608, g: 0.40392157, b: 0.2901961, a: 1}
+  hasTimer: 0
+  timerLength: 0
+  timer_prefab: {fileID: 0}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Unlock Controller Data_SO
   m_EditorClassIdentifier: 
   challengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
+  achievementsController: {fileID: 11400000, guid: 7ce4e85848642424f9bae675d3745550, type: 2}
   UnlockedItems: []

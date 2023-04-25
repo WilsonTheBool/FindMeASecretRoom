@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67449dfc64688044c9c3c9debc0f2058, type: 3}
+  m_Name: Tutorial_1_params
+  m_EditorClassIdentifier: 
+  specailRoomTypes: []
+  bossRooms: []
+  secretRooms: []
+  LevelGenerator: {fileID: 11400000, guid: 0225ede7e418da54ea97c60ab94c7375, type: 2}
+  RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
+  maxRoomsCount: 0
+  minDeadEndsCount: 0
+  secretRoomsCount: 0
+  giveUpRandomlyChance: 0.5

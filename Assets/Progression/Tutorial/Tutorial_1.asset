@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 100
   levelName: Tutorial
-  generatorParams: {fileID: 0}
+  generatorParams: {fileID: 11400000, guid: 3916f4090bb2ec64b9e77bfc6bae3d91, type: 2}
   baseColor: {r: 0.7019608, g: 0.5529412, b: 0.37647063, a: 1}
+  hasTimer: 0
+  timerLength: 0
+  timer_prefab: {fileID: 0}

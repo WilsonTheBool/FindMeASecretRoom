@@ -25,12 +25,12 @@ namespace Assets.Scripts.Game.UI
 
             goldText.text = PlayerGoldController.gold.ToString();
 
-            UpdateText();
+            UpdateText(PlayerGoldController);
         }
 
-        void UpdateText()
+        void UpdateText(PlayerGoldController goldController)
         {
-            targetCount = PlayerGoldController.gold;
+            targetCount = goldController.gold;
 
             if(targetCount != goldCount)
             {

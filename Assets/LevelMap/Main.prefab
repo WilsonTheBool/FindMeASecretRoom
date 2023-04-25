@@ -392,6 +392,9 @@ MonoBehaviour:
   onRenderStarted:
     m_PersistentCalls:
       m_Calls: []
+  onRoomRender:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1095905291326652095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +646,7 @@ MonoBehaviour:
   maxLevelCount: 0
   GameProgressionController: {fileID: 1095905291098011448}
   MainGameLevelMapController: {fileID: 1095905291326652088}
+  ChallengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
   Player: {fileID: 1095905291893317019}
 --- !u!1 &8119011448430678879
 GameObject:
@@ -867,6 +871,10 @@ PrefabInstance:
       propertyPath: items.Array.data[20]
       value: 
       objectReference: {fileID: 7956518115007697881, guid: 890608054167d0547b0e4b500fc9bf6d, type: 3}
+    - target: {fileID: 188064112313286545, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
+      propertyPath: default_items
+      value: 
+      objectReference: {fileID: 11400000, guid: 14fb23cc9e7089846ace6ccb6115e2f0, type: 2}
     - target: {fileID: 188064112479620722, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -914,6 +922,10 @@ PrefabInstance:
     - target: {fileID: 188064112479620723, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
       propertyPath: spawnHp
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 188064112479620723, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
+      propertyPath: saleChance
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 188064112479620724, guid: 8ebea8fa39ce0a34b8a9cbe9ff9ac454, type: 3}
       propertyPath: m_Name
@@ -1101,10 +1113,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: Book
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 1095905289768995587}
@@ -1112,42 +1120,6 @@ PrefabInstance:
       propertyPath: InputManager_SO
       value: 
       objectReference: {fileID: 11400000, guid: b527b3f252b9794429b63f10275d0b63, type: 2}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[0]
-      value: 
-      objectReference: {fileID: 9030671595705933801, guid: 804a302e0433a93458d819bd77499b95, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[1]
-      value: 
-      objectReference: {fileID: 8978391649720465591, guid: 817632078d062fd48be3f096ae7f2b7d, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[2]
-      value: 
-      objectReference: {fileID: 1791064024846403600, guid: bda734b039eaf7444aa1e3a90aadf34a, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[3]
-      value: 
-      objectReference: {fileID: 5851481648856189606, guid: dd4d2c5dc28b0b04286b066a6175fc93, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[4]
-      value: 
-      objectReference: {fileID: 1827328282911145392, guid: c5752fde879ae364ebe163d58b61eb70, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[5]
-      value: 
-      objectReference: {fileID: 2833541874902627165, guid: 7d69ac6457d7a684aa3cf06bf1b594b5, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[6]
-      value: 
-      objectReference: {fileID: 2645908178128457832, guid: 58ab097ad8a7b174d838aff52b399405, type: 3}
-    - target: {fileID: 684583173211178703, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
-      propertyPath: chapters.Array.data[0].pages.Array.data[7]
-      value: 
-      objectReference: {fileID: 1498103072215776406, guid: 78764be74c6337643bb0248be9cb7b0a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6811388d634cf7f46ab4a21affdbacff, type: 3}
 --- !u!4 &483381367758268727 stripped

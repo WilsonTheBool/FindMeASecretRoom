@@ -43,6 +43,14 @@ MonoBehaviour:
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 0.307
+  - RoomType: {fileID: 11400000, guid: 1d96b064b68682a40aab886aa656de35, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.883
+  - RoomType: {fileID: 11400000, guid: d19c2f481cbf3954dab8876454d726ff, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.963
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
@@ -50,15 +58,7 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.958
-  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
-    count: 1
-    cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.963
-  - RoomType: {fileID: 11400000, guid: 39f1859357c67a244a43dc76ce4e20e5, type: 2}
-    count: 1
-    cancelGenerationIfNotGenerated: 1
-    chanceToGen: 1
+    chanceToGen: 0.821
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
@@ -67,17 +67,29 @@ MonoBehaviour:
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 1
+  - RoomType: {fileID: 11400000, guid: 8414ae27909fb184a907a69d8ea07a94, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.08
+  - RoomType: {fileID: 11400000, guid: e3708e896973a7548928d6b6271dfcee, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.56
   - RoomType: {fileID: 11400000, guid: 7f7e79b845ee4d944968569aacb58b8f, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.302
+    chanceToGen: 0.291
   - RoomType: {fileID: 11400000, guid: 15b6a865121757c4eb158ba6fe5ab2b4, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 0.323
+  - RoomType: {fileID: 11400000, guid: 1d96b064b68682a40aab886aa656de35, type: 2}
+    count: 1
+    cancelGenerationIfNotGenerated: 1
+    chanceToGen: 0.318
   LevelGenerator: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
   maxRoomsCount: 42
   minDeadEndsCount: 9
-  secretRoomsCount: 8
+  secretRoomsCount: 9
   giveUpRandomlyChance: 0.5

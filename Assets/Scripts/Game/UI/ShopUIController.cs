@@ -23,6 +23,7 @@ namespace Assets.Scripts.Game.UI
         public ShopItemSelectUI blueHeartUi;
 
         public ShopItemSelectUI prefab;
+        public ShopItemSelectUI hp_prefab;
 
         public TMPro.TMP_Text ifCantBuy;
         public TMPro.TMP_Text itemDescription;
@@ -37,6 +38,8 @@ namespace Assets.Scripts.Game.UI
         public InputListener InputListener;
 
         public Transform itemsHolder;
+
+        public Transform healHolder;
 
         public Button skipButton;
 
@@ -58,13 +61,13 @@ namespace Assets.Scripts.Game.UI
             SkipRequested.Invoke();
         }
 
-        public void CreateWindow(Item[] items, ShopRoomController shopRoomController, bool spawnHp)
+        public void CreateWindow(ShopRoomController.PriceData[] items, ShopRoomController shopRoomController, bool spawnHp)
         {
             SetText(null);
 
             ShopRoomController = shopRoomController;
 
-            InputListener.enabled = true;
+            
 
             if(spawnHp)
             AddHpObject(shopRoomController.redHp);
@@ -72,16 +75,18 @@ namespace Assets.Scripts.Game.UI
             if(spawnHp)
             AddHpObject(shopRoomController.blueHp);
 
-            foreach (Item item in items)
+            foreach (var item in items)
             {
                 AddNreItemUI(item);
             }
 
-            CanvasGroup.alpha = 1;
-            CanvasGroup.interactable = true;
-            CanvasGroup.blocksRaycasts = true;
+            //CanvasGroup.alpha = 1;
+            //CanvasGroup.interactable = true;
+            //CanvasGroup.blocksRaycasts = true;
+            //InputListener.enabled = true;
 
-            
+            gameObject.SetActive(true);
+
         }
 
         public void CloseWIndow()
@@ -104,19 +109,21 @@ namespace Assets.Scripts.Game.UI
             }
            
 
-            CanvasGroup.alpha = 0;
-            CanvasGroup.interactable = false;
-            CanvasGroup.blocksRaycasts = false;
+            //CanvasGroup.alpha = 0;
+            //CanvasGroup.interactable = false;
+            //CanvasGroup.blocksRaycasts = false;
 
-            InputListener.enabled = false;
+            //InputListener.enabled = false;
+
+            gameObject.SetActive(false);
         }
 
-        private void AddNreItemUI(Item item)
+        private void AddNreItemUI(ShopRoomController.PriceData data)
         {
             var ui = Instantiate(prefab, itemsHolder.transform);
             itemSelectUIs.Add(ui);
-            ui.SetUp(item);
-            ui.SetPriceText(ShopRoomController.GetPrice(item));
+            ui.SetUp(data.item);
+            ui.SetPriceText(data.price, data.isSale);
             ui.Selected.AddListener(OnItemSelected);
             ui.PointerEnter.AddListener(OnItemEnter);
             ui.PointerExit.AddListener(OnItemExit);
@@ -124,7 +131,7 @@ namespace Assets.Scripts.Game.UI
 
         private void AddHpObject(HpObject hp)
         {
-            var ui = Instantiate(prefab, itemsHolder.transform);
+            var ui = Instantiate(hp_prefab, healHolder.transform);
 
             if(hp == ShopRoomController.redHp)
             {
@@ -142,6 +149,7 @@ namespace Assets.Scripts.Game.UI
             ui.Selected.AddListener(OnItemSelected);
             ui.PointerEnter.AddListener(OnItemEnter);
             ui.PointerExit.AddListener(OnItemExit);
+            ui.itemName.transform.parent.gameObject.SetActive(false);
         }
 
         private void RemoveItemUI(ShopItemSelectUI item)
@@ -210,6 +218,11 @@ namespace Assets.Scripts.Game.UI
         void OnItemExit(ItemSelectUI item)
         {
             SetText(null);
+        }
+
+        public void OnHealSelect(bool isRed)
+        {
+
         }
 
         void OnItemSelected(ItemSelectUI item)

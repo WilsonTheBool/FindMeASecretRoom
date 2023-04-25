@@ -25,9 +25,19 @@ namespace Assets.Scripts.Challenges
 
         public void WriteSaveData()
         {
-
             controller.SaveObject<ChallengesSaveData>(SaveData, SaveDataName);
+        }
 
+        public void UpdateUnlocks(ChallengeRunData[] unlocked)
+        {
+            int[] ids = new int[unlocked.Length];
+
+            for (int i = 0; i < unlocked.Length; i++)
+            {
+                ids[i] = unlocked[i].id;
+            }
+
+            SaveData.challengesUnlocked = ids;
         }
 
         public void UpdateCompleteedChalanges(ChallengeRunData[] completed)
@@ -45,6 +55,7 @@ namespace Assets.Scripts.Challenges
         public void ClearAllData()
         {
             SaveData.challengesCompleted = new int[0];
+            SaveData.challengesUnlocked = new int[0];
             WriteSaveData();
         }
 
@@ -60,7 +71,12 @@ namespace Assets.Scripts.Challenges
             LoadSaveData();
 
             ChallengeRunController.LoadCompletedChallenges(SaveData);
-            UnlockController.SetUnlockedItems(SaveData);
+
+        }
+
+        private void Start()
+        {
+            UnlockController.AddUnlockedItems(ChallengeRunController.GetChallengesUnlockItems(SaveData.challengesCompleted));
         }
 
     }
@@ -69,5 +85,6 @@ namespace Assets.Scripts.Challenges
     public class ChallengesSaveData
     {
         public int[] challengesCompleted = new int[0];
+        public int[] challengesUnlocked = new int[0];
     }
 }

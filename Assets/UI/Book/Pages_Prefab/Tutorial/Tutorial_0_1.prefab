@@ -217,21 +217,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'To complete the level you need to unlock all secret rooms.
 
-    
 
     Different
     secret rooms have different rules where they can appear.
 
-    
 
-    Regular
-    Secret Room <sprite=5> is <u>always connected to largest number of non-secret
-    rooms.</U>
+    Regular Secret
+    Room <sprite=5> is <u>always connected to largest number of non-secret rooms.</U>
 
-    
 
-    You can <u>click on the room icon</u> in the top right
-    corner of the screen to get more info.
+
+    You
+    can <u>click on the room icon</u> in the top right corner of the screen to get
+    more info.
 
 '
   m_isRightToLeft: 0

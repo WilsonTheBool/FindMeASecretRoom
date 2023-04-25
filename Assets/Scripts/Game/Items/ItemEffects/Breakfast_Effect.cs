@@ -15,7 +15,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
         public override void OnEffectRemove(Item.ItemInternalEventArgs args)
         {
-            
+            args.external.player.playerHPController.RemoveContainer(new PlayerHPController.HpEventArgs(1, args.item.gameObject));
         }
     }
 }

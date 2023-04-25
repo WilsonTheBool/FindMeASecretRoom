@@ -28,9 +28,12 @@ namespace Assets.Scripts.MainMenu
 
             foreach (ChallengeRunData data in controller.allChalanges)
             {
+                bool isUnlocked = controller.IsChallangeUnlocked(data);
+
                 var button = Instantiate(prefab, ChallengeButtonsHolder);
-                button.SetUP(data, ChallengeDescription, controller.IsChallengeComplete(data));
+                button.SetUP(data, ChallengeDescription, controller.IsChallengeComplete(data), isUnlocked);
                 button.OnClick.AddListener(LoadRun);
+
             }
 
             ChallengeCounter.text = controller.completedChallenges.Count.ToString() + "/" + controller.allChalanges.Length.ToString();
@@ -38,8 +41,14 @@ namespace Assets.Scripts.MainMenu
 
         public void LoadRun(StartChallengeButton button)
         {
+            if(button == normalRun)
+            {
+
+            }
+
             LoadingScreen.SetActive(true);
             controller.CurentChallenge = button.ChallengeRunData;
+
             mainGame.LoadScene();
         }
 

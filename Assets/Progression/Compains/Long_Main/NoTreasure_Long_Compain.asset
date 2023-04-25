@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397a78f049d7fd14f813259b9bb8282a, type: 3}
+  m_Name: NoTreasure_Long_Compain
+  m_EditorClassIdentifier: 
+  levels:
+  - levelAction: {fileID: 11400000, guid: 5fbed5a6584c5c1418a4660e4d54154f, type: 2}
+    level: {fileID: 11400000, guid: 07fc4e31329fdf04394ea5b622dde005, type: 2}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: 7d56dbe2c1cf0494fb7a8b1e576b4c6c, type: 2}
+  - levelAction: {fileID: 11400000, guid: e2c771cf515684f47a1cd94b543fa646, type: 2}
+    level: {fileID: 11400000, guid: 98d2f4203553d8640a266f0e84d0bba2, type: 2}
+  - levelAction: {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+    level: {fileID: 0}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: 7e0f759ef5ae63c48bb3299dd1c014e6, type: 2}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: d7b2a71def199cb4cae38aec1792722e, type: 2}
+  - levelAction: {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+    level: {fileID: 0}
+  - levelAction: {fileID: 11400000, guid: b7e46b293c500c44180bb7e64f0c7276, type: 2}
+    level: {fileID: 11400000, guid: 20689fa685f1e09428219e94899fe036, type: 2}
+  - levelAction: {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+    level: {fileID: 0}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: cfc32d00684401a43a390fc12eff1753, type: 2}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: f19037bbe2882c9448cf7f6b987fd69d, type: 2}
+  - levelAction: {fileID: 11400000, guid: d1d2ba679481cb44d872906075f12751, type: 2}
+    level: {fileID: 0}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: 372b61bd3f8a8e74fadacce1d547c7c5, type: 2}
+  - levelAction: {fileID: 11400000, guid: 4ae131275c4564141b8d5791f805be8b, type: 2}
+    level: {fileID: 11400000, guid: d75d817bbe7cd6d4ababbe606e5ca22a, type: 2}

@@ -164,9 +164,11 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
+  Button: {fileID: 7132908699598832064}
   cahllengeName: {fileID: 2027446324807710907}
   description: {fileID: 0}
   green: {r: 0, g: 0.5372549, b: 0.10980392, a: 1}
+  red: {r: 0.6901961, g: 0.023529412, b: 0.023529412, a: 1}
   normal: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
 --- !u!1 &8652650697400454988
 GameObject:

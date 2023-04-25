@@ -159,6 +159,15 @@ namespace Assets.Scripts.Game.PlayerController
             onAnyHpChanged.Invoke(args);
         }
 
+        public void RemoveContainer(HpEventArgs args)
+        {
+            for (int i = 0; i < args.change; i++)
+            {
+                rule.OnRemoveContainer(hpObjects);
+            }
+            onAnyHpChanged.Invoke(args);
+        }
+
         public class HpEventArgs
         {
             public readonly int originalChange;

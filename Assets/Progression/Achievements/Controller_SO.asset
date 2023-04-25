@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3428f72ad622646ba955ce1bdacb65, type: 3}
+  m_Name: Controller_SO
+  m_EditorClassIdentifier: 
+  all_achievements:
+  - {fileID: 11400000, guid: bb6b2b73afddaff4abba46e7fab892a9, type: 2}
+  - {fileID: 11400000, guid: d70b17b26c689294c8e13c244f98861d, type: 2}
+  - {fileID: 11400000, guid: 0a590efd47dfd0e4bafdfa515244a70f, type: 2}
+  ChallengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
+  activeAchivements: []
+  unlockedAchivements:
+  - {fileID: 11400000, guid: bb6b2b73afddaff4abba46e7fab892a9, type: 2}
+  - {fileID: 11400000, guid: d70b17b26c689294c8e13c244f98861d, type: 2}
+  OnNewAchievmentUnlocked:
+    m_PersistentCalls:
+      m_Calls: []

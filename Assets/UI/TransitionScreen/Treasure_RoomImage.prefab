@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  room: {fileID: 8877548051930580721}
+  bridge: {fileID: 6193983159578012737}
 --- !u!1 &8638515293421909043
 GameObject:
   m_ObjectHideFlags: 0

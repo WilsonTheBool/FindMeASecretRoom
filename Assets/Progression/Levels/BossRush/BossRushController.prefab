@@ -62,7 +62,7 @@ MonoBehaviour:
   completedLevels: 0
   transitionLength: 0.4
   staticLength: 0.2
-  timerLength: 10
+  timerLength: 25
   InputListener: {fileID: -7609871030333135798}
 --- !u!114 &5060526059979422907
 MonoBehaviour:
@@ -104,6 +104,7 @@ MonoBehaviour:
   NormalColor: {r: 1, g: 1, b: 1, a: 1}
   DangerColor: {r: 0.9433962, g: 0.24474904, b: 0.24474904, a: 1}
   DangerValue: 5
+  resetOnAction: 0
 --- !u!114 &-7609871030333135798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,12 +131,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAlternativeAction:
-    m_PersistentCalls:
-      m_Calls: []
-  OnMoveStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnMove:
     m_PersistentCalls:
       m_Calls: []
   OnEscape:

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Game.PlayerController
 
         public GoldEvent BeforeGoldAdd;
         public GoldEvent BeforeGoldRemove;
-        public UnityEvent GoldChanged;
+        public UnityEvent<PlayerGoldController> GoldChanged;
 
         public Sprite goldSprite;
 
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Game.PlayerController
                 gold = maxGold;
             }
 
-            GoldChanged.Invoke();
+            GoldChanged.Invoke(this);
         }
 
         public void RemoveGold(int count)
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Game.PlayerController
                 gold = 0;
             }
 
-            GoldChanged.Invoke();
+            GoldChanged.Invoke(this);
         }
 
         public bool CanSpendGold(int ammount)

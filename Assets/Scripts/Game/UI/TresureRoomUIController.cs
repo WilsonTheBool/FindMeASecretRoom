@@ -55,10 +55,12 @@ namespace Assets.Scripts.Game.UI
                 AddNreItemUI(item);
             }
 
-            CanvasGroup.alpha = 1;
-            CanvasGroup.interactable = true;
-            CanvasGroup.blocksRaycasts = true;
-            skipButton.enabled = true;
+            //CanvasGroup.alpha = 1;
+            //CanvasGroup.interactable = true;
+            //CanvasGroup.blocksRaycasts = true;
+            //skipButton.enabled = true;
+
+            gameObject.SetActive(true);
         }
 
         public void CloseWIndow()
@@ -68,11 +70,13 @@ namespace Assets.Scripts.Game.UI
                 RemoveItemUI(itemSelectUIs[0]);
             }
 
-            CanvasGroup.alpha = 0;
-            CanvasGroup.interactable = false;
-            CanvasGroup.blocksRaycasts = false;
+            //CanvasGroup.alpha = 0;
+            //CanvasGroup.interactable = false;
+            //CanvasGroup.blocksRaycasts = false;
 
-            InputListener.enabled = false;
+            gameObject.SetActive(false);
+
+            //InputListener.enabled = false;
 
             StopAllCoroutines();
         }

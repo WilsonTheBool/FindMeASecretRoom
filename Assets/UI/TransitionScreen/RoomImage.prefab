@@ -165,3 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  room: {fileID: 4549511669179533057}
+  bridge: {fileID: 1289451115026214321}

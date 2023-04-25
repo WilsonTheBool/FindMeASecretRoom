@@ -18,7 +18,7 @@ namespace Assets.Scripts.Game.Pregression.Actions
                 Debug.Log("Item: " + item.Name + " Added to pool");
             }
 
-            progression.LoadNextStep();
+            //progression.LoadNextStep();
         }
     }
 }

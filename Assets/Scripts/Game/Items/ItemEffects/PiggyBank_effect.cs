@@ -12,8 +12,11 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
         public Item prefab;
 
+        private Item.ItemInternalEventArgs args;
+
         public override void OnEffectAdd(Item.ItemInternalEventArgs args)
         {
+            this.args = args;
 
             args.external.player.playerHPController.beforeTakeDamage.AddListener(OnTakeDamage);
         }
@@ -40,7 +43,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
 
             GameUIController.Instance.CreateTransferAnimation(new GameUIController.TransferAnimData
             {
-                origin = mainUi.GetPosition_Ui_To_World(mainUi.PlayerPassiveItemsUIController.FindElement(prefab.Name).transform.position),
+                origin = mainUi.GetPosition_Ui_To_World(mainUi.PlayerPassiveItemsUIController.FindElement(this.args.item).transform.position),
                 destination = mainUi.GetPosition_Ui_To_World(mainUi.playerGoldUIController.transform.position),
                 startScale = new Vector3(0.5f, 0.5f),
                 endScale = new Vector3(0.5f, 0.5f),

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1420e73552cee184bb2c3261e391912a, type: 3}
+  m_Name: Long Conpain Victory
+  m_EditorClassIdentifier: 
+  id: 1
+  controller: {fileID: 11400000, guid: 7ce4e85848642424f9bae675d3745550, type: 2}
+  onAchivementUnlock:
+    m_PersistentCalls:
+      m_Calls: []
+  isSigleUnlock: 1
+  itemsToUnlock:
+  - {fileID: 8225234646456157072, guid: d91d56ec07753334e9c6d0c226c24f77, type: 3}
+  longCompain: {fileID: 11400000, guid: c607e9c8633411b48be6c36229ab1f53, type: 2}
+  challengesToUnlock:
+  - {fileID: 11400000, guid: c06d40af74a8e1f45ac228292118ea73, type: 2}
+  - {fileID: 11400000, guid: 17dbf4ea43c31214b9784a5cdfa8dce5, type: 2}
+  ui: {fileID: 6842506041861388269, guid: 22bcfe9f8649d1043a5f670f670f7ac8, type: 3}

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Level_7
   m_EditorClassIdentifier: 
   id: 7
-  levelName: Depth II
+  levelName: Sheol
   generatorParams: {fileID: 11400000, guid: 04940eccc149f2845afd7b6b08bc3749, type: 2}
-  baseColor: {r: 0.4509804, g: 0.3882353, b: 0.3764706, a: 1}
+  baseColor: {r: 0.21698111, g: 0.19543384, b: 0.19139372, a: 1}
+  hasTimer: 1
+  timerLength: 35
+  timer_prefab: {fileID: 3316263398556109514, guid: 38266821f1f97bd47a7a85a006332fd7, type: 3}

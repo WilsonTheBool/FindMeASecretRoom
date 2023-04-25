@@ -5,6 +5,7 @@ using Assets.Scripts.LevelGeneration;
 using Assets.Scripts.Game.Pregression;
 using Assets.Scripts.Game.GameMap;
 using Assets.Scripts.Game.PlayerController;
+using Assets.Scripts.Challenges;
 
 namespace Assets.Scripts.Game
 {
@@ -19,8 +20,15 @@ namespace Assets.Scripts.Game
         public int levelsCompleted;
         public int maxLevelCount;
 
+        [HideInInspector]
         public GameProgressionController GameProgressionController;
+
+        [HideInInspector]
         public MainGameLevelMapController MainGameLevelMapController;
+
+        public ChallengeRunController ChallengeRunController;
+
+        [HideInInspector]
         public Player Player;
 
 
@@ -36,8 +44,6 @@ namespace Assets.Scripts.Game
                 GameProgressionController = GameProgressionController.Instance;
             }
 
-            maxLevelCount = GameProgressionController.levels.Length;
-
             if (MainGameLevelMapController == null)
             {
                 MainGameLevelMapController = MainGameLevelMapController.Instance;
@@ -45,6 +51,8 @@ namespace Assets.Scripts.Game
 
             MainGameLevelMapController.GameMapRoomUnlockController.roomUnlocked.AddListener(OnRoomUnlocked);
             MainGameLevelMapController.onVictory.AddListener(() => levelsCompleted++);
+            ChallengeRunController.ChallengeStarted.AddListener(OnRunStart);
+
 
             if (Player == null)
             {
@@ -52,6 +60,33 @@ namespace Assets.Scripts.Game
             }
 
             Player.itemsController.ItemAdded.AddListener(OnItemAdd);
+        }
+
+        private void OnRunStart(ChallengeRunData data)
+        {
+            if(data == null || data.Compain == null)
+            {
+                maxLevelCount = GetLevelCount(ChallengeRunController.default_compain);
+            }
+            else
+            {
+                maxLevelCount = GetLevelCount(data.Compain);
+            }
+        }
+
+        private int GetLevelCount(CompainLevelsData_SO compain)
+        {
+            int count = 0;
+
+            foreach(var level in compain.levels)
+            {
+                if(level.level != null)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         private void OnRoomUnlocked(Room room)

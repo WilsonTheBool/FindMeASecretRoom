@@ -13,6 +13,8 @@ namespace Assets.Scripts.Game.Items.ItemPools
         [SerializeField]
         ItemPool breakfastPool;
 
+        public ItemHolder_SO default_items;
+
         public Transform itemHolder;
 
         private void Awake()
@@ -20,6 +22,12 @@ namespace Assets.Scripts.Game.Items.ItemPools
             foreach(ItemPool pool in itemPools)
             {
                 pool.itemPooled.AddListener(OnItemPooled);
+            }
+
+            if(default_items != null)
+            foreach(Item item in default_items.items)
+            {
+                AddItemToPools(item);
             }
         }
 

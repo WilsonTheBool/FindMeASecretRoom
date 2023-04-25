@@ -10,7 +10,7 @@ namespace Assets.Scripts.Game.GameDebug.Cheats
         public override void Activate(CheatActivationData data)
         {
             data.player.goldController.gold = 99;
-            data.player.goldController.GoldChanged.Invoke();
+            data.player.goldController.GoldChanged.Invoke(data.player.goldController);
             data.player.goldController.BeforeGoldRemove.AddListener(BeforeSpend);
         }
 

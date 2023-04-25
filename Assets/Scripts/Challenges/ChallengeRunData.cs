@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Game.GameMap;
 using Assets.Scripts.Game.Items;
+using Assets.Scripts.Game.Items.ItemPools;
 using Assets.Scripts.Game.Pregression;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace Assets.Scripts.Challenges
         public string description;
 
         public CompainLevelsData_SO Compain;
+
+        public ItemPoolController itemPool;
 
         public bool HideTreasureRooms;
         public bool HideShops;

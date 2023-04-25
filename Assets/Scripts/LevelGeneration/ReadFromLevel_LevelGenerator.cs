@@ -5,11 +5,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.LevelGeneration
 {
+    [CreateAssetMenu(menuName = "LevelGeneration/Tutorial Generator")]
     public class ReadFromLevel_LevelGenerator : LevelGenerator
     {
         private MainGameLevelMapController MainGameLevelMapController;
         private MainTutorialController MainTutorialController;
 
+        private Vector2Int startPos;
         public override bool GenerateLevel(LevelMap levelMap, LevelGeneratorParams data)
         {
 
@@ -29,9 +31,16 @@ namespace Assets.Scripts.LevelGeneration
 
             foreach (var room in gms)
             {
+
                 Vector2Int pos = gridMap.WorldToCell(room.transform.position);
 
-                if(levelMap.IsInRange(pos))
+                if (room.parentDirection == new Vector2Int(0, 0))
+                {
+                    startPos = pos;
+                }
+
+
+                if (levelMap.IsInRange(pos))
                 levelMap.PlaceRoom(new Room(){ Figure = room.Room_Figure, type = room.RoomType }, pos, pos + room.parentDirection);
 
                 room.gameObject.SetActive(false);
@@ -44,7 +53,7 @@ namespace Assets.Scripts.LevelGeneration
 
         public override Vector2Int[] GetStartRooms()
         {
-            return new Vector2Int[0];
+            return new Vector2Int[] {startPos};
         }
     }
 }

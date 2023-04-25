@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac1b77f420fe444ebe9b5858be359aa, type: 3}
+  m_Name: 5_XXL
+  m_EditorClassIdentifier: 
+  id: 5
+  Name: XXL
+  description: "Bigger levels. \nMore secret rooms."
+  Compain: {fileID: 11400000, guid: 7db91fb5665a9504591a00527ebf6ffa, type: 2}
+  itemPool: {fileID: 0}
+  HideTreasureRooms: 0
+  HideShops: 0
+  OverrrideStartHP: 0
+  redHpOnStart: 0
+  maxHpContainers: 0
+  AddItemsOnStart: 0
+  itemsToAdd: []
+  RemoveItemsFromPool: 0
+  itemsToPool: []
+  hasUnlockReward: 1
+  itemUnlock: {fileID: 3295538363732529583, guid: c33eaedb4f3d2834f9445ca93bd1da6b, type: 3}
+  removeItemsFromPlayer: 0
+  itemsToRemove: []
+  OverrideGold: 0
+  GoldOnStart: 0
+  OverrideRoomReward: 0
+  baseReward: 0
+  rewardPerCombo: 0
+  AddTrinket: 0
+  Trinket: {fileID: 0}

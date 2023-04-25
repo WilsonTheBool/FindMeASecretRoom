@@ -16,3 +16,6 @@ MonoBehaviour:
   levelName: Boss Rush
   generatorParams: {fileID: 11400000, guid: eb382506fcc7fc7408d6a7e8922d2290, type: 2}
   baseColor: {r: 0.4509804, g: 0.3882353, b: 0.3764706, a: 1}
+  hasTimer: 0
+  timerLength: 0
+  timer_prefab: {fileID: 0}

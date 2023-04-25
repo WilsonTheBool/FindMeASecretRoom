@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac1b77f420fe444ebe9b5858be359aa, type: 3}
+  m_Name: 4_Purist
+  m_EditorClassIdentifier: 
+  id: 4
+  Name: Purist
+  description: No treasure rooms.
+  Compain: {fileID: 11400000, guid: 71d9ce1ffcd45244db1dcc65dc476fc7, type: 2}
+  itemPool: {fileID: 0}
+  HideTreasureRooms: 0
+  HideShops: 0
+  OverrrideStartHP: 0
+  redHpOnStart: 0
+  maxHpContainers: 0
+  AddItemsOnStart: 0
+  itemsToAdd: []
+  RemoveItemsFromPool: 0
+  itemsToPool: []
+  hasUnlockReward: 1
+  itemUnlock: {fileID: 362479567611329646, guid: 2167ffe854eabea409b33d378aaef8f8, type: 3}
+  removeItemsFromPlayer: 0
+  itemsToRemove: []
+  OverrideGold: 0
+  GoldOnStart: 0
+  OverrideRoomReward: 0
+  baseReward: 0
+  rewardPerCombo: 0
+  AddTrinket: 0
+  Trinket: {fileID: 0}

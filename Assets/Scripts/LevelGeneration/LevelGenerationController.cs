@@ -51,7 +51,7 @@ namespace Assets.Scripts.LevelGeneration
 
                 Debug.Log("Generation End");
 
-                if (loopCount > 30)
+                if (loopCount > 50)
                 {
                     Debug.Log("Main Loop fail");
                     return null;

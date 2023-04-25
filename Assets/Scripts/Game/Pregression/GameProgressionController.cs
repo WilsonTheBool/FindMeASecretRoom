@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Game.GameMap;
+﻿using Assets.Scripts.Challenges;
+using Assets.Scripts.Game.GameMap;
 using Assets.Scripts.Game.Items.ItemPools;
 using Assets.Scripts.Game.Pregression.Actions;
 using Assets.Scripts.Game.UI;
@@ -29,17 +30,21 @@ namespace Assets.Scripts.Game.Pregression
         public ProgressEvent OnRunCompleted;
         public ProgressEvent OnRunFailed;
 
-        public ProgressionAction[] actions;
-
-        [HideInInspector]
-        public CompainLevelsData_SO CompainLevelsData_SO;
-
-        public LevelData[] levels;
+        //public ProgressionAction[] actions;
+       // public LevelData[] levels;
 
         public int actionCount = 0;
         private int actionsForTransition = 0;
 
         public int leveldataCount = 0;
+
+        public ProgressionAction[] essentialActions;
+
+        public Progression_OnVictory victoryAction;
+
+        public ChallengeRunController ChallengeRunController;
+
+        public CompainLevelsData_SO compainData;
 
         private void Awake()
         {
@@ -75,6 +80,16 @@ namespace Assets.Scripts.Game.Pregression
                 }
             }
 
+            if(ChallengeRunController != null)
+            if (ChallengeRunController.CurentChallenge == null || ChallengeRunController.CurentChallenge.Compain == null)
+            {
+                compainData = ChallengeRunController.default_compain;
+            }
+            else
+            {
+                compainData = ChallengeRunController.CurentChallenge.Compain;
+            }
+
             TransitionScreenInput.enabled = false;
             TransitionScreenInput.OnActivate.AddListener(OnActivate);
         }
@@ -82,7 +97,10 @@ namespace Assets.Scripts.Game.Pregression
         private void Start()
         {
             GameUIController = GameUIController.Instance;
+
             ScreenTransitionController = GameUIController.ScreenTransitionController;
+
+            ScreenTransitionController.SetUp(this);
             ScreenTransitionController.FadeOutEnded.AddListener(TransitionComplete);
             ScreenTransitionController.FadeInEnded.AddListener(() => transitionFadeInEnd.Invoke(this));
 
@@ -90,6 +108,11 @@ namespace Assets.Scripts.Game.Pregression
             MainGameLevelMapController.onVictory.AddListener(LoadNextStep);
 
             MainGameLevelMapController.onDefeat.AddListener(() => OnRunFailed.Invoke(this));
+
+            foreach(ProgressionAction action in essentialActions)
+            {
+                action.DoAction(this, MainGameLevelMapController);
+            }
 
             LoadNextStep();
         }
@@ -101,8 +124,9 @@ namespace Assets.Scripts.Game.Pregression
 
         public void LoadNextStep()
         {
-           if(actionCount < 0 || actionCount >= actions.Length)
+           if(actionCount < 0 || actionCount > compainData.levels.Length)
            {
+               
                 return;
            }
 
@@ -128,12 +152,17 @@ namespace Assets.Scripts.Game.Pregression
 
         private ProgressionAction GetCurent()
         {
-            if (actionCount < 0 || actionCount >= actions.Length)
+            if (actionCount < 0 || actionCount >= compainData.levels.Length)
             {
+                if(actionCount == compainData.levels.Length)
+                {
+                    return victoryAction;
+                }
+
                 return null;
             }
 
-            return actions[actionCount];
+            return compainData.levels[actionCount].levelAction;
         }
 
         private void ActivateNextAction()
@@ -165,19 +194,18 @@ namespace Assets.Scripts.Game.Pregression
 
         public LevelData GetCurentLevel()
         {
-            if(leveldataCount >= levels.Length)
+            if(actionCount > compainData.levels.Length)
             {
                 return null;
             }
 
-            return levels[leveldataCount - 1];
+            return compainData.levels[actionCount - 1].level;
         }
 
-        public LevelData GetNextLevel()
-        {
-            leveldataCount++;
-            return levels[leveldataCount - 1];
-        }
+        //public LevelData GetNextLevel()
+        //{
+        //    return compainData.levels[actionCount - 1].level;
+        //}
 
 
         [System.Serializable]
