@@ -3,6 +3,8 @@ using Assets.Scripts.Game.PlayerController;
 using Assets.Scripts.Game.Items;
 using UnityEngine;
 using UnityEngine.UI;
+using JetBrains.Annotations;
+using Assets.Scripts.Game.GameMap;
 
 namespace Assets.Scripts.Game.UI
 {
@@ -11,6 +13,8 @@ namespace Assets.Scripts.Game.UI
         PlayerItemsController PlayerItemsController;
 
         public Image[] items;
+
+        public Button swapButton;
 
         public Image itemCharge;
 
@@ -27,6 +31,8 @@ namespace Assets.Scripts.Game.UI
         {
             PlayerItemsController = Player.instance.itemsController;
 
+            if(swapButton != null)
+            swapButton.onClick.AddListener(() => MainGameLevelMapController.Instance.SwitchActiveItem());
             PlayerItemsController.ActiveItemSwitched.AddListener(UpdateUI);
             PlayerItemsController.ActiveItemUpdated.AddListener(UpdateUI);
             PlayerItemsController.ItemAdded.AddListener(UpdateUI);
@@ -117,14 +123,14 @@ namespace Assets.Scripts.Game.UI
                 items[0].material = null;
             }
 
-            if(PlayerItemsController.CurentActiveItems > 1)
-            {
-                swapTip?.gameObject.SetActive(true);
-            }
-            else
-            {
-                swapTip?.gameObject.SetActive(false);
-            }
+            //if (PlayerItemsController.CurentActiveItems > 1)
+            //{
+            //    swapTip?.gameObject.SetActive(true);
+            //}
+            //else
+            //{
+            //    swapTip?.gameObject.SetActive(false);
+            //}
 
             if (selected != null && selected.hasAltMode)
             {

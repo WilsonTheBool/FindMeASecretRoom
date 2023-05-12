@@ -52,7 +52,7 @@ namespace Assets.Scripts.Game.PlayerController
 
         private void OnExplosion(Explosion explosion, ExplosionResult explosionResult)
         {
-            if(explosionResult.secretRoomsUnlocked <= 0)
+            if(explosionResult.secretRoomsUnlocked <= 0 && explosion.ignoreCombo == false)
             {
                 ResetCombo();
             }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Controller_Challenge
   m_EditorClassIdentifier: 
   unlockController: {fileID: 11400000, guid: 691304baaae6bd04e9a83d1cbfa0217d, type: 2}
-  CurentChallenge: {fileID: 0}
+  CurentChallenge: {fileID: 11400000, guid: 666c9921a4f9caf4eb722553f2339f82, type: 2}
   allChalanges:
   - {fileID: 11400000, guid: 1e7957369a954234783d5694db060386, type: 2}
   - {fileID: 11400000, guid: e7d25695e0b3cbe47ac30af3da6ab83d, type: 2}

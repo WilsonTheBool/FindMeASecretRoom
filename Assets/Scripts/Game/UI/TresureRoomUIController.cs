@@ -58,7 +58,8 @@ namespace Assets.Scripts.Game.UI
             //CanvasGroup.alpha = 1;
             //CanvasGroup.interactable = true;
             //CanvasGroup.blocksRaycasts = true;
-            //skipButton.enabled = true;
+            
+            skipButton.enabled = true;
 
             gameObject.SetActive(true);
         }

@@ -8,6 +8,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Game.GameMap
@@ -167,7 +168,7 @@ namespace Assets.Scripts.Game.GameMap
             cam.transform.position = grid.GetCellCenter(GameMapSizeController.curentMapSize / 2) + new Vector3(0, 0, -10);
         }
 
-        private void SwitchActiveItem()
+        public void SwitchActiveItem()
         {
             Player.itemsController.SwitchActiveItem(GetItemArgs());
         }
@@ -189,6 +190,7 @@ namespace Assets.Scripts.Game.GameMap
 
         private void UseCurentItem()
         {
+            if(!EventSystem.current.IsPointerOverGameObject())
             Player.itemsController.UseItem(GetItemArgs());
         }
 

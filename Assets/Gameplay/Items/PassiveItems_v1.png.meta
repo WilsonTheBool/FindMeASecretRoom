@@ -77,6 +77,18 @@ TextureImporter:
   - first:
       213: 6303184177829873217
     second: PassiveItems_v1_24
+  - first:
+      213: -4747318533395518059
+    second: PassiveItems_v1_25
+  - first:
+      213: -4658658148904341024
+    second: PassiveItems_v1_26
+  - first:
+      213: -2013833507785324656
+    second: PassiveItems_v1_27
+  - first:
+      213: 1196641395639117870
+    second: PassiveItems_v1_28
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -699,6 +711,90 @@ TextureImporter:
       bones: []
       spriteID: 14689613d98697750800000000000000
       internalID: 6303184177829873217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PassiveItems_v1_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59de45d32f22e1eb0800000000000000
+      internalID: -4747318533395518059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PassiveItems_v1_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1f390a81f195fb0800000000000000
+      internalID: -4658658148904341024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PassiveItems_v1_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0974dab281d6d04e0800000000000000
+      internalID: -2013833507785324656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PassiveItems_v1_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e28e89e52035b9010800000000000000
+      internalID: 1196641395639117870
       vertices: []
       indices: 
       edges: []

@@ -18,7 +18,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSigleUnlock: 1
-  itemsToUnlock: []
+  itemsToUnlock:
+  - {fileID: 8203098519529243951, guid: 94721a086e14a41478f9b5d9ebcdb8ab, type: 3}
   challengesToUnlock:
   - {fileID: 11400000, guid: 1e7957369a954234783d5694db060386, type: 2}
   - {fileID: 11400000, guid: e7d25695e0b3cbe47ac30af3da6ab83d, type: 2}

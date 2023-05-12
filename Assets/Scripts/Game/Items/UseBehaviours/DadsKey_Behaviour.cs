@@ -79,6 +79,13 @@ namespace Assets.Scripts.Game.Items.UseBehaviours
                 args.external.mainGameController.ExplosionController.Explode_Fake(explosion);
             }
 
+            foreach (Vector2Int exit in room.Figure.BlockedExits)
+            {
+                Vector2Int pos = exit + room.position;
+                explosion.position = pos;
+                args.external.mainGameController.ExplosionController.Explode_Fake(explosion);
+            }
+
             args.external.mainGameController.GameSelectTileController.ReturnToDefaultSprite();
             ItemUsed.Invoke();
         }

@@ -16,6 +16,8 @@ namespace Assets.Scripts.Game.Gameplay
 
         public Vector3 size = new Vector3(1, 1, 1);
 
+        public bool ignoreCombo = false;
+
         public event Action<Explosion> onBeforeExplosion;
         public event Action<Explosion, ExplosionResult> onAfterExplosion;
 
@@ -104,5 +106,6 @@ namespace Assets.Scripts.Game.Gameplay
         public Vector2Int[] unlockPositions;
 
         public GameObject explosionObject;
+
     }
 }

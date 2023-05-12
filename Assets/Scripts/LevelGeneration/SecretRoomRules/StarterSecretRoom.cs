@@ -18,9 +18,9 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
             foreach (Room room in map.rooms)
             {
-                float cost = 20 - room.distance;
+                float cost = -1;
 
-                if (room.type != null && room.type.isSecretRoom)
+                if (room.type != null/* && room.type.isSecretRoom*/)
                 {
 
                     cost = -10;
@@ -34,13 +34,10 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
 
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
                         if (!costMap.HasKey(key))
-                            costMap.AddValue(key, cost);
+                            costMap.AddValue(key, 1 + cost);
                         else
                         {
-                            if(costMap.GetValue(key) < cost && costMap.GetValue(key) >= 0)
-                            {
-                                costMap.SetValue(key, cost);
-                            }
+                            costMap.AddValue(key, cost);
                         }
 
                 }
@@ -53,6 +50,50 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                     if (map.IsInRange(key) && map.GetRoom(key) == null)
                         costMap.SetValue(key, -100);
                 }
+            }
+
+            foreach (Room room in map.rooms)
+            {
+                float cost = 20 - room.distance;
+
+                if (room.type != null && room.type.isSecretRoom)
+                {
+
+                    continue;
+
+                }
+
+                foreach (Vector2Int exit in room.Figure.RoomExits)
+                {
+                    Vector2Int key = exit + room.position;
+
+
+                    if (map.IsInRange(key) && map.GetRoom(key) == null)
+                        if (costMap.HasKey(key) && costMap.GetValue(key) >= 0)
+                        {
+                            if (costMap.GetValue(key) < cost)
+                            {
+                                costMap.SetValue(key, cost);
+                            }
+                        }
+                        //else
+                        //{
+                        //    if(costMap.GetValue(key) < cost && costMap.GetValue(key) >= 0)
+                        //    {
+                        //        costMap.SetValue(key, cost);
+                        //    }
+                        //}
+
+                }
+
+                //foreach (Vector2Int exit in room.Figure.BlockedExits)
+                //{
+                //    Vector2Int key = exit + room.position;
+
+
+                //    if (map.IsInRange(key) && map.GetRoom(key) == null)
+                //        costMap.SetValue(key, -100);
+                //}
             }
 
             costMap.ReSort();

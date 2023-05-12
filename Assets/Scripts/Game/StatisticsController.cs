@@ -35,6 +35,7 @@ namespace Assets.Scripts.Game
         private void Awake()
         {
             Instance = this;
+            ChallengeRunController.ChallengeStarted.AddListener(OnRunStart);
         }
 
         public void Start()
@@ -51,7 +52,7 @@ namespace Assets.Scripts.Game
 
             MainGameLevelMapController.GameMapRoomUnlockController.roomUnlocked.AddListener(OnRoomUnlocked);
             MainGameLevelMapController.onVictory.AddListener(() => levelsCompleted++);
-            ChallengeRunController.ChallengeStarted.AddListener(OnRunStart);
+            //ChallengeRunController.ChallengeStarted.AddListener(OnRunStart);
 
 
             if (Player == null)

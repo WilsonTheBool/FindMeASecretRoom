@@ -83,6 +83,11 @@ namespace Assets.Scripts.Game.Gameplay.BossRush
                 if (map != null)
                 {
                     levelDatas.Add(SetUpLevel(map, false));
+                    //print("Add new map: " + p.name);
+                }
+                else
+                {
+                    //print("SKIPED map: " + p.name + "!!!!!");
                 }
 
                 foreach (var data in levelDatas)
@@ -221,8 +226,8 @@ namespace Assets.Scripts.Game.Gameplay.BossRush
                 yield return new WaitForSeconds(transitionLength);
 
 
-
-            tvStatic.SetActive(true);
+            if (levelDatas.Count > 1)
+                tvStatic.SetActive(true);
 
             PlaySound.Play();
 
@@ -234,12 +239,13 @@ namespace Assets.Scripts.Game.Gameplay.BossRush
 
             levelComplete = false;
 
+           
             IncrementLevelIndex();
 
+            if (index >= 0 && index < levelDatas.Count)
             SetLevel(levelDatas[index]);
 
-            if(!firstStart)
-                timer.StartTImer();
+            timer.StartTImer();
 
             tvStatic.SetActive(false);
 

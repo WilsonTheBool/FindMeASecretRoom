@@ -29,6 +29,8 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
         public Transform roomIconHolder;
         public Image iconPrefab;
 
+        public Button buttonShowWindow;
+
         public float MainStepDelay;
 
         public float itemsStepDelay;
@@ -61,6 +63,11 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
             itemHolder.gameObject.SetActive(false);
             roomsTitle.gameObject.SetActive(false);
             roomIconHolder.gameObject.SetActive(false);
+            if (buttonShowWindow != null)
+            {
+                buttonShowWindow.onClick.AddListener(HideShowWindow);
+                buttonShowWindow.gameObject.SetActive(false);
+            }
 
             InputListener.OnActivate.AddListener(Skip);
             InputListener.OnAccept.AddListener(Skip);
@@ -73,12 +80,23 @@ namespace Assets.Scripts.Game.UI.GameOverScreen
             isHiden = !isHiden;
 
             StopAllCoroutines();
+
+            if(isHiden)
             FullSkip();
 
-            for(int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(!isHiden);
             }
+
+            if (!isHiden)
+                FullSkip();
+
+            if(buttonShowWindow != null)
+            if (isHiden)
+                buttonShowWindow.gameObject.SetActive(true);
+            else
+                buttonShowWindow.gameObject.SetActive(false);
         }
 
         private void Start()

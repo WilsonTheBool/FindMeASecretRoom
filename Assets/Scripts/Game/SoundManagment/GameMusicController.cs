@@ -84,20 +84,23 @@ namespace Assets.Scripts.Game.SoundManagment
                 curentSongTime = float.MaxValue;
                 return;
             }
+
             
             AudioClip song = clipsRandom[Random.Range(0, clipsRandom.Count)];
             clipsRandom.Remove(song);
             curentSong = song;
             audioSource.clip = song;
             curentSongTime = song.length;
+            audioSource.Play();
             OnNewSong.Invoke();
         }
 
         private void Update()
         {
-            if(curentSongTime > 0)
+
+            if(audioSource.time < curentSongTime - 0.2f)
             {
-                curentSongTime -= Time.deltaTime;
+                //curentSongTime -= Time.deltaTime;
             }
             else
             {

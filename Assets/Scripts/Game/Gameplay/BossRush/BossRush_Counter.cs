@@ -14,10 +14,18 @@ namespace Assets.Scripts.Game.Gameplay.BossRush
             gameObject.SetActive(false);
         }
 
+        IEnumerator CompleteCo()
+        {
+            yield return new WaitForSecondsRealtime(1);
+            gameObject.SetActive(false);
+        }
+
+
         public void SetUp(BossRushController bossRushController)
         {
             this.bossRushController = bossRushController;
             bossRushController.anyLevelFinished.AddListener(UpdateText);
+            bossRushController.OnComplete.AddListener(()=>StartCoroutine(CompleteCo()));
             this.gameObject.SetActive(true);
             UpdateText();
         }

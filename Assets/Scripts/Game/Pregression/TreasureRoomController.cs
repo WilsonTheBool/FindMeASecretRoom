@@ -132,6 +132,8 @@ namespace Assets.Scripts.Game.Pregression
                 items.Add(ItemPoolController.GetItemFromPool(ItemPoolController.PoolType.trasure));
             }
 
+            isSkipping = false;
+
             uiContrller.CreateWindow(items.ToArray());
 
             OnTresureOpened.Invoke();
