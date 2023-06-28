@@ -38,6 +38,7 @@ namespace Assets.Scripts.Game.Pregression
         public int blueHpPrice;
 
         public UnityEvent OnItemBuy;
+        public UnityEvent<Item> ItemBuy;
         public UnityEvent OnCantBuy;
 
         public UnityEvent OnOpen;
@@ -53,8 +54,15 @@ namespace Assets.Scripts.Game.Pregression
 
         public bool spawnHp = true;
 
+        public int shopIndexCount = 0;
+
+        public bool itemsRestock = false;
+        public bool hpRestock = false;
+
         [HideInInspector]
         public List<PriceData> items = new List<PriceData>();
+
+        private RestockData restockData = new RestockData();
 
         private void Start()
         {
@@ -72,21 +80,16 @@ namespace Assets.Scripts.Game.Pregression
 
         public void CreateShopWindow()
         {
-            
+            restockData = new RestockData();
             items.Clear();
             curentSaleItems = 0;
+
+
             for (int i = 0; i < shopItemsCount; i++)
             {
                 Item item = ItemPoolController.GetItemFromPool(ItemPoolController.PoolType.shop);
                 bool isSale = false;
-                int price = shopPrices.GetPrice(item);
-
-                if(curentSaleItems < maxSaleItems && Random.Range(0f,1f) < saleChance)
-                {
-                    curentSaleItems++;
-                    price = Mathf.FloorToInt(price * saleMult);
-                    isSale = true;
-                }
+                int price = GetItemPrice(item, shopIndexCount, 0, out isSale);
 
                 items.Add(new PriceData(price, item, isSale));
             }
@@ -94,6 +97,22 @@ namespace Assets.Scripts.Game.Pregression
             ShopUIController.CreateWindow(items.ToArray(), this, spawnHp);
 
             OnOpen.Invoke();
+
+            shopIndexCount++;
+        }
+
+        public int GetItemPrice(Item item, int shopIndex, int restockIndex, out bool isSale)
+        {
+            isSale = false;
+            int price = shopPrices.GetPrice(item) + shopPrices.GetPriceIncrease(shopIndex) + shopPrices.GetPriceIncrease_Resotck(restockIndex);
+            if (curentSaleItems < maxSaleItems && Random.Range(0f, 1f) < saleChance)
+            {
+                curentSaleItems++;
+                price = Mathf.FloorToInt(price * saleMult);
+                isSale = true;
+            }
+
+            return price;
         }
 
         public void CloseWindow()
@@ -118,7 +137,30 @@ namespace Assets.Scripts.Game.Pregression
                     player = Player.instance,
                     tilePos = Vector2Int.zero,});
 
-                OnItemBuy.Invoke();
+                if (itemsRestock)
+                {
+                    ShopUIController.TryGetItemPosition(item, out int index);
+
+                    OnItemBuy.Invoke();
+                    ItemBuy.Invoke(item);
+
+                    Item Newitem = ItemPoolController.GetItemFromPool(ItemPoolController.PoolType.shop);
+
+                    int restockCount = restockData.Get(index);
+
+                    PriceData data = new PriceData(GetItemPrice(Newitem, shopIndexCount, restockCount, out bool isSale), Newitem, isSale);
+                    items.Add(data);
+                    ShopUIController.AddNewItem(data, index);
+                    restockCount++;
+                    restockData.Set(index, restockCount);
+                }
+                else
+                {
+                    OnItemBuy.Invoke();
+                    ItemBuy.Invoke(item);
+                }
+
+
                 return true;
             }
             else
@@ -191,6 +233,33 @@ namespace Assets.Scripts.Game.Pregression
             {
                 OnCantBuy.Invoke();
                 return false;
+            }
+        }
+
+        private class RestockData
+        {
+            public Dictionary<int, int> restockData = new Dictionary<int, int>();
+
+            public void Set(int index, int value)
+            {
+                if (restockData.ContainsKey(index))
+                {
+                    restockData[index] = value;
+                }
+                else
+                {
+                    restockData.Add(index, value);
+                }
+            }
+
+            public int Get(int index)
+            {
+                if (restockData.ContainsKey(index))
+                {
+                    return restockData[index];
+                }
+
+                return 0;
             }
         }
 

@@ -16,11 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb6b2b73afddaff4abba46e7fab892a9, type: 2}
   - {fileID: 11400000, guid: d70b17b26c689294c8e13c244f98861d, type: 2}
   - {fileID: 11400000, guid: 0a590efd47dfd0e4bafdfa515244a70f, type: 2}
+  - {fileID: 11400000, guid: c06fe2368f55c074db108d586bbf2f86, type: 2}
+  - {fileID: 11400000, guid: 702cd5b4e2f88c34e92e0be96889276a, type: 2}
   ChallengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
-  activeAchivements: []
+  activeAchivements:
+  - {fileID: 11400000, guid: c06fe2368f55c074db108d586bbf2f86, type: 2}
   unlockedAchivements:
   - {fileID: 11400000, guid: bb6b2b73afddaff4abba46e7fab892a9, type: 2}
   - {fileID: 11400000, guid: d70b17b26c689294c8e13c244f98861d, type: 2}
+  - {fileID: 11400000, guid: 0a590efd47dfd0e4bafdfa515244a70f, type: 2}
+  - {fileID: 11400000, guid: 702cd5b4e2f88c34e92e0be96889276a, type: 2}
   OnNewAchievmentUnlocked:
     m_PersistentCalls:
       m_Calls: []

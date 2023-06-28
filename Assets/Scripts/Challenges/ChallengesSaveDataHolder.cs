@@ -5,28 +5,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Challenges
 {
-    public class ChallengesSaveDataHolder : MonoBehaviour
+    public class ChallengesSaveDataHolder : SaveLoadComponent<ChallengesSaveData>
     {
 
         private const string SaveDataName = "Challenges";
-        public ChallengesSaveData SaveData;
+        private const int order = 2;
 
         private SaveLoadController controller;
 
         public ChallengeRunController ChallengeRunController;
         public UnlockControllerData_SO UnlockController;
-
-        private void LoadSaveData()
-        {
-            SaveData = controller.LoadObject<ChallengesSaveData>(SaveDataName);
-
-            SaveData ??= new ChallengesSaveData();
-        }
-
-        public void WriteSaveData()
-        {
-            controller.SaveObject<ChallengesSaveData>(SaveData, SaveDataName);
-        }
 
         public void UpdateUnlocks(ChallengeRunData[] unlocked)
         {
@@ -56,33 +44,36 @@ namespace Assets.Scripts.Challenges
         {
             SaveData.challengesCompleted = new int[0];
             SaveData.challengesUnlocked = new int[0];
-            WriteSaveData();
+            Save_SaveData(controller);
         }
 
-        public void Awake()
+        public override void OnAwake(SaveLoadController controller)
         {
-            controller = SaveLoadController.Instance;
+            ChallengeRunController.LoadCompletedChallenges(this);
 
-            if (controller == null)
-            {
-                controller = GetComponentInParent<SaveLoadController>();
-            }
-
-            LoadSaveData();
-
-            ChallengeRunController.LoadCompletedChallenges(SaveData);
-
+            base.OnAwake(controller);
         }
 
-        private void Start()
+        public override void OnStart(SaveLoadController controller)
         {
-            UnlockController.AddUnlockedItems(ChallengeRunController.GetChallengesUnlockItems(SaveData.challengesCompleted));
+            UnlockController.AddUnlockedItems(ChallengeRunController.GetChallengesUnlockItems(SaveData.challengesCompleted), false);
+
+            base.OnAfterAwake(controller);
         }
+
+
+        public override void SetUp(SaveLoadController controller)
+        {
+            this.controller = controller;
+            this.awakeOrder = order;
+            saveName = SaveDataName;
+        }
+
 
     }
 
     [System.Serializable]
-    public class ChallengesSaveData
+    public class ChallengesSaveData:SaveData
     {
         public int[] challengesCompleted = new int[0];
         public int[] challengesUnlocked = new int[0];

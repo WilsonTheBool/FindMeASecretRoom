@@ -34,9 +34,12 @@ namespace Assets.Scripts.Game.SoundManagment
             SetRandomSong();
 
             SaveLoadController SaveLoadController = SaveLoadController.Instance;
-            if (SaveLoadController != null && SaveLoadController.optionsData != null && SaveLoadController.optionsData.SaveData != null)
+
+            SaveLoadController.TryGetSaveLoadComponent(out OptionsSaveLoadDataHolder optionsSaveData);
+
+            if (SaveLoadController != null && optionsSaveData != null && optionsSaveData.SaveData != null)
             {
-                SetVolume(SaveLoadController.optionsData.SaveData.musicVolume);
+                SetVolume(optionsSaveData.SaveData.musicVolume);
 
             }
 

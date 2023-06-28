@@ -278,5 +278,32 @@ namespace Assets.Scripts.Game.UI
             OnCantBuy.Invoke();
 
         }
+
+        public bool TryGetItemPosition(Item item, out int index)
+        {
+            foreach(ShopItemSelectUI itemSelectUI in itemSelectUIs)
+            {
+                if(itemSelectUI.item.Name == item.Name)
+                {
+                    index = itemSelectUI.transform.GetSiblingIndex();
+                    return true;
+                }
+            }
+
+            index = -1;
+            return false;
+        }
+
+        public void AddNewItem(ShopRoomController.PriceData data, int position)
+        {
+            var ui = Instantiate(prefab, itemsHolder.transform);
+            ui.transform.SetSiblingIndex(position);
+            itemSelectUIs.Add(ui);
+            ui.SetUp(data.item);
+            ui.SetPriceText(data.price, data.isSale);
+            ui.Selected.AddListener(OnItemSelected);
+            ui.PointerEnter.AddListener(OnItemEnter);
+            ui.PointerExit.AddListener(OnItemExit);
+        }
     }
 }

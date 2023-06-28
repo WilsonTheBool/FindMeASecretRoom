@@ -19,7 +19,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
             return true;
         }
 
-        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate)
+        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate, bool useLimiter = false)
         {
             RuleCostMap costMap = new RuleCostMap(2);
 
@@ -35,22 +35,18 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
                     {
                         cost = -10;
                     }
-                    else
-                    {
-                        cost = 1.3f;
-                    }
 
                 }
 
 
+                if(cost < 0)
+                foreach (Vector2Int exit in room.Figure.RoomExits)
+                {
+                    Vector2Int key = exit + room.position;
 
-                //foreach (Vector2Int exit in room.Figure.RoomExits)
-                //{
-                //    Vector2Int key = exit + room.position;
-
-                //    if (map.IsInRange(key) && map.GetRoom(key) == null)
-                //        costMap.AddValue(key, 0);
-                //}
+                    if (map.IsInRange(key) && map.GetRoom(key) == null)
+                        costMap.AddValue(key, cost);
+                }
 
                 foreach (Vector2Int exit in room.Figure.BlockedExits)
                 {
@@ -62,6 +58,12 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
             }
 
             costMap.ReSort();
+
+            if (useLimiter && data.GenerationLimiter != null && !data.GenerationLimiter.IsCorrect(SecretRoomType, costMap, countToGenerate))
+            {
+                return false;
+            }
+
 
             for (int i = 0; i < countToGenerate; i++)
             {

@@ -9,9 +9,17 @@ namespace Assets.Scripts.Achievements.Actions
     {
         public Item itemToUnlock;
 
+        public bool invokeEvents;
+
+        public Action_UnlockItem(Item itemToUnlock, bool invokeEvents)
+        {
+            this.itemToUnlock = itemToUnlock;
+            this.invokeEvents = invokeEvents;
+        }
+
         public override void DoAction(AchivementArgs args)
         {
-            args.challenges.unlockController.AddUnlockedItems(itemToUnlock);
+            args.challenges.unlockController.AddUnlockedItems(itemToUnlock, invokeEvents);
         }
     }
 }

@@ -146,6 +146,21 @@ namespace Assets.Scripts.Game.PlayerController
             AddContainer(args);
         }
 
+        public void RequestAddContainer_Empty(HpEventArgs args)
+        {
+            beforeCntainerAdd.Invoke(args);
+
+            for (int i = 0; i < args.change; i++)
+            {
+                rule.OnAddContainer_Empty(hpObjects, maxHpSlotsCount);
+            }
+
+
+            afterCntainerAdd.Invoke(args);
+
+            onAnyHpChanged.Invoke(args);
+        }
+
         private void AddContainer(HpEventArgs args)
         {
             for(int i = 0; i < args.change; i++)

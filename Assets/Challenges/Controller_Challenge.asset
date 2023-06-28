@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Controller_Challenge
   m_EditorClassIdentifier: 
   unlockController: {fileID: 11400000, guid: 691304baaae6bd04e9a83d1cbfa0217d, type: 2}
-  CurentChallenge: {fileID: 11400000, guid: 666c9921a4f9caf4eb722553f2339f82, type: 2}
+  CurentChallenge: {fileID: 0}
   allChalanges:
   - {fileID: 11400000, guid: 1e7957369a954234783d5694db060386, type: 2}
   - {fileID: 11400000, guid: e7d25695e0b3cbe47ac30af3da6ab83d, type: 2}
@@ -21,14 +21,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1769336816aabf4fbda3d9cc0a0728c, type: 2}
   - {fileID: 11400000, guid: 17dbf4ea43c31214b9784a5cdfa8dce5, type: 2}
   - {fileID: 11400000, guid: c06d40af74a8e1f45ac228292118ea73, type: 2}
+  - {fileID: 11400000, guid: 88ef9cae3d0e86c438d28fcb063676c3, type: 2}
   default_compain: {fileID: 11400000, guid: c607e9c8633411b48be6c36229ab1f53, type: 2}
   completedChallenges:
-  - {fileID: 11400000, guid: 1e7957369a954234783d5694db060386, type: 2}
-  - {fileID: 11400000, guid: e7d25695e0b3cbe47ac30af3da6ab83d, type: 2}
+  - {fileID: 11400000, guid: f1769336816aabf4fbda3d9cc0a0728c, type: 2}
   unlockedChallenges:
   - {fileID: 11400000, guid: 1e7957369a954234783d5694db060386, type: 2}
   - {fileID: 11400000, guid: e7d25695e0b3cbe47ac30af3da6ab83d, type: 2}
   - {fileID: 11400000, guid: c7b6d4bf42098fe428d0dde515d83b6d, type: 2}
+  - {fileID: 11400000, guid: f1769336816aabf4fbda3d9cc0a0728c, type: 2}
+  - {fileID: 11400000, guid: c06d40af74a8e1f45ac228292118ea73, type: 2}
+  - {fileID: 11400000, guid: 17dbf4ea43c31214b9784a5cdfa8dce5, type: 2}
+  - {fileID: 11400000, guid: 88ef9cae3d0e86c438d28fcb063676c3, type: 2}
   ChallengesSaveDataHolder: {fileID: 0}
   ChallengeStarted:
     m_PersistentCalls:

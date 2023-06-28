@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Challenges;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.SaveLoad
@@ -9,48 +9,74 @@ namespace Assets.Scripts.SaveLoad
 
         public static SaveLoadController Instance;
 
-        [HideInInspector]
-        public OptionsSaveLoadDataHolder optionsData;
+        public List<ISaveLoadComponent> saveLoadComponents;
 
-        [HideInInspector]
-        public CheatsSaveLoadDataHolder cheatsData;
+        public bool TryGetSaveLoadComponent<T>(out T Component) where T: class, ISaveLoadComponent 
+        {
+            foreach(ISaveLoadComponent component in saveLoadComponents)
+            {
+                if(component is T)
+                {
+                    Component = component as T;
+                    return true;
+                }
+            }
 
-        [HideInInspector]
-        public ChallengesSaveDataHolder challengesSaveData;
-
-        //[HideInInspector]
-        //public AchievementsSaveDataHolder challengesSaveData;
+            Component = null;
+            return false;
+        }
 
         private void Awake()
         {
             if (Instance != null)
             {
-                Destroy(this);
+                Destroy(this.gameObject);
             }
             else
             {
-
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
 
-                if (optionsData == null)
-                {
-                    optionsData = GetComponentInChildren<OptionsSaveLoadDataHolder>();
-                }
+                SetUp();
+            }
+        }
 
-                if (cheatsData == null)
-                {
-                    cheatsData = GetComponentInChildren<CheatsSaveLoadDataHolder>();
-                }
+        void SetUp()
+        {
+            saveLoadComponents = new List<ISaveLoadComponent>(GetComponentsInChildren<ISaveLoadComponent>());
 
-                if (challengesSaveData == null)
-                {
-                    challengesSaveData = GetComponentInChildren<ChallengesSaveDataHolder>();
-                }
+            //All components setUp()
+            foreach (ISaveLoadComponent component in saveLoadComponents)
+            {
+                component.SetUp(this);
             }
 
-            
-        
+            //All components Load_Savedata() from disc
+            foreach (ISaveLoadComponent component in saveLoadComponents)
+            {
+                component.Load_SaveData(this);
+            }
+
+            saveLoadComponents.Sort(new SaveLoadComponentComparer());
+
+
+            foreach (ISaveLoadComponent component in saveLoadComponents)
+            {
+                component.OnAwake(this);
+            }
+
+            foreach (ISaveLoadComponent component in saveLoadComponents)
+            {
+                component.OnAfterAwake(this);
+            }
+        }
+
+        private void Start()
+        {
+            foreach (ISaveLoadComponent component in saveLoadComponents)
+            {
+                component.OnStart(this);
+            }
         }
 
         public T LoadObject<T>(string name)
@@ -62,6 +88,14 @@ namespace Assets.Scripts.SaveLoad
         {
             PlayerPrefs.SetString(name, JsonUtility.ToJson(obj));
             PlayerPrefs.Save();
+        }
+
+        class SaveLoadComponentComparer : IComparer<ISaveLoadComponent>
+        {
+            public int Compare(ISaveLoadComponent x, ISaveLoadComponent y)
+            {
+                return x.GetOrder().CompareTo(y.GetOrder());
+            }
         }
     }
 }

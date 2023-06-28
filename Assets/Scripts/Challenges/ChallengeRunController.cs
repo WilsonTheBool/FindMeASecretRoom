@@ -33,7 +33,8 @@ namespace Assets.Scripts.Challenges
 
         public void StartChallenge(GameProgressionController progression)
         {
-            ChallengesSaveDataHolder = SaveLoadController.Instance.challengesSaveData;
+            SaveLoadController.Instance.TryGetSaveLoadComponent<ChallengesSaveDataHolder>(out ChallengesSaveDataHolder);
+           
             progression.OnRunCompleted.AddListener(OnChallengeVictory);
             progression.OnRunFailed.AddListener(OnChallengeFail);
             ChallengeStarted.Invoke(CurentChallenge);
@@ -98,14 +99,14 @@ namespace Assets.Scripts.Challenges
 
                 if (CurentChallenge.hasUnlockReward)
                 {
-                    new Achievements.Actions.Action_UnlockItem() { itemToUnlock = CurentChallenge.itemUnlock }.DoAction(
+                    new Achievements.Actions.Action_UnlockItem(CurentChallenge.itemUnlock, true).DoAction(
                         new Achievements.AchievmentAction.AchivementArgs(Assets.Scripts.Game.PlayerController.Player.instance,
                         MainGameLevelMapController.Instance, progression, Assets.Scripts.Game.UI.GameUIController.Instance, this));
                 }
             }
             ChallengeVictory.Invoke(CurentChallenge);
 
-            ChallengesSaveDataHolder.WriteSaveData();
+            ChallengesSaveDataHolder.Save_SaveData(SaveLoadController.Instance);
 
             CurentChallenge = null;
 
@@ -154,21 +155,25 @@ namespace Assets.Scripts.Challenges
             return null;
         }
 
-        public void LoadCompletedChallenges(ChallengesSaveData saveData)
+        public void LoadCompletedChallenges(ChallengesSaveDataHolder holder)
         {
-            ChallengeRunData[] result = new ChallengeRunData[saveData.challengesCompleted.Length];
 
-            unlockedChallenges = new List<ChallengeRunData>(saveData.challengesUnlocked.Length);
+            this.ChallengesSaveDataHolder = holder;
 
-            for(int i = 0; i < result.Length; i++)
+
+            ChallengeRunData[] result = new ChallengeRunData[holder.SaveData.challengesCompleted.Length];
+
+            unlockedChallenges = new List<ChallengeRunData>(holder.SaveData.challengesUnlocked.Length);
+
+            for (int i = 0; i < result.Length; i++)
             {
-                result[i] = GetChallenge(saveData.challengesCompleted[i]);
-                
+                result[i] = GetChallenge(holder.SaveData.challengesCompleted[i]);
+
             }
 
-            for(int i = 0; i < saveData.challengesUnlocked.Length; i++)
+            for (int i = 0; i < holder.SaveData.challengesUnlocked.Length; i++)
             {
-                unlockedChallenges.Add(GetChallenge(saveData.challengesUnlocked[i]));
+                unlockedChallenges.Add(GetChallenge(holder.SaveData.challengesUnlocked[i]));
             }
             completedChallenges = new List<ChallengeRunData>(result);
         }

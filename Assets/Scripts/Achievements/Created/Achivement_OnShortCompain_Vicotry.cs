@@ -34,10 +34,21 @@ public class Achivement_OnShortCompain_Vicotry : Achievement_ItemUnlock
     {
         foreach(ChallengeRunData challenge in challengesToUnlock)
         {
-            _unlockChallenge = new Action_UnlockChallenge() { challenge = challenge, ui = ui };
+            _unlockChallenge = new Action_UnlockChallenge() { challenge = challenge, ui = ui, showPopup = true};
             _unlockChallenge.DoAction(args);
         }
 
         base.UnlockAchivement(args);
+    }
+
+    public override void OnAwakeWhenUnlocked(AchievmentAction.AchivementArgs achivementArgs)
+    {
+        foreach (ChallengeRunData challenge in challengesToUnlock)
+        {
+            _unlockChallenge = new Action_UnlockChallenge() { challenge = challenge, ui = ui};
+            _unlockChallenge.DoAction(achivementArgs);
+        }
+
+        base.OnAwakeWhenUnlocked(achivementArgs);
     }
 }

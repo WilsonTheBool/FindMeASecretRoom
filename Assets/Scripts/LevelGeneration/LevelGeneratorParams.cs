@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Assets.Scripts.LevelGeneration.GenerationLimiters;
 
 namespace Assets.Scripts.LevelGeneration
 {
@@ -15,6 +16,8 @@ namespace Assets.Scripts.LevelGeneration
         public LevelGenerator LevelGenerator;
 
         public RoomLayoutPicker RoomLayoutPicker;
+
+        public GenerationLimiter GenerationLimiter;
 
         public int maxRoomsCount;
         public int minDeadEndsCount;

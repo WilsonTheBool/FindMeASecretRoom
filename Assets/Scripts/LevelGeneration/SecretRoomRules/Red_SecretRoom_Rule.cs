@@ -16,7 +16,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
             return true;
         }
 
-        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate)
+        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate, bool useLimiter = false)
         {
             //Dictionary<Vector2Int, float> secretRoomMap = new Dictionary<Vector2Int, float>();
 
@@ -74,6 +74,11 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
             }
 
             costMap.ReSort();
+
+            if (useLimiter && data.GenerationLimiter != null && !data.GenerationLimiter.IsCorrect(SecretRoomType, costMap, countToGenerate))
+            {
+                return false;
+            }
 
             for (int i = 0; i < countToGenerate; i++)
             {

@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: Description
-      value: Marks 2-5 empty rooms
+      value: Marks 4-8 empty rooms
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: pools.Array.size
@@ -109,5 +109,5 @@ MonoBehaviour:
   OnEffectActivated:
     m_PersistentCalls:
       m_Calls: []
-  roomUnlock_min: 2
-  roomUnlock_max: 2
+  roomUnlock_min: 4
+  roomUnlock_max: 8

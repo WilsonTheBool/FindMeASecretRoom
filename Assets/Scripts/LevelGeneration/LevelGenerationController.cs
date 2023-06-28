@@ -49,7 +49,7 @@ namespace Assets.Scripts.LevelGeneration
                 }
                
 
-                Debug.Log("Generation End");
+                //Debug.Log("Generation End");
 
                 if (loopCount > 50)
                 {
@@ -58,6 +58,8 @@ namespace Assets.Scripts.LevelGeneration
                 }
             }
             while ((!levelGenerator.GenerateLevel(levelMap, LevelGeneratorParams)));
+
+            Debug.Log("Generation try count:" + loopCount + "/" + "50");
 
             return levelMap;
         }

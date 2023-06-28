@@ -16,6 +16,6 @@ MonoBehaviour:
   levelName: Basement I
   generatorParams: {fileID: 11400000, guid: c1a5bef715e52f94faf40e6960993a83, type: 2}
   baseColor: {r: 0.7019608, g: 0.5529412, b: 0.3764706, a: 1}
-  hasTimer: 1
-  timerLength: 25
+  hasTimer: 0
+  timerLength: 0
   timer_prefab: {fileID: 3316263398556109514, guid: 38266821f1f97bd47a7a85a006332fd7, type: 3}

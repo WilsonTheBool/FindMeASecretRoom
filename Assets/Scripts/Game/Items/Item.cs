@@ -14,6 +14,8 @@ namespace Assets.Scripts.Game.Items
         public bool hasAltMode;
 
         public string Name;
+
+        [TextArea(5,8)]
         public string Description;
         public Sprite Sprite;
 

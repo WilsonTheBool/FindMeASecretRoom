@@ -15,7 +15,7 @@ MonoBehaviour:
   id: -1
   Name: TEST
   description: 
-  Compain: {fileID: 11400000, guid: a5c4d060baba5f64aa492c711e199472, type: 2}
+  Compain: {fileID: 11400000, guid: c607e9c8633411b48be6c36229ab1f53, type: 2}
   itemPool: {fileID: 0}
   HideTreasureRooms: 0
   HideShops: 0
@@ -24,9 +24,8 @@ MonoBehaviour:
   maxHpContainers: 10
   AddItemsOnStart: 1
   itemsToAdd:
-  - {fileID: 1403052928771741119, guid: 0609d0af85d072e46bc550f80bbeaf36, type: 3}
-  - {fileID: 1412316186355038201, guid: b61e8e40c96c6a54c84d9fc411c6abd4, type: 3}
-  - {fileID: 8203098519529243951, guid: 94721a086e14a41478f9b5d9ebcdb8ab, type: 3}
+  - {fileID: 5973838667055817544, guid: 7caeb990fee48e645bebf777d64c3f96, type: 3}
+  - {fileID: 4341162338038694293, guid: b296170d1ebd8924e88f1719031fd2a8, type: 3}
   RemoveItemsFromPool: 0
   itemsToPool: []
   hasUnlockReward: 0

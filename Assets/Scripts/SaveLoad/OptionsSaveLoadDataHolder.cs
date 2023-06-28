@@ -3,38 +3,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.SaveLoad
 {
-    public class OptionsSaveLoadDataHolder : MonoBehaviour
+    public class OptionsSaveLoadDataHolder : SaveLoadComponent<GameOptionSaveData>
     {
         private const string optionsName = "Options";
 
-        public GameOptionSaveData SaveData { get; private set; }
-        private SaveLoadController controller;
-
-
-
-        private void LoadSaveData()
+        public override void SetUp(SaveLoadController controller)
         {
-            SaveData = controller.LoadObject<GameOptionSaveData>(optionsName);
-
-            SaveData ??= new GameOptionSaveData();
+            saveName = optionsName;
         }
-
-        public void SaveOptions()
-        {
-            controller.SaveObject<GameOptionSaveData>(SaveData, optionsName);
-        }
-
-        public void Awake()
-        {
-            controller = SaveLoadController.Instance;
-
-            if (controller == null)
-            {
-                controller = GetComponentInParent<SaveLoadController>();
-            }
-
-            LoadSaveData();
-        }
-
     }
 }

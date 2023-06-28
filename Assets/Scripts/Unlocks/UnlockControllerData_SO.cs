@@ -19,30 +19,14 @@ namespace Assets.Scripts.Unlocks
 
         public UnityAction<Item> OnNewUnlock;
 
-
-        public void SetUnlockedItems(ChallengesSaveData saveData)
+        public void ClearUnlocks()
         {
-            //List<Item> unlockedItems = new List<Item>();
-
-            //foreach (ChallengeRunData data in challengeRunController.completedChallenges)
-            //{
-            //    if (data != null && data.hasUnlockReward)
-            //    {
-            //        unlockedItems.Add(data.itemUnlock);
-            //    }
-            //}
-
-            //UnlockedItems = unlockedItems;
-
-            //challengeRunController.ChallengeVictory.AddListener(OnChallengeVictory);
+            UnlockedItems.Clear();
         }
 
-        public void AddUnlockedItems(Item[] items)
+        public void AddUnlockedItems(Item[] items, bool invokeEvents)
         {
-            if(UnlockedItems == null)
-            {
-                UnlockedItems = new List<Item>();
-            }
+            UnlockedItems ??= new List<Item>();
 
             foreach(Item item in items)
             {
@@ -51,40 +35,22 @@ namespace Assets.Scripts.Unlocks
                     UnlockedItems.Add(item);
                 }
 
+                if (invokeEvents)
+                    OnNewUnlock?.Invoke(item);
+
             }
-            //UnlockedItems.AddRange(items);
         }
 
-        public void AddUnlockedItems(Item item)
+        public void AddUnlockedItems(Item item, bool invokeEvents)
         {
-            if (UnlockedItems == null)
-            {
-                UnlockedItems = new List<Item>();
-            }
+            UnlockedItems ??= new List<Item>();
+
             if (!UnlockedItems.Contains(item))
             {
                 UnlockedItems.Add(item);
 
-                OnNewUnlock?.Invoke(item);
-            }
-
-            //UnlockedItems.AddRange(items);
-        }
-
-        //private void OnChallengeVictory(ChallengeRunData data)
-        //{
-        //    if(data != null && data.hasUnlockReward)
-        //    {
-        //        TryUnlockItem(data.itemUnlock);
-        //    }
-        //}
-
-        public void TryUnlockItem(Item item)
-        {
-            if (!UnlockedItems.Contains(item))
-            {
-                UnlockedItems.Add(item);
-                OnNewUnlock(item);
+                if(invokeEvents)
+                    OnNewUnlock?.Invoke(item);
             }
         }
 

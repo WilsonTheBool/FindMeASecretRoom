@@ -16,9 +16,11 @@ namespace Assets.Scripts.Game.SoundManagment
                 Destroy(gameObject);
 
             SaveLoadController SaveLoadController = SaveLoadController.Instance;
-            if (SaveLoadController != null && SaveLoadController.optionsData != null && SaveLoadController.optionsData.SaveData != null)
+            SaveLoadController.TryGetSaveLoadComponent(out OptionsSaveLoadDataHolder saveData);
+
+            if (SaveLoadController != null && saveData != null && saveData.SaveData != null)
             {
-                SetVolume(SaveLoadController.optionsData.SaveData.soundVolume);
+                SetVolume(saveData.SaveData.soundVolume);
                 
             }
         }

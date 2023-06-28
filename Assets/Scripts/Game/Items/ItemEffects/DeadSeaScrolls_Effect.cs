@@ -41,7 +41,7 @@ namespace Assets.Scripts.Game.Items.ItemEffects
                 }
             }
 
-            args.external.mainGameController.LevelMapRenderer.onRenderStarted.AddListener(OnLevelStart);
+            args.external.mainGameController.levelStarted.AddListener(OnLevelStart);
 
             args.external.mainGameController.onLevelOver.AddListener(OnLevelEnd);
         }

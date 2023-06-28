@@ -249,6 +249,9 @@ namespace Assets.Scripts.Game.Gameplay.BossRush
 
             tvStatic.SetActive(false);
 
+            if (firstStart)
+                main.levelStarted.Invoke();
+
             InputListener.enabled = false;
         }
 

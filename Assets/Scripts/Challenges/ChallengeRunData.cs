@@ -51,7 +51,7 @@ namespace Assets.Scripts.Challenges
 
         public virtual void OnSetUp(GameProgressionController progression, MainGameLevelMapController main)
         {
-            return;
+            
         }
     }
 }

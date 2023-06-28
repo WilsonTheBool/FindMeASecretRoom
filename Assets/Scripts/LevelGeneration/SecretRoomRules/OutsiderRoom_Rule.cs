@@ -22,7 +22,7 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
         }
 
 
-        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate)
+        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate, bool useLimiter = false)
         {
             RuleCostMap costMap = new RuleCostMap();
             int cost;
@@ -61,6 +61,11 @@ namespace Assets.Scripts.LevelGeneration.SecretRoomRules
             }
 
             costMap.ReSort();
+
+            if (useLimiter && data.GenerationLimiter != null && !data.GenerationLimiter.IsCorrect(SecretRoomType, costMap, countToGenerate))
+            {
+                return false;
+            }
 
             for (int i = 0; i < countToGenerate; i++)
             {

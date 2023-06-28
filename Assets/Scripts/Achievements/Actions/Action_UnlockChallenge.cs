@@ -11,16 +11,29 @@ namespace Assets.Scripts.Achievements.Actions
 
         public ItemUnlockedUI ui;
 
+        public bool showPopup = false;
+
         public override void DoAction(AchivementArgs args)
         {
-            args.challenges.UnlockChallenge(challenge);
+            if (args.challenges.IsChallangeUnlocked(challenge))
+            {
+                return;
+            }
 
-            args.GameUIController.InstantiateToCanvas(ui, Game.UI.GameUIController.UIRenderType.OnTopUI).SetUp(
-                title: "New Challenge Unlocked!",
-                itemName: challenge.Name,
-                description: "",
-                icon: null
-                );
+            args.challenges.UnlockChallenge(challenge);
+            
+            if(showPopup)
+            if(args.GameUIController != null)
+            {
+                args.GameUIController.InstantiateToCanvas(ui, Game.UI.GameUIController.UIRenderType.OnTopUI).SetUp(
+               title: "New Challenge Unlocked!",
+               itemName: challenge.Name,
+               description: "",
+               icon: null
+               );
+            }
+
+           
         }
 
     }

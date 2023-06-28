@@ -177,14 +177,17 @@ namespace Assets.Scripts.Game.PlayerController
 
             if (item.isUseItem)
             {
-                if(selectedActiveItem > 0)
+                if (ActiveItems.Remove(item))
                 {
-                    selectedActiveItem--;
-                }
-
-                if(ActiveItems.Remove(item))
+                    if (selectedActiveItem > 0)
+                    {
+                        selectedActiveItem--;
+                    }
+                    
                     item.OnItemRemove(args);
-                ActiveItemSwitched.Invoke(item);
+                    ActiveItemSwitched.Invoke(item);
+                }
+                    
             }
             else
             {
@@ -202,14 +205,17 @@ namespace Assets.Scripts.Game.PlayerController
 
             if (item != null && item.isUseItem)
             {
-                if (selectedActiveItem > 0)
-                {
-                    selectedActiveItem--;
-                }
-
                 if (ActiveItems.Remove(item))
+                {
+                    if (selectedActiveItem > 0)
+                    {
+                        selectedActiveItem--;
+                    }
+
                     item.OnItemRemove(args);
-                ActiveItemSwitched.Invoke(item);
+                    ActiveItemSwitched.Invoke(item);
+                }
+               
             }
             else
             {

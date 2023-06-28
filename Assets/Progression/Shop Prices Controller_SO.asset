@@ -20,3 +20,39 @@ MonoBehaviour:
   - price: 10
     item: {fileID: 2573899836522429253, guid: ec2630372bd8fa847ba8519d9f63cfc9, type: 3}
     isSale: 0
+  - price: 25
+    item: {fileID: 4123329167077379408, guid: f80e065349896b14e885bc916c715bec, type: 3}
+    isSale: 0
+  - price: 25
+    item: {fileID: 8203098519529243951, guid: 94721a086e14a41478f9b5d9ebcdb8ab, type: 3}
+    isSale: 0
+  priceIncreases:
+  - shopCount: 0
+    priceIncrease: 0
+  - shopCount: 1
+    priceIncrease: 5
+  - shopCount: 2
+    priceIncrease: 10
+  restockIncrease:
+  - shopCount: 0
+    priceIncrease: 0
+  - shopCount: 1
+    priceIncrease: 5
+  - shopCount: 1
+    priceIncrease: 10
+  - shopCount: 2
+    priceIncrease: 20
+  - shopCount: 3
+    priceIncrease: 30
+  - shopCount: 4
+    priceIncrease: 40
+  - shopCount: 5
+    priceIncrease: 50
+  - shopCount: 6
+    priceIncrease: 70
+  - shopCount: 7
+    priceIncrease: 80
+  - shopCount: 8
+    priceIncrease: 100
+  - shopCount: 9
+    priceIncrease: 100

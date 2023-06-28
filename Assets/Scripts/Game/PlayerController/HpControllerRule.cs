@@ -40,6 +40,26 @@ namespace Assets.Scripts.Game.PlayerController
             }
         }
 
+        public void OnAddContainer_Empty(List<HpObject> hpObjects, int maxCount)
+        {
+            if (hpObjects.Count < maxCount)
+            {
+                hpObjects.Add(empty);
+
+                hpObjects.Sort(comparer);
+            }
+            else
+            {
+                if (hpObjects.Contains(blue))
+                {
+                    hpObjects.Remove(blue);
+                    hpObjects.Add(empty);
+
+                    hpObjects.Sort(comparer);
+                }
+            }
+        }
+
         public void OnRemoveContainer(List<HpObject> hpObjects)
         {
             if (hpObjects.Contains(empty))

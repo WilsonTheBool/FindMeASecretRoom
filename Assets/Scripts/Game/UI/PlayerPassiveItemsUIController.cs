@@ -44,7 +44,7 @@ namespace Assets.Scripts.Game.UI
         {
             var result =  items.Find((ui) => ui.item == item);
 
-            if(result.item == null)
+            if(result == null)
             {
                 return items.Find((ui) => ui.item.Name == item.Name);
             }
@@ -104,7 +104,7 @@ namespace Assets.Scripts.Game.UI
 
         private void OnItemRemove(Item item)
         {
-            if (item.isUseItem)
+            if (item == null || item.isUseItem)
             {
                 return;
             }

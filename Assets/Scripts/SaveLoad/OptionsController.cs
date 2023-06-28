@@ -18,6 +18,8 @@ namespace Assets.Scripts.SaveLoad
 
         public GameOptionSaveData defaultData;
 
+        private OptionsSaveLoadDataHolder options;
+
         private void Awake()
         {
             if(defaultData == null) defaultData = new GameOptionSaveData();
@@ -28,9 +30,11 @@ namespace Assets.Scripts.SaveLoad
             SaveLoadController = SaveLoadController.Instance;
             GameSoundController = GameSoundController.Instance;
 
-            if (SoundVolumeSlider != null && SaveLoadController != null && SaveLoadController.optionsData != null)
+            SaveLoadController.TryGetSaveLoadComponent(out options);
+
+            if (SoundVolumeSlider != null && SaveLoadController != null && options != null)
             {
-                SoundVolumeSlider.value = SaveLoadController.optionsData.SaveData.soundVolume;
+                SoundVolumeSlider.value = options.SaveData.soundVolume;
                 SoundVolumeSlider.onValueChanged.AddListener(OnSoundValueChanged);
             }
             else
@@ -40,9 +44,9 @@ namespace Assets.Scripts.SaveLoad
             }
             
 
-            if (MusicVolumeSlider != null && SaveLoadController != null && SaveLoadController.optionsData != null)
+            if (MusicVolumeSlider != null && SaveLoadController != null && options != null)
             {
-                MusicVolumeSlider.value = SaveLoadController.optionsData.SaveData.musicVolume;
+                MusicVolumeSlider.value = options.SaveData.musicVolume;
                 MusicVolumeSlider.onValueChanged.AddListener(OnMusicValueChanged);
             }
             else
@@ -52,9 +56,9 @@ namespace Assets.Scripts.SaveLoad
             }
                 
 
-            if(FullScreenTogle != null && SaveLoadController != null && SaveLoadController.optionsData != null)
+            if(FullScreenTogle != null && SaveLoadController != null && options != null)
             {
-                FullScreenTogle.isOn = SaveLoadController.optionsData.SaveData.fullscreen;
+                FullScreenTogle.isOn = options.SaveData.fullscreen;
                 FullScreenTogle.onValueChanged.AddListener(OnFullscreenValueChanged);
             }
             else
@@ -67,24 +71,24 @@ namespace Assets.Scripts.SaveLoad
         private void OnSoundValueChanged(float value)
         {
             GameSoundController.SetSoundVolume(value);
-            SaveLoadController.optionsData.SaveData.soundVolume = value;
+            options.SaveData.soundVolume = value;
         }
 
         private void OnMusicValueChanged(float value)
         {
             GameSoundController.SetMusicVolume(value);
-            SaveLoadController.optionsData.SaveData.musicVolume = value;
+            options.SaveData.musicVolume = value;
         }
 
         private void OnFullscreenValueChanged(bool value)
         {
             Screen.fullScreen = value;
-            SaveLoadController.optionsData.SaveData.fullscreen = value;
+            options.SaveData.fullscreen = value;
         }
 
         public void SaveOptions()
         {
-            SaveLoadController.optionsData.SaveOptions();
+            options.Save_SaveData(SaveLoadController);
         }
 
         private void OnDisable()

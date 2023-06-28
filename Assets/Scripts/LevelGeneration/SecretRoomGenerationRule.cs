@@ -11,7 +11,7 @@ namespace Assets.Scripts.LevelGeneration
             return true;
         }
 
-        public virtual bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate)
+        public virtual bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate, bool useLimiter = false)
         {
             return false;
         }
@@ -189,6 +189,18 @@ namespace Assets.Scripts.LevelGeneration
                 list.RemoveRange(0, lastMaxIndex);
 
                 return positions.ToArray();
+            }
+
+            public float[] GetAllValues()
+            {
+                float[] floats = new float[list.Count];
+
+                for(int i = 0; i < floats.Length; i++)
+                {
+                    floats[i] = list[i].Value;
+                }
+
+                return floats;
             }
 
             public Vector2Int GetMaxKey_Randomized()

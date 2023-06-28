@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Assets.Scripts.SaveLoad
 {
     [Serializable]
-    public class GameOptionSaveData
+    public class GameOptionSaveData: SaveData
     {
         public float soundVolume;
         public float musicVolume;

@@ -69,7 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: pools.Array.size
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
+      propertyPath: pools.Array.data[0]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307438615964902454, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: pools.Array.data[1]
@@ -85,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 6960704043498350941}
     - target: {fileID: 2660662467224006740, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
       propertyPath: m_Name
-      value: Mr_Mega
+      value: Mr_Mega Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e35973dd9e0f4e8d5596948b34acc, type: 3}
@@ -110,3 +114,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rangeIncrease: 1
+  sizeIncreaseMult: 1.25

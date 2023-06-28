@@ -35,5 +35,7 @@ namespace Assets.Scripts.Achievements.Created
         {
             args.Player.goldController.GoldChanged.RemoveListener(CheckGold);
         }
+
+        
     }
 }

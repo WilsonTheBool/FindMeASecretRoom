@@ -19,7 +19,7 @@ namespace Assets.Scripts.Game.ErrorRoom
             return true;
         }
 
-        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate)
+        public override bool GenerateRooms(LevelMap map, LevelGeneratorParams data, int countToGenerate, bool useLimiter = false)
         {
             RuleCostMap costMap = new RuleCostMap();
 

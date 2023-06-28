@@ -77,6 +77,7 @@ MonoBehaviour:
     chanceToGen: 0.445
   LevelGenerator: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
+  GenerationLimiter: {fileID: 11400000, guid: 1087aa3cceb3f0f46812063ae828ef3f, type: 2}
   maxRoomsCount: 45
   minDeadEndsCount: 7
   secretRoomsCount: 13

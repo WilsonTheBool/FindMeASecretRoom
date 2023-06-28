@@ -3,41 +3,18 @@ using UnityEngine;
 
 namespace Assets.Scripts.SaveLoad
 {
-    public class CheatsSaveLoadDataHolder : MonoBehaviour
+    public class CheatsSaveLoadDataHolder : SaveLoadComponent<CheatsData>
     {
         private const string SaveDataName = "Cheats";
-        public CheatsData SaveData;
 
-        private SaveLoadController controller;
-
-        private void LoadSaveData()
+        public override void SetUp(SaveLoadController controller)
         {
-            SaveData = controller.LoadObject<CheatsData>(SaveDataName);
-
-            SaveData ??= new CheatsData();
+            saveName = SaveDataName;
         }
-
-        public void SaveOptions()
-        {
-            controller.SaveObject<CheatsData>(SaveData, SaveDataName);
-        }
-
-        public void Awake()
-        {
-            controller = SaveLoadController.Instance;
-
-            if (controller == null)
-            {
-                controller = GetComponentInParent<SaveLoadController>();
-            }
-
-            LoadSaveData();
-        }
-
     }
 
     [System.Serializable]
-    public class CheatsData
+    public class CheatsData: SaveData
     {
 
         public bool infHP;

@@ -63,7 +63,8 @@ namespace Assets.Scripts.Game.SoundManagment
         private void OnItemSwitched(Item item)
         {
             SoundControllerData.GameAudioData audioData = data.player_SwitchItem;
-            PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
+            if(audioData != null)
+                PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
         }
 
         private void OnRoomUnlocked(LevelGeneration.Room room)
@@ -71,20 +72,23 @@ namespace Assets.Scripts.Game.SoundManagment
             if (room.type != null && room.type.isSecretRoom)
             {
                 SoundControllerData.GameAudioData audioData = data.breakWall;
-                PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
+                if (audioData != null)
+                    PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
             }
         }
 
         private void OnTakeDamage(PlayerHPController.HpEventArgs args)
         {
             SoundControllerData.GameAudioData audioData = data.playerHit;
-            PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
+            if (audioData != null)
+                PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
         }
 
         private void OnExplosion(Explosion explosion, ExplosionResult result)
         {
             SoundControllerData.GameAudioData audioData = data.bombExplosion;
-            PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
+            if (audioData != null)
+                PlayClip(audioData.GetRandom(), audioData.volumeScale, audioData.dataName);
         }
 
         public void SetSoundVolume(float value)
@@ -99,7 +103,7 @@ namespace Assets.Scripts.Game.SoundManagment
 
         public void PlayClip(AudioClip clip, float volumeScale, string id)
         {
-            if (!IsInCoolDown(id))
+            if (!IsInCoolDown(id) && curentSoundPlayer != null)
             {
                 curentSoundPlayer.PlaySound(clip, volumeScale);
                 cooldownList.Add(new CooldownPair(id, cooldown));
@@ -109,7 +113,7 @@ namespace Assets.Scripts.Game.SoundManagment
 
         public void PlayClip(SoundControllerData.GameAudioData data)
         {
-            if (!IsInCoolDown(data.dataName))
+            if (!IsInCoolDown(data.dataName) && curentSoundPlayer != null)
             {
                 curentSoundPlayer.PlaySound(data.GetRandom(), data.volumeScale);
                 cooldownList.Add(new CooldownPair(data.dataName, cooldown));

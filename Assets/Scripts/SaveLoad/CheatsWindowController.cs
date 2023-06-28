@@ -11,6 +11,9 @@ namespace Assets.Scripts.SaveLoad
         public Toggle showRooms;
 
         private SaveLoadController controller;
+
+        private CheatsSaveLoadDataHolder cheats;
+
         public void Awake()
         {
             
@@ -20,33 +23,34 @@ namespace Assets.Scripts.SaveLoad
         public void Start()
         {
             controller = SaveLoadController.Instance;
+            controller.TryGetSaveLoadComponent(out cheats);
 
-            infHp.isOn = controller.cheatsData.SaveData.infHP;
+            infHp.isOn = cheats.SaveData.infHP;
             infHp.onValueChanged.AddListener(OnInfHpToggleChange);
-            infGold.isOn = controller.cheatsData.SaveData.infGold;
+            infGold.isOn = cheats.SaveData.infGold;
             infGold.onValueChanged.AddListener(OnInfGoldToggleChange);
-            showRooms.isOn = controller.cheatsData.SaveData.showRooms;
+            showRooms.isOn = cheats.SaveData.showRooms;
             showRooms.onValueChanged.AddListener(OnShowRoomsToggleChange);
         }
 
         private void OnInfHpToggleChange(bool value)
         {
-            controller.cheatsData.SaveData.infHP = value;
+            cheats.SaveData.infHP = value;
         }
 
         private void OnInfGoldToggleChange(bool value)
         {
-            controller.cheatsData.SaveData.infGold = value;
+            cheats.SaveData.infGold = value;
         }
 
         private void OnShowRoomsToggleChange(bool value)
         {
-            controller.cheatsData.SaveData.showRooms = value;
+            cheats.SaveData.showRooms = value;
         }
 
         private void OnDisable()
         {
-            controller.cheatsData.SaveOptions();
+            cheats.Save_SaveData(controller);
         }
     }
 }

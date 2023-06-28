@@ -4405,9 +4405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02cf26f4030262a41bd6fb76aad59584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionsData: {fileID: 0}
-  cheatsData: {fileID: 0}
-  challengesSaveData: {fileID: 0}
 --- !u!4 &396070480
 Transform:
   m_ObjectHideFlags: 0
@@ -4423,6 +4420,7 @@ Transform:
   - {fileID: 1959651764}
   - {fileID: 1003957429}
   - {fileID: 1280819414}
+  - {fileID: 406399209}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4508,6 +4506,52 @@ Transform:
   m_Father: {fileID: 1816492613}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &406399208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 406399209}
+  - component: {fileID: 406399210}
+  m_Layer: 0
+  m_Name: UnlocksClear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &406399209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406399208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 396070480}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &406399210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406399208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d802ce91f19a449bd6d40ed80a7578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveName: 
+  awakeOrder: 0
+  UnlockControllerData_SO: {fileID: 11400000, guid: 691304baaae6bd04e9a83d1cbfa0217d, type: 2}
 --- !u!1 &421943664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6304235192366671597, guid: 77f53d3a3cf78324b88d9d30ab25368c, type: 3}
@@ -10430,6 +10474,7 @@ MonoBehaviour:
   ChallengeCounter: {fileID: 1159322759}
   mainGame: {fileID: 919313159}
   normalRun: {fileID: 652501885}
+  challengeButton: {fileID: 1024519012}
   LoadingScreen: {fileID: 1462263072}
 --- !u!1 &932190427
 GameObject:
@@ -11008,6 +11053,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584d8d44918baa54780fee05270e3792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SaveData:
+    soundVolume: 0
+    musicVolume: 0
+    fullscreen: 0
+  saveName: 
+  awakeOrder: 0
 --- !u!1 &1003957428
 GameObject:
   m_ObjectHideFlags: 0
@@ -11054,6 +11105,8 @@ MonoBehaviour:
   SaveData:
     challengesCompleted: 
     challengesUnlocked: 
+  saveName: 
+  awakeOrder: 0
   ChallengeRunController: {fileID: 11400000, guid: 43332c00da0723a4da4ce71cd5cd8fad, type: 2}
   UnlockController: {fileID: 11400000, guid: 691304baaae6bd04e9a83d1cbfa0217d, type: 2}
 --- !u!1 &1005111589
@@ -13728,6 +13781,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaveData:
     achievementsUnlocked: 
+  saveName: 
+  awakeOrder: 0
   AchivementsController: {fileID: 11400000, guid: 7ce4e85848642424f9bae675d3745550, type: 2}
 --- !u!1 &1295582224
 GameObject:
@@ -15052,7 +15107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1443958703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20385,6 +20440,8 @@ MonoBehaviour:
     infHP: 0
     infGold: 0
     showRooms: 0
+  saveName: 
+  awakeOrder: 0
 --- !u!1001 &1967036084
 PrefabInstance:
   m_ObjectHideFlags: 0

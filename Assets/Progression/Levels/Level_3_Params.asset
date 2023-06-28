@@ -36,7 +36,7 @@ MonoBehaviour:
     chanceToGen: 1
   secretRooms:
   - RoomType: {fileID: 11400000, guid: 47188dca2b7862c4490183d8a5fe6d4a, type: 2}
-    count: 1
+    count: 2
     cancelGenerationIfNotGenerated: 1
     chanceToGen: 1
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
@@ -62,9 +62,10 @@ MonoBehaviour:
   - RoomType: {fileID: 11400000, guid: 8680f239e11da304784cb5e2bea0dc33, type: 2}
     count: 1
     cancelGenerationIfNotGenerated: 1
-    chanceToGen: 0.567
+    chanceToGen: 0.658
   LevelGenerator: {fileID: 11400000, guid: 1de71e985a0130149b0b2cc5b5934a77, type: 2}
   RoomLayoutPicker: {fileID: 11400000, guid: 8974c14e7b6237c4fa9c406aca3d2bee, type: 2}
+  GenerationLimiter: {fileID: 11400000, guid: 02fe6a4800d19164fb2098d4284985d1, type: 2}
   maxRoomsCount: 28
   minDeadEndsCount: 8
   secretRoomsCount: 6
